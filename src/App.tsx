@@ -3,6 +3,8 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
+import Breadcrumb from './components/Breadcrumb'
+import { useT } from './contexts/LanguageContext'
 import Home from './pages/Home'
 import Overview from './pages/Overview'
 import Warehouse from './pages/Warehouse'
@@ -86,6 +88,12 @@ function AppContent() {
         />
         <div className={styles.handle} onMouseDown={onMouseDown} />
         <main className={styles.content}>
+          <BreadcrumbBlock
+            domain={domain}
+            activePage={activePage}
+            onBack={handleBack}
+            onSelectPage={setActivePage}
+          />
           {domain === null ? (
             <Home onEnter={handleEnterDomain} />
           ) : (
@@ -94,6 +102,39 @@ function AppContent() {
         </main>
       </div>
     </div>
+  )
+}
+
+function BreadcrumbBlock({ domain, activePage, onBack, onSelectPage }: {
+  domain: string | null
+  activePage: string
+  onBack: () => void
+  onSelectPage: (key: string) => void
+}) {
+  const { t } = useT()
+
+  if (!domain) {
+    return (
+      <Breadcrumb path={[]} />
+    )
+  }
+
+  const pageLabels: Record<string, string> = {
+    overview: t.sidebar.overview,
+    warehouse: t.sidebar.warehouse,
+    transport: t.sidebar.transport,
+    delivery: t.sidebar.delivery,
+    prediction: t.sidebar.prediction,
+    operation: t.sidebar.operation,
+  }
+
+  return (
+    <Breadcrumb
+      path={[
+        { label: 'AI Logistics', onClick: onBack },
+        { label: pageLabels[activePage] ?? activePage, onClick: () => onSelectPage(activePage) },
+      ]}
+    />
   )
 }
 

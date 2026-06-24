@@ -1,0 +1,33 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 0 18px;
+  font-size: 13px;
+  user-select: none;
+}
+
+.crumb {
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.active {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.sep {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin: 0 2px;
+}
