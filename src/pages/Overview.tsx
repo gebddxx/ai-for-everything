@@ -1,6 +1,7 @@
 import { overview } from '../data/logistics'
 import StatCard from '../components/StatCard'
 import PieChart from '../components/PieChart'
+import MindMap from '../components/MindMap'
 import styles from './Page.module.css'
 
 export default function Overview() {
@@ -19,9 +20,14 @@ export default function Overview() {
         ))}
       </div>
 
+      <div className={styles.pieSection} style={{ marginBottom: 28 }}>
+        <h3 className={styles.chartTitle}>🧠 Module Map — How It All Connects</h3>
+        <MindMap />
+      </div>
+
       <div className="styles.grid" style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginBottom: 28 }}>
         <div className={styles.pieSection} style={{ flex: '1 1 400px' }}>
-          <h3 className={styles.chartTitle}>🍩 AI投入效能分布</h3>
+          <h3 className={styles.chartTitle}>🍩 AI Investment Efficiency Distribution</h3>
           <PieChart data={overview.pieData} innerRadius={55} />
         </div>
       </div>
