@@ -1,4 +1,4 @@
-import { pages, overview } from '../data/logistics'
+import { useT } from '../contexts/LanguageContext'
 import styles from './Sidebar.module.css'
 
 interface Props {
@@ -6,19 +6,21 @@ interface Props {
   onSelect: (key: string) => void
 }
 
-const ALL_ITEMS = [
-  { key: 'overview', icon: overview.icon, title: overview.title },
-  ...Object.keys(pages).map((key) => ({
-    key,
-    icon: pages[key].icon,
-    title: pages[key].title,
-  })),
-]
-
 export default function Sidebar({ active, onSelect }: Props) {
+  const { t } = useT()
+
+  const items = [
+    { key: 'overview', icon: '📦', labelKey: 'overview' as const },
+    { key: 'warehouse', icon: '🏭', labelKey: 'warehouse' as const },
+    { key: 'transport', icon: '🚛', labelKey: 'transport' as const },
+    { key: 'delivery', icon: '🚁', labelKey: 'delivery' as const },
+    { key: 'prediction', icon: '📊', labelKey: 'prediction' as const },
+    { key: 'operation', icon: '🤖', labelKey: 'operation' as const },
+  ]
+
   return (
     <nav className={styles.sidebar}>
-      {ALL_ITEMS.map((item) => {
+      {items.map((item) => {
         const isActive = item.key === active
         return (
           <button
@@ -27,7 +29,7 @@ export default function Sidebar({ active, onSelect }: Props) {
             onClick={() => onSelect(item.key)}
           >
             <span className={styles.icon}>{item.icon}</span>
-            <span className={styles.label}>{item.title}</span>
+            <span className={styles.label}>{t.sidebar[item.labelKey]}</span>
           </button>
         )
       })}

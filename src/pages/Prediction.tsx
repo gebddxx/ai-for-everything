@@ -1,33 +1,42 @@
-import { pages } from '../data/logistics'
+import { useT } from '../contexts/LanguageContext'
 import StatCard from '../components/StatCard'
 import BarChart from '../components/BarChart'
 import styles from './Page.module.css'
 
-const data = pages.prediction
+const chartData = [
+  { name: 'Forecast Accuracy (%)', Traditional: 60, 'AI-Powered': 84 },
+  { name: 'Stockout Rate (%)', Traditional: 30, 'AI-Powered': 18 },
+  { name: 'Risk Response (days)', Traditional: 0.5, 'AI-Powered': 4 },
+]
+const bars = [
+  { key: 'Traditional', label: 'Traditional', color: '#94a3b8' },
+  { key: 'AI-Powered', label: 'AI-Powered', color: '#10b981' },
+]
 
 export default function Prediction() {
+  const { t } = useT()
+  const d = t.modules.prediction
+
   return (
     <div className={styles.page}>
       <div className={styles.head}>
-        <h2 className={styles.title}>{data.icon} {data.title}</h2>
-        <p className={styles.subtitle}>{data.subtitle}</p>
+        <h2 className={styles.title}>📊 {d.title}</h2>
+        <p className={styles.subtitle}>{d.subtitle}</p>
       </div>
 
       <div className={styles.stats}>
-        {data.stats.map((s) => (
-          <StatCard key={s.label} {...s} />
+        {d.stats.map((s: { label: string; value: string; sub: string }) => (
+          <StatCard key={s.label} label={s.label} value={s.value} sub={s.sub} />
         ))}
       </div>
 
-      {data.chart && (
-        <div className={styles.chart}>
-          <h3 className={styles.chartTitle}>📈 传统方式 vs AI 预测 对比</h3>
-          <BarChart data={data.chart.data} bars={data.chart.bars} />
-        </div>
-      )}
+      <div className={styles.chart}>
+        <h3 className={styles.chartTitle}>📈 {d.chartTitle}</h3>
+        <BarChart data={chartData} bars={bars} />
+      </div>
 
       <div className={styles.cases} style={{ marginTop: 20 }}>
-        {data.cases.map((c) => (
+        {d.cases.map((c: { title: string; items: { company: string; detail: string }[] }) => (
           <div key={c.title} className={styles.caseCard}>
             <h3 className={styles.caseTitle}>{c.title}</h3>
             {c.items.map((item) => (

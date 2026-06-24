@@ -1,33 +1,39 @@
-import { pages } from '../data/logistics'
+import { useT } from '../contexts/LanguageContext'
 import StatCard from '../components/StatCard'
 import BarChart from '../components/BarChart'
 import styles from './Page.module.css'
 
-const data = pages.delivery
+const chartData = [
+  { name: 'AGV', 'Scenarios': 3 },
+  { name: 'Drone', 'Scenarios': 2 },
+  { name: 'Manual', 'Scenarios': 5 },
+]
+const bars = [{ key: 'Scenarios', label: 'Scenarios Covered', color: '#8b5cf6' }]
 
 export default function Delivery() {
+  const { t } = useT()
+  const d = t.modules.delivery
+
   return (
     <div className={styles.page}>
       <div className={styles.head}>
-        <h2 className={styles.title}>{data.icon} {data.title}</h2>
-        <p className={styles.subtitle}>{data.subtitle}</p>
+        <h2 className={styles.title}>🚁 {d.title}</h2>
+        <p className={styles.subtitle}>{d.subtitle}</p>
       </div>
 
       <div className={styles.stats}>
-        {data.stats.map((s) => (
-          <StatCard key={s.label} {...s} />
+        {d.stats.map((s: { label: string; value: string; sub: string }) => (
+          <StatCard key={s.label} label={s.label} value={s.value} sub={s.sub} />
         ))}
       </div>
 
-      {data.chart && (
-        <div className={styles.chart}>
-          <h3 className={styles.chartTitle}>📈 配送模式覆盖场景对比</h3>
-          <BarChart data={data.chart.data} bars={data.chart.bars} />
-        </div>
-      )}
+      <div className={styles.chart}>
+        <h3 className={styles.chartTitle}>📈 {d.chartTitle}</h3>
+        <BarChart data={chartData} bars={bars} />
+      </div>
 
       <div className={styles.cases} style={{ marginTop: 20 }}>
-        {data.cases.map((c) => (
+        {d.cases.map((c: { title: string; items: { company: string; detail: string }[] }) => (
           <div key={c.title} className={styles.caseCard}>
             <h3 className={styles.caseTitle}>{c.title}</h3>
             {c.items.map((item) => (

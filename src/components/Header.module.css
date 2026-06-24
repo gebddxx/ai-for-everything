@@ -50,6 +50,40 @@
   background: rgba(255, 255, 255, 0.25);
 }
 
+.langGroup {
+  display: flex;
+  gap: 4px;
+  margin-right: 8px;
+}
+
+.langBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.langBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.langActive {
+  background: #fff;
+  color: #1e3a8a;
+  border-color: #fff;
+}
+
+.langActive:hover {
+  background: #fff;
+  color: #1e3a8a;
+}
+
 @media (max-width: 768px) {
   .header {
     padding: 10px 16px;
