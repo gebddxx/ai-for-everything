@@ -61,6 +61,19 @@
   overflow: hidden;
 }
 
+.handle {
+  width: 5px;
+  cursor: col-resize;
+  background: transparent;
+  transition: background 0.15s;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.handle:hover {
+  background: var(--primary);
+}
+
 .content {
   flex: 1;
   overflow-y: auto;
@@ -71,6 +84,9 @@
 @media (max-width: 768px) {
   .body {
     flex-direction: column;
+  }
+  .handle {
+    display: none;
   }
   .content {
     padding: 16px;
