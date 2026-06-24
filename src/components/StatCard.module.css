@@ -1,0 +1,45 @@
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  min-width: 180px;
+  flex: 1;
+}
+
+.label {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.trend {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.up {
+  color: #10b981;
+}
+
+.down {
+  color: #ef4444;
+}
+
+.sub {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 6px;
+}

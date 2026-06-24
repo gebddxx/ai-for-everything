@@ -1,0 +1,46 @@
+.sidebar {
+  width: 180px;
+  background: #fff;
+  border-right: 1px solid #e2e8f0;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: #475569;
+  transition: all 0.15s;
+  text-align: left;
+  border-left: 3px solid transparent;
+}
+
+.item:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.active {
+  background: #eff6ff;
+  color: #2563eb;
+  font-weight: 600;
+  border-left-color: #2563eb;
+}
+
+.icon {
+  font-size: 20px;
+  width: 28px;
+  text-align: center;
+}
+
+.label {
+  white-space: nowrap;
+}
