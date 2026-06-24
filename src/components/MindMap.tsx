@@ -1,183 +1,210 @@
-import { useState, useRef, useCallback, useEffect } from 'react'
 import { useT } from '../contexts/LanguageContext'
-
-// Layout constants
-const CX = 450
-const CY = 260
-const MAIN_R = 150
-const SUB_R = 80
-const MW = 195
-const MH = 68
-const SW = 208
-const SH = 28
-const VB_W = 920
-const VB_H = 540
-
-function getAngle(i: number, total: number) {
-  return (i / total) * 2 * Math.PI - Math.PI / 2
-}
-
-function getMainPos(i: number, total: number) {
-  const a = getAngle(i, total)
-  return {
-    x: CX + MAIN_R * Math.cos(a),
-    y: CY + MAIN_R * Math.sin(a),
-    angle: a,
-    isRight: Math.cos(a) >= 0,
-  }
-}
-
-function getSubPos(
-  mainAngle: number, subIndex: number, subTotal: number
-) {
-  const spread = 0.55
-  const baseAngle = mainAngle + (subIndex - (subTotal - 1) / 2) * (spread / subTotal)
-  const dist = MAIN_R + SUB_R
-  const x = CX + dist * Math.cos(baseAngle)
-  const y = CY + dist * Math.sin(baseAngle)
-  const isRight = Math.cos(baseAngle) >= 0
-  return { x, y, cardX: isRight ? x : x - SW, cardY: y - SH / 2 }
-}
 
 const colors = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#ef4444']
 const emojis = ['🏭', '🚛', '🚁', '📊', '🤖']
-
 const MODULE_KEYS = ['warehouse', 'transport', 'delivery', 'prediction', 'operation'] as const
 
 export default function MindMap() {
   const { t } = useT()
-  const [scale, setScale] = useState(1)
-  const [offset, setOffset] = useState({ x: 0, y: 0 })
-  const dragging = useRef(false)
-  const last = useRef({ x: 0, y: 0 })
-  const containerRef = useRef<HTMLDivElement>(null)
 
-  const zoomIn = () => setScale(s => Math.min(s + 0.2, 2.5))
-  const zoomOut = () => setScale(s => Math.max(s - 0.2, 0.4))
-  const reset = () => { setScale(1); setOffset({ x: 0, y: 0 }) }
-
-  const onMouseDown = useCallback((e: React.MouseEvent) => {
-    if ((e.target as HTMLElement).tagName !== 'svg' && (e.target as HTMLElement).tagName !== 'rect') return
-    dragging.current = true
-    last.current = { x: e.clientX, y: e.clientY }
-    ;(e.target as HTMLElement).style.cursor = 'grabbing'
-  }, [])
-
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      if (!dragging.current) return
-      const dx = e.clientX - last.current.x
-      const dy = e.clientY - last.current.y
-      last.current = { x: e.clientX, y: e.clientY }
-      setOffset(o => ({ x: o.x + dx, y: o.y + dy }))
-    }
-    const onUp = () => {
-      dragging.current = false
-      if (containerRef.current) containerRef.current.style.cursor = 'grab'
-    }
-    window.addEventListener('mousemove', onMove)
-    window.addEventListener('mouseup', onUp)
-    return () => {
-      window.removeEventListener('mousemove', onMove)
-      window.removeEventListener('mouseup', onUp)
-    }
-  }, [])
-
-  // Build nodes from translations
   const nodes = MODULE_KEYS.map((key, i) => {
     const mod = t.modules[key]
-    const cases = mod.cases.flatMap((c: { items: { company: string; detail: string }[] }) =>
-      c.items.map(it => ({ label: `${it.company} — ${it.detail.length > 55 ? it.detail.slice(0, 55) + '...' : it.detail}` }))
-    ).slice(0, 3)
     return {
       id: key,
       label: mod.title as string,
       emoji: emojis[i],
       color: colors[i],
-      subs: cases as { label: string }[],
+      subs: (mod.cases as { items: { company: string }[] }[])
+        .flatMap(c => c.items.map(it => it.company))
+        .slice(0, 3),
     }
   })
 
   return (
-    <div>
-      {/* controls */}
-      <div style={{ display: 'flex', gap: 6, marginBottom: 8, alignItems: 'center' }}>
-        <button onClick={zoomIn} style={btnStyle}>🔍+</button>
-        <button onClick={zoomOut} style={btnStyle}>🔍−</button>
-        <button onClick={reset} style={btnStyle}>↺ Reset</button>
-        <span style={{ fontSize: 12, color: 'var(--text-muted)', marginLeft: 8 }}>
-          {Math.round(scale * 100)}% &nbsp;|&nbsp; 🖱 drag to pan &nbsp;|&nbsp; buttons to zoom
-        </span>
+    <div style={containerStyle}>
+      {/* center hub */}
+      <div style={hubStyle}>
+        <span style={{ fontSize: 42 }}>📦</span>
+        <span style={{ fontSize: 13, fontWeight: 700, letterSpacing: 1 }}>{t.mindmap.hub}</span>
       </div>
 
-      <div
-        ref={containerRef}
-        onMouseDown={onMouseDown}
-        style={{ overflow: 'hidden', border: '1px solid var(--border)', borderRadius: 12, background: 'var(--bg-body)', cursor: 'grab', height: VB_H + 80 }}
-      >
-        <div style={{ transform: `translate(${offset.x}px, ${offset.y}px) scale(${scale})`, transformOrigin: 'top left', transition: 'transform 0.08s ease-out', width: VB_W, height: VB_H }}>
-          <svg viewBox={`0 0 ${VB_W} ${VB_H}`} style={{ width: '100%', maxWidth: VB_W, height: 'auto', display: 'block' }}>
-            {nodes.map((node, i) => {
-              const total = nodes.length
-              const main = getMainPos(i, total)
-              const mainCardX = main.isRight ? main.x : main.x - MW
-              const mainCardY = main.y - MH / 2
+      {/* tree trunk line: hub → horizontal bar */}
+      <div style={trunkStyle} />
 
-              return (
-                <g key={node.id}>
-                  <path d={`M ${CX} ${CY} Q ${(CX + main.x) / 2} ${(CY + main.y) / 2} ${main.x} ${main.y}`}
-                    fill="none" stroke={node.color} strokeWidth={3} strokeOpacity={0.5} />
-                  <circle cx={main.x} cy={main.y} r={6} fill={node.color} />
+      {/* horizontal distribution bar */}
+      <div style={hBarStyle}>
+        {nodes.map((node) => (
+          <div key={node.id} style={{ ...hBarDot, background: node.color }} />
+        ))}
+      </div>
 
-                  <rect x={mainCardX} y={mainCardY} width={MW} height={MH} rx={12}
-                    fill={node.color} stroke={node.color} strokeWidth={2} opacity={0.95} />
-                  <text x={mainCardX + 22} y={mainCardY + 40} fontSize={32} textAnchor="middle" fill="#fff">
-                    {node.emoji}
-                  </text>
-                  <text x={mainCardX + 48} y={mainCardY + 28} fontSize={13} fontWeight={700} fill="#fff">
-                    {node.label}
-                  </text>
-                  <text x={mainCardX + 48} y={mainCardY + 48} fontSize={11} fill="rgba(255,255,255,0.75)">
-                    {t.mindmap.cases.replace('{n}', String(node.subs.length))}
-                  </text>
+      {/* branches */}
+      <div style={branchesStyle}>
+        {nodes.map((node) => (
+          <div key={node.id} style={branchColStyle}>
 
-                  {node.subs.map((sub, si) => {
-                    const sp = getSubPos(main.angle, si, node.subs.length)
-                    return (
-                      <g key={si}>
-                        <line x1={main.x} y1={main.y} x2={sp.x} y2={sp.y}
-                          stroke={node.color} strokeWidth={1.5} strokeOpacity={0.35} strokeDasharray="4 3" />
-                        <circle cx={sp.x} cy={sp.y} r={3} fill={node.color} opacity={0.6} />
-                        <rect x={sp.cardX} y={sp.cardY} width={SW} height={SH} rx={6}
-                          fill="var(--bg-card, #fff)" stroke={node.color} strokeWidth={1.2} strokeOpacity={0.6} />
-                        <text x={sp.cardX + 8} y={sp.cardY + 18} fontSize={10.5} fill="var(--text-secondary, #64748b)">
-                          {sub.label}
-                        </text>
-                      </g>
-                    )
-                  })}
-                </g>
-              )
-            })}
+            {/* vertical drop line */}
+            <div style={{ ...dropLineStyle, background: node.color }} />
 
-            <circle cx={CX} cy={CY} r={56} fill="#1e3a8a" />
-            <circle cx={CX} cy={CY} r={54} fill="#2563eb" opacity={0.2} />
-            <text x={CX} y={CY - 2} textAnchor="middle" fontSize={38} fill="#fff">📦</text>
-            <text x={CX} y={CY + 26} textAnchor="middle" fontSize={12} fontWeight={700} fill="#fff" letterSpacing={1}>
-              {t.mindmap.hub}
-            </text>
-            <text x={CX} y={VB_H - 8} textAnchor="middle" fontSize={11} fill="var(--text-muted, #94a3b8)">
-              {t.overview.mindmapTip}
-            </text>
-          </svg>
-        </div>
+            {/* main card */}
+            <div style={{ ...mainCardStyle, background: node.color }}>
+              <span style={{ fontSize: 26 }}>{node.emoji}</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: '#fff', textAlign: 'center' }}>
+                {node.label}
+              </span>
+            </div>
+
+            {/* sub connector dots + lines */}
+            <div style={subConnectorStyle}>
+              <div style={{ ...subDotStyle, background: node.color }} />
+              <div style={{ ...subVertLine, background: node.color }} />
+            </div>
+
+            {/* sub items */}
+            <div style={subsStyle}>
+              {node.subs.map((name, si) => (
+                <div key={si} style={{ ...subPillStyle, borderColor: node.color }}>
+                  <span style={{ ...bulletStyle, background: node.color }} />
+                  <span style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.3 }}>
+                    {name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
 }
 
-const btnStyle: React.CSSProperties = {
-  padding: '4px 12px', fontSize: 13, borderRadius: 6,
-  border: '1px solid var(--border)', background: 'var(--bg-card)',
-  color: 'var(--text)', cursor: 'pointer',
+const containerStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '28px 20px 20px',
+  gap: 28,
+}
+
+const hubStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: 6,
+  padding: '18px 36px',
+  background: 'linear-gradient(135deg, #1e3a8a, #2563eb)',
+  borderRadius: 20,
+  color: '#fff',
+  boxShadow: '0 4px 20px rgba(37, 99, 235, 0.35)',
+  zIndex: 2,
+  position: 'relative',
+}
+
+const branchesStyle: React.CSSProperties = {
+  display: 'flex',
+  gap: 14,
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  width: '100%',
+  maxWidth: 1100,
+}
+
+const branchColStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: 10,
+  flex: '1 1 180px',
+  minWidth: 170,
+  maxWidth: 220,
+}
+
+const trunkStyle: React.CSSProperties = {
+  width: 3,
+  height: 24,
+  background: '#94a3b8',
+  borderRadius: 2,
+  opacity: 0.6,
+}
+
+const hBarStyle: React.CSSProperties = {
+  display: 'flex',
+  justifyContent: 'space-around',
+  width: '100%',
+  maxWidth: 1050,
+  height: 3,
+  background: '#94a3b8',
+  borderRadius: 2,
+  opacity: 0.35,
+  position: 'relative',
+}
+
+const hBarDot: React.CSSProperties = {
+  width: 10,
+  height: 10,
+  borderRadius: '50%',
+  marginTop: -3.5,
+}
+
+const dropLineStyle: React.CSSProperties = {
+  width: 2,
+  height: 14,
+  borderRadius: 1,
+  opacity: 0.5,
+}
+
+const subConnectorStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: 0,
+  height: 14,
+}
+
+const subDotStyle: React.CSSProperties = {
+  width: 7,
+  height: 7,
+  borderRadius: '50%',
+  opacity: 0.6,
+}
+
+const subVertLine: React.CSSProperties = {
+  width: 2,
+  height: 8,
+  borderRadius: 1,
+  opacity: 0.35,
+}
+
+const mainCardStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: 6,
+  padding: '16px 14px',
+  borderRadius: 14,
+  width: '100%',
+  boxShadow: '0 2px 12px rgba(0,0,0,0.12)',
+  color: '#fff',
+}
+
+const subsStyle: React.CSSProperties = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 6,
+  width: '100%',
+}
+
+const bulletStyle: React.CSSProperties = {
+  width: 8, height: 8, borderRadius: '50%', flexShrink: 0, marginTop: 2,
+}
+
+const subPillStyle: React.CSSProperties = {
+  display: 'flex',
+  alignItems: 'flex-start',
+  gap: 8,
+  padding: '8px 10px',
+  borderRadius: 8,
+  border: '1px solid',
+  borderLeftWidth: 3,
+  background: 'var(--bg-card, #fff)',
 }
