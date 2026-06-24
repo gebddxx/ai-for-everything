@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root,
+[data-theme='light'] {
+  --bg-body: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-header-start: #1e3a8a;
+  --bg-header-end: #3b82f6;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --primary: #2563eb;
+  --primary-light: #eff6ff;
+  --hover-bg: #f1f5f9;
+  --tag-bg: #eff6ff;
+  --tag-text: #2563eb;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --active-bg: #eff6ff;
+  --active-border: #2563eb;
+}
+
+[data-theme='dark'] {
+  --bg-body: #0f172a;
+  --bg-card: #1e293b;
+  --bg-sidebar: #1e293b;
+  --bg-header-start: #0f172a;
+  --bg-header-end: #1e3a8a;
+  --text: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: #334155;
+  --primary: #60a5fa;
+  --primary-light: #1e3a5f;
+  --hover-bg: #334155;
+  --tag-bg: #1e3a5f;
+  --tag-text: #60a5fa;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --active-bg: #1e3a5f;
+  --active-border: #60a5fa;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg-body);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .body {
+    flex-direction: column;
+  }
+  .content {
+    padding: 16px;
+  }
+}
