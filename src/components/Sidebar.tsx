@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useT } from '../contexts/LanguageContext'
 import { domains } from '../data/domains'
 import type { Lang } from '../i18n/translations'
@@ -11,58 +12,70 @@ interface Props {
 }
 
 export default function Sidebar({ domain, activePage, onSelectPage, onSelectDomain }: Props) {
-  const { lang } = useT()
+  const { t, lang } = useT()
+  const [expanded, setExpanded] = useState<Set<string>>(() => {
+    // auto-expand the current domain
+    return domain ? new Set([domain]) : new Set()
+  })
 
-  // Home page: show all domains
-  if (domain === null) {
-    return (
-      <nav className={styles.sidebar}>
-        <div className={styles.sectionTitle}>
-          {lang === 'zh-CN' ? 'AI 领域' : lang === 'zh-TW' ? 'AI 領域' : 'AI Domains'}
-        </div>
-        {domains.map((d) => {
-          const title = d.title[lang as Lang]
-          const isReady = d.status === 'done'
-          return (
-            <button
-              key={d.key}
-              className={`${styles.item} ${!isReady ? styles.disabled : ''}`}
-              onClick={() => isReady && onSelectDomain(d.key)}
-              title={isReady ? title : `${title} — ${lang === 'zh-CN' ? '即将上线' : lang === 'zh-TW' ? '即將上線' : 'Coming soon'}`}
-            >
-              <span className={styles.icon}>{d.icon}</span>
-              <span className={styles.label}>{title}</span>
-              {!isReady && (
-                <span className={styles.tag}>
-                  {lang === 'zh-CN' ? '即将' : lang === 'zh-TW' ? '即將' : 'Soon'}
-                </span>
-              )}
-            </button>
-          )
-        })}
-      </nav>
-    )
+  const toggle = (key: string) => {
+    setExpanded(prev => {
+      const next = new Set(prev)
+      if (next.has(key)) next.delete(key)
+      else next.add(key)
+      return next
+    })
   }
-
-  // Inside a domain: show its sub-modules
-  const currentDomain = domains.find(d => d.key === domain)
 
   return (
     <nav className={styles.sidebar}>
       <div className={styles.sectionTitle}>
-        {currentDomain?.title[lang as Lang] ?? domain}
+        {lang === 'zh-CN' ? 'AI 领域' : lang === 'zh-TW' ? 'AI 領域' : 'AI Domains'}
       </div>
-      {currentDomain?.subModules.map((sub) => {
-        const isActive = sub.key === activePage
+
+      {domains.map((d) => {
+        const title = d.title[lang as Lang]
+        const isExpanded = expanded.has(d.key)
+        const isActiveDomain = domain === d.key
+
         return (
-          <button
-            key={sub.key}
-            className={`${styles.item} ${isActive ? styles.active : ''}`}
-            onClick={() => onSelectPage(sub.key)}
-          >
-            <span className={styles.icon}>{sub.icon}</span>
-            <span className={styles.label}>{sub.title[lang as Lang]}</span>
-          </button>
+          <div key={d.key} className={styles.treeGroup}>
+            {/* domain header */}
+            <button
+              className={`${styles.item} ${isActiveDomain ? styles.activeDomain : ''}`}
+              onClick={() => {
+                toggle(d.key)
+                if (d.status === 'done') onSelectDomain(d.key)
+                else onSelectDomain(d.key) // now all domains are enterable
+              }}
+            >
+              <span className={styles.arrow}>{isExpanded ? '▾' : '▸'}</span>
+              <span className={styles.icon}>{d.icon}</span>
+              <span className={styles.label}>{title}</span>
+            </button>
+
+            {/* sub-modules */}
+            {isExpanded && (
+              <div className={styles.subList}>
+                {d.subModules.map((sub) => {
+                  const isActive = isActiveDomain && sub.key === activePage
+                  return (
+                    <button
+                      key={sub.key}
+                      className={`${styles.subItem} ${isActive ? styles.active : ''}`}
+                      onClick={() => {
+                        onSelectDomain(d.key)
+                        onSelectPage(sub.key)
+                      }}
+                    >
+                      <span className={styles.subIcon}>{sub.icon}</span>
+                      <span className={styles.label}>{sub.title[lang as Lang]}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            )}
+          </div>
         )
       })}
     </nav>
