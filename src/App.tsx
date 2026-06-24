@@ -3,6 +3,7 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
+import Home from './pages/Home'
 import Overview from './pages/Overview'
 import Warehouse from './pages/Warehouse'
 import Transport from './pages/Transport'
@@ -11,7 +12,7 @@ import Prediction from './pages/Prediction'
 import Operation from './pages/Operation'
 import styles from './App.module.css'
 
-const PAGES: Record<string, React.ReactNode> = {
+const LOGISTICS_PAGES: Record<string, React.ReactNode> = {
   overview: <Overview />,
   warehouse: <Warehouse />,
   transport: <Transport />,
@@ -25,7 +26,8 @@ const MAX_SIDEBAR = 420
 const DEFAULT_SIDEBAR = 180
 
 function AppContent() {
-  const [active, setActive] = useState('overview')
+  const [domain, setDomain] = useState<string | null>(null)
+  const [activePage, setActivePage] = useState('overview')
   const [sidebarWidth, setSidebarWidth] = useState(() => {
     const saved = localStorage.getItem('ai-logistics-sidebar-width')
     return saved ? Number(saved) : DEFAULT_SIDEBAR
@@ -39,23 +41,23 @@ function AppContent() {
   }, [])
 
   useEffect(() => {
-    const onMouseMove = (e: MouseEvent) => {
+    const onMove = (e: MouseEvent) => {
       if (!dragging.current) return
       const next = Math.min(MAX_SIDEBAR, Math.max(MIN_SIDEBAR, e.clientX))
       setSidebarWidth(next)
     }
-    const onMouseUp = () => {
+    const onUp = () => {
       if (dragging.current) {
         dragging.current = false
         document.body.style.cursor = ''
         localStorage.setItem('ai-logistics-sidebar-width', String(sidebarWidth))
       }
     }
-    window.addEventListener('mousemove', onMouseMove)
-    window.addEventListener('mouseup', onMouseUp)
+    window.addEventListener('mousemove', onMove)
+    window.addEventListener('mouseup', onUp)
     return () => {
-      window.removeEventListener('mousemove', onMouseMove)
-      window.removeEventListener('mouseup', onMouseUp)
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseup', onUp)
     }
   }, [sidebarWidth])
 
@@ -63,14 +65,32 @@ function AppContent() {
     document.documentElement.style.setProperty('--sidebar-width', `${sidebarWidth}px`)
   }, [sidebarWidth])
 
+  const handleEnterDomain = (key: string) => {
+    setDomain(key)
+    setActivePage('overview')
+  }
+
+  const handleBack = () => {
+    setDomain(null)
+  }
+
   return (
     <div className={styles.app}>
-      <Header />
+      <Header onBack={domain ? handleBack : undefined} />
       <div className={styles.body}>
-        <Sidebar active={active} onSelect={setActive} />
+        <Sidebar
+          domain={domain}
+          activePage={activePage}
+          onSelectPage={setActivePage}
+          onSelectDomain={handleEnterDomain}
+        />
         <div className={styles.handle} onMouseDown={onMouseDown} />
         <main className={styles.content}>
-          {PAGES[active]}
+          {domain === null ? (
+            <Home onEnter={handleEnterDomain} />
+          ) : (
+            LOGISTICS_PAGES[activePage] ?? <Overview />
+          )}
         </main>
       </div>
     </div>

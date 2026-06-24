@@ -27,6 +27,23 @@
   border-radius: 12px;
 }
 
+.backBtn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-right: 4px;
+  transition: background 0.15s;
+}
+
+.backBtn:hover {
+  background: rgba(255,255,255,0.25);
+}
+
 .spacer {
   flex: 1;
 }

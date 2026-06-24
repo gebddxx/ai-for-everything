@@ -159,8 +159,76 @@
   transition: background 0.3s, box-shadow 0.3s;
 }
 
+/* 首页领域卡片 */
+.domainGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.domainCard {
+  background: var(--bg-card);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.domainClickable {
+  cursor: pointer;
+}
+
+.domainClickable:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.domainHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.domainIcon {
+  font-size: 36px;
+}
+
+.domainStatus {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--hover-bg);
+  color: var(--text-secondary);
+}
+
+.domainTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.domainDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.domainCta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
 @media (max-width: 768px) {
   .highlights {
+    grid-template-columns: 1fr;
+  }
+  .domainGrid {
     grid-template-columns: 1fr;
   }
 }

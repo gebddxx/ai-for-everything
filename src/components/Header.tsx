@@ -4,12 +4,21 @@ import { LANGS } from '../i18n/translations'
 import type { Lang } from '../i18n/translations'
 import styles from './Header.module.css'
 
-export default function Header() {
+interface Props {
+  onBack?: () => void
+}
+
+export default function Header({ onBack }: Props) {
   const { theme, toggle } = useTheme()
   const { lang, setLang, t } = useT()
 
   return (
     <header className={styles.header}>
+      {onBack && (
+        <button className={styles.backBtn} onClick={onBack} title="Back to home">
+          ←
+        </button>
+      )}
       <span className={styles.logo}>📦</span>
       <h1 className={styles.title}>{t.header.title}</h1>
       <span className={styles.badge}>{t.header.badge}</span>
