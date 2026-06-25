@@ -2,8 +2,8 @@ export type Lang = 'en' | 'zh-CN' | 'zh-TW'
 
 export const LANGS: { key: Lang; label: string }[] = [
   { key: 'en', label: 'EN' },
-  { key: 'zh-CN', label: '简' },
-  { key: 'zh-TW', label: '繁' },
+  { key: 'zh-CN', label: '简中' },
+  { key: 'zh-TW', label: '繁中' },
 ]
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

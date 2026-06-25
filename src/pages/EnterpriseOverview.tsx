@@ -19,6 +19,6 @@ const links:ToolLink[]=[
 {name:'Spellbook',url:'https://www.spellbook.legal/',desc:{en:'AI contract drafting in Word, GPT-4 powered',zh:'AI合同起草,Word插件,GPT-4驱动'},cat:'legal',icon:'📖'},
 {name:'DoNotPay',url:'https://donotpay.com/',desc:{en:'AI consumer rights, dispute resolution',zh:'AI消费者权益,自动争议解决'},cat:'legal',icon:'🚫'},
 ]
-export default function EnterpriseOverview(){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
+export default function EnterpriseOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
 return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🏢 {L('AI for Enterprise','AI 企业应用','AI 企業應用')}</h2><p className={styles.subtitle}>{L('18 enterprise tools — Marketing, HR, Legal','18款企业工具——营销、HR、法律','18款企業工具——行銷、HR、法律')}</p></div>
-<LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#64748b" catNames={{marketing:L('Marketing & Sales','营销销售','行銷銷售'),hr:L('HR & Recruitment','人力资源','人力資源'),legal:L('Legal & Compliance','法律合规','法律合規')}}/></div>)}
+<LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#64748b" scrollTo={scrollTo} catNames={{marketing:L('Marketing & Sales','营销销售','行銷銷售'),hr:L('HR & Recruitment','人力资源','人力資源'),legal:L('Legal & Compliance','法律合规','法律合規')}}/></div>)}

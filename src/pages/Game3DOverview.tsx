@@ -15,6 +15,6 @@ const links:ToolLink[]=[
 {name:'Convai',url:'https://convai.com/',desc:{en:'NPCs with environment awareness, real-time voice',zh:'NPC有环境感知能力,实时语音对话'},cat:'npc',icon:'🗣️'},
 {name:'Ready Player Me',url:'https://readyplayer.me/',desc:{en:'Cross-game avatar platform, AI-generated',zh:'跨游戏虚拟化身平台,AI生成'},cat:'npc',icon:'🧑'},
 ]
-export default function Game3DOverview(){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
+export default function Game3DOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
 return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🎮 {L('AI 3D & Gaming','AI 3D 与游戏','AI 3D 與遊戲')}</h2><p className={styles.subtitle}>{L('14 tools — 3D modeling, game assets, NPC AI','14款工具——3D建模、游戏资产、NPC AI','14款工具——3D建模、遊戲資產、NPC AI')}</p></div>
-<LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#7c3aed" catNames={{'3d':L('3D Generation','3D 生成','3D 生成'),game:L('Game Assets','游戏资产生成','遊戲資產生態'),npc:L('NPC AI','NPC AI 与行为','NPC AI 與行為')}}/></div>)}
+<LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#7c3aed" scrollTo={scrollTo} catNames={{'3d':L('3D Generation','3D 生成','3D 生成'),game:L('Game Assets','游戏资产生成','遊戲資產生態'),npc:L('NPC AI','NPC AI 与行为','NPC AI 與行為')}}/></div>)}

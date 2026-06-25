@@ -28,7 +28,7 @@ const links: ToolLink[] = [
   { name:'HuggingFace Leaderboard',url:'https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard',desc:{en:'Open LLM rankings, community-voted',zh:'开源大模型排行榜,社区投票评选'},cat:'compare',icon:'🏆'},
 ]
 
-export default function ChatOverview() {
+export default function ChatOverview({ scrollTo }: { scrollTo?: string }) {
   const { lang } = useT()
   const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
   return (
@@ -37,7 +37,7 @@ export default function ChatOverview() {
         <h2 className={styles.title}>💬 {L('AI Chat & Assistants','AI 对话助手','AI 對話助手')}</h2>
         <p className={styles.subtitle}>{L('23 LLM platforms, role-play bots & model comparison tools','23个大模型平台、角色扮演和模型对比工具','23個大模型平台、角色扮演和模型對比工具')}</p>
       </div>
-      <LinkNav links={links} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#22c55e" catNames={{
+      <LinkNav links={links} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#22c55e" scrollTo={scrollTo} catNames={{
         llm: L('LLM Platforms','大模型平台','大模型平台'),
         role: L('Character & Role-Play','角色扮演','角色扮演'),
         compare: L('Model Comparison','模型对比','模型對比'),

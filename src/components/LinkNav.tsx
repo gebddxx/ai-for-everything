@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { type Lang } from '../i18n/translations'
 
 export interface ToolLink {
@@ -20,6 +21,7 @@ interface Props {
   lang: Lang
   catNames: Record<string, string>
   color?: string
+  scrollTo?: string
 }
 
 function getFavicon(url: string) {
@@ -29,14 +31,23 @@ function getFavicon(url: string) {
   } catch { return '' }
 }
 
-export default function LinkNav({ links, lang, catNames, color }: Props) {
+export default function LinkNav({ links, lang, catNames, color, scrollTo }: Props) {
   const cats = [...new Set(links.map(l => l.cat))]
   const accent = color || 'var(--primary)'
+
+  useEffect(() => {
+    if (scrollTo) {
+      const el = document.getElementById(`cat-${scrollTo}`)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+  }, [scrollTo])
 
   return (
     <div>
       {cats.map(cat => (
-        <div key={cat} style={{ marginBottom: 24 }}>
+        <div key={cat} id={`cat-${cat}`} style={{ marginBottom: 24, scrollMarginTop: 80 }}>
           <h3 style={{
             fontSize: 15, fontWeight: 700, color: 'var(--text)',
             marginBottom: 10, paddingBottom: 8,

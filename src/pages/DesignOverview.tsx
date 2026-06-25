@@ -14,6 +14,6 @@ const links:ToolLink[]=[
 {name:'Visily',url:'https://www.visily.ai/',desc:{en:'Screenshot→wireframe, team prototyping',zh:'截图→线框图,团队协作快速原型'},cat:'mockup',icon:'📱'},
 {name:'Mockplus',url:'https://www.mockplus.com/',desc:{en:'Wireframe→interactive prototype→dev handoff',zh:'线框图→交互原型→开发交付一站式'},cat:'mockup',icon:'🔧'},
 ]
-export default function DesignOverview(){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
+export default function DesignOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
 return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🎯 {L('AI Design & UI','AI 设计','AI 設計')}</h2><p className={styles.subtitle}>{L('13 design tools — UI/UX, branding, prototyping','13款设计工具——UI/UX、品牌、原型','13款設計工具——UI/UX、品牌、原型')}</p></div>
-<LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#e11d48" catNames={{ui:L('UI/UX Design','UI/UX 设计','UI/UX 設計'),branding:L('Branding & Logo','品牌与Logo','品牌與Logo'),mockup:L('Prototyping','原型设计','原型設計')}}/></div>)}
+<LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#e11d48" scrollTo={scrollTo} catNames={{ui:L('UI/UX Design','UI/UX 设计','UI/UX 設計'),branding:L('Branding & Logo','品牌与Logo','品牌與Logo'),mockup:L('Prototyping','原型设计','原型設計')}}/></div>)}

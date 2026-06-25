@@ -27,6 +27,6 @@ const links:ToolLink[]=[
 {name:'Adobe Podcast',url:'https://podcast.adobe.com/',desc:{en:'AI noise reduction, mic enhance, transcription',zh:'AI降噪,麦克风增强,自动转写'},cat:'audio',icon:'🎧'},
 {name:'Murf.ai',url:'https://murf.ai/',desc:{en:'Professional AI voiceovers for videos/presentations',zh:'专业AI配音,适合视频和演示'},cat:'audio',icon:'🎤'},
 ]
-export default function CreativeOverview(){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
+export default function CreativeOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
 return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🎨 {L('AI Creative Studio','AI 创意工坊','AI 創意工坊')}</h2><p className={styles.subtitle}>{L('26 tools — Writing, Image, Video, Audio','26款工具——写作、绘画、视频、音频','26款工具——寫作、繪畫、影片、音頻')}</p></div>
-<LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#ec4899" catNames={{writing:L('AI Writing','AI 写作','AI 寫作'),image:L('AI Image','AI 绘画','AI 繪畫'),video:L('AI Video','AI 视频','AI 影片'),audio:L('AI Audio & Music','AI 音频音乐','AI 音頻音樂')}}/></div>)}
+<LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#ec4899" scrollTo={scrollTo} catNames={{writing:L('AI Writing','AI 写作','AI 寫作'),image:L('AI Image','AI 绘画','AI 繪畫'),video:L('AI Video','AI 视频','AI 影片'),audio:L('AI Audio & Music','AI 音频音乐','AI 音頻音樂')}}/></div>)}

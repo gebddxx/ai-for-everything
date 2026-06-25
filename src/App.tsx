@@ -136,14 +136,23 @@ function AppContent() {
     if (domain === null) return <Home onEnter={handleEnterDomain} />
     if (domain === 'vibe-coding') return VIBE_PAGES[activePage] ?? <VibeOverview />
     if (domain === 'learning') return LEARNING_PAGES[activePage] ?? <LearningOverview />
-    if (domain === 'creative') return CREATIVE_PAGES[activePage] ?? <CreativeOverview />
-    if (domain === 'office') return OFFICE_PAGES[activePage] ?? <OfficeOverview />
-    if (domain === 'agents') return AGENT_PAGES[activePage] ?? <AgentOverview />
-    if (domain === 'search') return <SearchOverview />
-    if (domain === 'chat') return <ChatOverview />
-    if (domain === 'design') return <DesignOverview />
-    if (domain === '3d-game') return <Game3DOverview />
-    if (domain === 'enterprise') return <EnterpriseOverview />
+    if (domain === 'creative') {
+      if (activePage === 'overview') return <CreativeOverview scrollTo={activePage} />
+      return CREATIVE_PAGES[activePage] ?? <CreativeOverview />
+    }
+    if (domain === 'office') {
+      if (activePage === 'overview') return <OfficeOverview scrollTo={activePage} />
+      return OFFICE_PAGES[activePage] ?? <OfficeOverview />
+    }
+    if (domain === 'agents') {
+      if (activePage === 'overview') return <AgentOverview scrollTo={activePage} />
+      return AGENT_PAGES[activePage] ?? <AgentOverview />
+    }
+    if (domain === 'search') return <SearchOverview scrollTo={activePage} />
+    if (domain === 'chat') return <ChatOverview scrollTo={activePage} />
+    if (domain === 'design') return <DesignOverview scrollTo={activePage} />
+    if (domain === '3d-game') return <Game3DOverview scrollTo={activePage} />
+    if (domain === 'enterprise') return <EnterpriseOverview scrollTo={activePage} />
     if (domain === 'logistics') return LOGISTICS_PAGES[activePage] ?? <Overview />
     return <DomainPlaceholder domainKey={domain} subPage={activePage} />
   }
