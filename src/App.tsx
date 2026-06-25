@@ -17,6 +17,11 @@ import VibeOverview from './pages/VibeOverview'
 import GeminiTutorial from './pages/GeminiTutorial'
 import CodexTutorial from './pages/CodexTutorial'
 import CCSwitchTutorial from './pages/CCSwitchTutorial'
+import LearningOverview from './pages/LearningOverview'
+import LearningReading from './pages/LearningReading'
+import LearningMindmap from './pages/LearningMindmap'
+import LearningKnowledge from './pages/LearningKnowledge'
+import LearningGrowth from './pages/LearningGrowth'
 import { domains } from './data/domains'
 import type { Lang } from './i18n/translations'
 import styles from './App.module.css'
@@ -86,10 +91,19 @@ function AppContent() {
     ccswitch: <CCSwitchTutorial />,
   }
 
+  const LEARNING_PAGES: Record<string, React.ReactNode> = {
+    overview: <LearningOverview />,
+    reading: <LearningReading />,
+    mindmap: <LearningMindmap />,
+    knowledge: <LearningKnowledge />,
+    growth: <LearningGrowth />,
+  }
+
   const renderPage = () => {
     if (domain === null) return <Home onEnter={handleEnterDomain} />
-    if (domain === 'logistics') return LOGISTICS_PAGES[activePage] ?? <Overview />
     if (domain === 'vibe-coding') return VIBE_PAGES[activePage] ?? <VibeOverview />
+    if (domain === 'learning') return LEARNING_PAGES[activePage] ?? <LearningOverview />
+    if (domain === 'logistics') return LOGISTICS_PAGES[activePage] ?? <Overview />
     return <DomainPlaceholder domainKey={domain} subPage={activePage} />
   }
 

@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
-  base: '/ai-for-everything/',
+export default defineConfig(({ mode }) => ({
+  base: mode === 'production' ? '/ai-for-everything/' : '/',
   plugins: [react()],
   server: {
     watch: {
@@ -10,4 +10,4 @@ export default defineConfig({
       interval: 1000,
     },
   },
-})
+}))

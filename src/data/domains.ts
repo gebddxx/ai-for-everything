@@ -34,6 +34,25 @@ export const domains: Domain[] = [
     ],
   },
   {
+    key: 'learning',
+    title: { en: 'AI for Learning', 'zh-CN': 'AI 学习助手', 'zh-TW': 'AI 學習助手' },
+    icon: '📖',
+    desc: {
+      en: 'AI-powered personal learning toolkit: intelligent reading assistant, auto mind-mapping, knowledge base builder, and personal growth tracker. Your AI second brain for lifelong learning.',
+      'zh-CN': 'AI 驱动的个人学习工具箱：智能阅读助手、自动思维导图、知识库搭建、个人成长追踪。你的 AI 第二大脑，助力终身学习。',
+      'zh-TW': 'AI 驅動的個人學習工具箱：智慧閱讀助手、自動思維導圖、知識庫搭建、個人成長追蹤。你的 AI 第二腦，助力終身學習。',
+    },
+    color: '#14b8a6',
+    status: 'done',
+    subModules: [
+      { key: 'overview', icon: '📖', title: { en: 'Overview', 'zh-CN': '总览', 'zh-TW': '總覽' } },
+      { key: 'reading', icon: '📝', title: { en: 'AI Reading Assistant', 'zh-CN': 'AI 辅助阅读', 'zh-TW': 'AI 輔助閱讀' } },
+      { key: 'mindmap', icon: '🧠', title: { en: 'AI Mind Mapping', 'zh-CN': 'AI 思维导图', 'zh-TW': 'AI 思維導圖' } },
+      { key: 'knowledge', icon: '🗂️', title: { en: 'Knowledge Base Builder', 'zh-CN': 'AI 知识库', 'zh-TW': 'AI 知識庫' } },
+      { key: 'growth', icon: '📈', title: { en: 'Personal Growth', 'zh-CN': '个人成长', 'zh-TW': '個人成長' } },
+    ],
+  },
+  {
     key: 'logistics',
     title: { en: 'AI Logistics', 'zh-CN': 'AI 物流', 'zh-TW': 'AI 物流' },
     icon: '📦',

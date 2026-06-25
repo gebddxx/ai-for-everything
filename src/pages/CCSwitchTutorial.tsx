@@ -121,7 +121,7 @@ mkdir -p ~/.ccswitch
 cat > ~/.ccswitch/config.yaml << 'CONFIG'
 providers:
   claude:
-    api_key: "${CLAUDE_API_KEY}"
+    api_key: "$\{CLAUDE_API_KEY}"
     base_url: "https://api.anthropic.com"
     timeout: 120
     max_retries: 3
@@ -134,7 +134,7 @@ providers:
         description: "Fastest Claude"
 
   deepseek:
-    api_key: "${DEEPSEEK_API_KEY}"
+    api_key: "$\{DEEPSEEK_API_KEY}"
     base_url: "https://api.deepseek.com"
     timeout: 90
     max_retries: 2
