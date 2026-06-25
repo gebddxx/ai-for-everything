@@ -22,5 +22,5 @@ const links:ToolLink[]=[
 {name:'MetaGPT',url:'https://github.com/geekan/MetaGPT',desc:{en:'Multi-agent meta-programming framework',zh:'多Agent元编程框架,自动生成完整项目'},cat:'multi',icon:'🧠'},
 ]
 export default function AgentOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🤖 {L('AI Agents & Automation','AI 智能体','AI 智能體')}</h2><p className={styles.subtitle}>{L('20 tools — Frameworks, Assistants, Workflows','20款工具——框架、助手、自动化','20款工具——框架、助手、自動化')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🤖 {L('Agents & Automation','智能体','智能體')}</h2><p className={styles.subtitle}>{L('20 tools — Frameworks, Assistants, Workflows','20款工具——框架、助手、自动化','20款工具——框架、助手、自動化')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#6366f1" scrollTo={scrollTo} catNames={{frameworks:L('Agent Frameworks','Agent 框架','Agent 框架'),assistants:L('AI Assistants','AI 助手','AI 助手'),workflow:L('Workflow Automation','工作流自动化','工作流自動化'),multi:L('Multi-Agent','多Agent 系统','多Agent 系統')}}/></div>)}

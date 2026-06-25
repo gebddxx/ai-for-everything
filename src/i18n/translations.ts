@@ -11,7 +11,7 @@ type T = any
 
 export const t: Record<Lang, Record<string, T>> = {
   en: {
-    header: { title: 'AI for Everything', badge: 'AI-Powered' },
+    header: { title: 'AI Navigator', badge: 'Tool Hub' },
     sidebar: {
       overview: 'Overview',
       warehouse: 'Smart Warehousing',
@@ -21,7 +21,7 @@ export const t: Record<Lang, Record<string, T>> = {
       operation: 'Operations & Service',
     },
     overview: {
-      title: 'AI Logistics · Panoramic Overview',
+      title: 'Logistics · Panoramic Overview',
       subtitle: 'Five Core Scenarios',
       summary: 'AI is deeply embedded across the logistics chain — from smart warehousing to last-mile delivery. These five scenarios are reshaping the entire industry. Below is a summary of key metrics from each area.',
       pieTitle: 'AI Investment Efficiency Distribution',
@@ -177,7 +177,7 @@ export const t: Record<Lang, Record<string, T>> = {
   },
 
   'zh-CN': {
-    header: { title: 'AI for Everything', badge: 'AI驱动' },
+    header: { title: 'AI Navigator', badge: '工具导航' },
     sidebar: {
       overview: '总览',
       warehouse: '智能仓储',
@@ -343,7 +343,7 @@ export const t: Record<Lang, Record<string, T>> = {
   },
 
   'zh-TW': {
-    header: { title: 'AI for Everything', badge: 'AI驅動' },
+    header: { title: 'AI Navigator', badge: '工具導航' },
     sidebar: {
       overview: '總覽',
       warehouse: '智慧倉儲',

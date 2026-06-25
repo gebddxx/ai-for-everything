@@ -29,5 +29,5 @@ const links:ToolLink[]=[
 {name:'智合',url:'https://www.zhihe.com/',desc:{en:'Chinese legal tech platform, AI case search',zh:'法律科技平台,AI案例检索与分析'},cat:'legal',icon:'⚡'},
 ]
 export default function EnterpriseOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🏢 {L('AI for Enterprise','AI 企业应用','AI 企業應用')}</h2><p className={styles.subtitle}>{L('28 enterprise tools — Marketing, HR, Legal','28款企业工具——营销、HR、法律','28款企業工具——行銷、HR、法律')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🏢 {L('Enterprise Tools','企业应用','企業應用')}</h2><p className={styles.subtitle}>{L('28 enterprise tools — Marketing, HR, Legal','28款企业工具——营销、HR、法律','28款企業工具——行銷、HR、法律')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#64748b" scrollTo={scrollTo} catNames={{marketing:L('Marketing & Sales','营销销售','行銷銷售'),hr:L('HR & Recruitment','人力资源','人力資源'),legal:L('Legal & Compliance','法律合规','法律合規')}}/></div>)}

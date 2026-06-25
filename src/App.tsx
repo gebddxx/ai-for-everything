@@ -6,39 +6,12 @@ import Sidebar from './components/Sidebar'
 import Breadcrumb from './components/Breadcrumb'
 import { useT } from './contexts/LanguageContext'
 import Home from './pages/Home'
-import Overview from './pages/Overview'
-import Warehouse from './pages/Warehouse'
-import Transport from './pages/Transport'
-import Delivery from './pages/Delivery'
-import Prediction from './pages/Prediction'
-import Operation from './pages/Operation'
-import DomainPlaceholder from './pages/DomainPlaceholder'
-import VibeOverview from './pages/VibeOverview'
-import GeminiTutorial from './pages/GeminiTutorial'
-import CodexTutorial from './pages/CodexTutorial'
-import CCSwitchTutorial from './pages/CCSwitchTutorial'
-import LearningOverview from './pages/LearningOverview'
-import LearningReading from './pages/LearningReading'
-import LearningMindmap from './pages/LearningMindmap'
-import LearningKnowledge from './pages/LearningKnowledge'
-import LearningGrowth from './pages/LearningGrowth'
-import CreativeOverview from './pages/CreativeOverview'
-import CreativeWriting from './pages/CreativeWriting'
-import CreativeImage from './pages/CreativeImage'
-import CreativeVideo from './pages/CreativeVideo'
-import CreativeAudio from './pages/CreativeAudio'
-import OfficeOverview from './pages/OfficeOverview'
-import OfficePPT from './pages/OfficePPT'
-import OfficeDocs from './pages/OfficeDocs'
-import OfficeMeeting from './pages/OfficeMeeting'
-import OfficeEmail from './pages/OfficeEmail'
-import AgentOverview from './pages/AgentOverview'
-import AgentFrameworks from './pages/AgentFrameworks'
-import AgentAssistants from './pages/AgentAssistants'
-import AgentWorkflow from './pages/AgentWorkflow'
-import AgentMultiAgent from './pages/AgentMultiAgent'
+
+// Navigation Hub pages
+import NavHubOverview from './pages/NavHubOverview'
 import SearchOverview from './pages/SearchOverview'
 import ChatOverview from './pages/ChatOverview'
+import CreativeOverview from './pages/CreativeOverview'
 import DesignOverview from './pages/DesignOverview'
 import Game3DOverview from './pages/Game3DOverview'
 import EnterpriseOverview from './pages/EnterpriseOverview'
@@ -47,18 +20,30 @@ import FinanceOverview from './pages/FinanceOverview'
 import EducationOverview from './pages/EducationOverview'
 import ManufacturingOverview from './pages/ManufacturingOverview'
 import AgricultureOverview from './pages/AgricultureOverview'
+import OfficeOverview from './pages/OfficeOverview'
+import AgentOverview from './pages/AgentOverview'
+import Overview from './pages/Overview'
+
+// AIGC Tutorial pages
+import AigcOverview from './pages/AigcOverview'
+import GeminiTutorial from './pages/GeminiTutorial'
+import CodexTutorial from './pages/CodexTutorial'
+import CCSwitchTutorial from './pages/CCSwitchTutorial'
+import AgentFrameworks from './pages/AgentFrameworks'
+import AgentAssistants from './pages/AgentAssistants'
+import AgentWorkflow from './pages/AgentWorkflow'
+import AgentMultiAgent from './pages/AgentMultiAgent'
+import AudioGenTutorial from './pages/AudioGenTutorial'
+import VideoGenTutorial from './pages/VideoGenTutorial'
+import NovelWritingTutorial from './pages/NovelWritingTutorial'
+import PptGenTutorial from './pages/PptGenTutorial'
+import WebGenTutorial from './pages/WebGenTutorial'
+import AppGenTutorial from './pages/AppGenTutorial'
+import SoftwareGenTutorial from './pages/SoftwareGenTutorial'
+
 import { domains } from './data/domains'
 import type { Lang } from './i18n/translations'
 import styles from './App.module.css'
-
-const LOGISTICS_PAGES: Record<string, React.ReactNode> = {
-  overview: <Overview />,
-  warehouse: <Warehouse />,
-  transport: <Transport />,
-  delivery: <Delivery />,
-  prediction: <Prediction />,
-  operation: <Operation />,
-}
 
 const MIN_SIDEBAR = 120
 const MAX_SIDEBAR = 420
@@ -109,62 +94,47 @@ function AppContent() {
     setActivePage('overview')
   }
 
-  const VIBE_PAGES: Record<string, React.ReactNode> = {
-    overview: <VibeOverview />,
+  const NAV_PAGES: Record<string, React.ReactNode> = {
+    overview: <NavHubOverview onSelectPage={setActivePage} />,
+    search: <SearchOverview />,
+    chat: <ChatOverview />,
+    creative: <CreativeOverview />,
+    design: <DesignOverview />,
+    '3d-game': <Game3DOverview />,
+    enterprise: <EnterpriseOverview />,
+    healthcare: <HealthcareOverview />,
+    finance: <FinanceOverview />,
+    education: <EducationOverview />,
+    manufacturing: <ManufacturingOverview />,
+    agriculture: <AgricultureOverview />,
+    office: <OfficeOverview />,
+    agents: <AgentOverview />,
+    logistics: <Overview />,
+  }
+
+  const AIGC_PAGES: Record<string, React.ReactNode> = {
+    overview: <AigcOverview onSelectPage={setActivePage} />,
     gemini: <GeminiTutorial />,
     codex: <CodexTutorial />,
     ccswitch: <CCSwitchTutorial />,
-  }
-
-  const LEARNING_PAGES: Record<string, React.ReactNode> = {
-    overview: <LearningOverview />,
-    reading: <LearningReading />,
-    mindmap: <LearningMindmap />,
-    knowledge: <LearningKnowledge />,
-    growth: <LearningGrowth />,
-  }
-
-  const CREATIVE_PAGES: Record<string, React.ReactNode> = {
-    overview: <CreativeOverview />, writing: <CreativeWriting />,
-    image: <CreativeImage />, video: <CreativeVideo />, audio: <CreativeAudio />,
-  }
-  const OFFICE_PAGES: Record<string, React.ReactNode> = {
-    overview: <OfficeOverview />, ppt: <OfficePPT />, docs: <OfficeDocs />,
-    meeting: <OfficeMeeting />, email: <OfficeEmail />,
-  }
-  const AGENT_PAGES: Record<string, React.ReactNode> = {
-    overview: <AgentOverview />, frameworks: <AgentFrameworks />,
-    assistants: <AgentAssistants />, workflow: <AgentWorkflow />, 'multi-agent': <AgentMultiAgent />,
+    frameworks: <AgentFrameworks />,
+    assistants: <AgentAssistants />,
+    workflow: <AgentWorkflow />,
+    'multi-agent': <AgentMultiAgent />,
+    'audio-gen': <AudioGenTutorial />,
+    'video-gen': <VideoGenTutorial />,
+    novel: <NovelWritingTutorial />,
+    'ppt-gen': <PptGenTutorial />,
+    'web-gen': <WebGenTutorial />,
+    'app-gen': <AppGenTutorial />,
+    'software-gen': <SoftwareGenTutorial />,
   }
 
   const renderPage = () => {
     if (domain === null) return <Home onEnter={handleEnterDomain} />
-    if (domain === 'vibe-coding') return VIBE_PAGES[activePage] ?? <VibeOverview />
-    if (domain === 'learning') return LEARNING_PAGES[activePage] ?? <LearningOverview />
-    if (domain === 'creative') {
-      if (activePage === 'overview') return <CreativeOverview scrollTo={activePage} />
-      return CREATIVE_PAGES[activePage] ?? <CreativeOverview />
-    }
-    if (domain === 'office') {
-      if (activePage === 'overview') return <OfficeOverview scrollTo={activePage} />
-      return OFFICE_PAGES[activePage] ?? <OfficeOverview />
-    }
-    if (domain === 'agents') {
-      if (activePage === 'overview') return <AgentOverview scrollTo={activePage} />
-      return AGENT_PAGES[activePage] ?? <AgentOverview />
-    }
-    if (domain === 'search') return <SearchOverview scrollTo={activePage} />
-    if (domain === 'chat') return <ChatOverview scrollTo={activePage} />
-    if (domain === 'design') return <DesignOverview scrollTo={activePage} />
-    if (domain === '3d-game') return <Game3DOverview scrollTo={activePage} />
-    if (domain === 'enterprise') return <EnterpriseOverview scrollTo={activePage} />
-    if (domain === 'healthcare') return <HealthcareOverview scrollTo={activePage} />
-    if (domain === 'finance') return <FinanceOverview scrollTo={activePage} />
-    if (domain === 'education') return <EducationOverview scrollTo={activePage} />
-    if (domain === 'manufacturing') return <ManufacturingOverview scrollTo={activePage} />
-    if (domain === 'agriculture') return <AgricultureOverview scrollTo={activePage} />
-    if (domain === 'logistics') return LOGISTICS_PAGES[activePage] ?? <Overview />
-    return <DomainPlaceholder domainKey={domain} subPage={activePage} />
+    if (domain === 'nav-hub') return NAV_PAGES[activePage] ?? <NavHubOverview onSelectPage={setActivePage} />
+    if (domain === 'aigc') return AIGC_PAGES[activePage] ?? <AigcOverview onSelectPage={setActivePage} />
+    return null
   }
 
   const handleBack = () => {

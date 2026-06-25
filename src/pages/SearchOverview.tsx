@@ -39,5 +39,5 @@ const links:ToolLink[]=[
 {name:'PandaChat',url:'https://pandachat.ai/',desc:{en:'Chat with any website, PDF, document',zh:'与任意网页/PDF/文档对话,AI即时理解'},cat:'discovery',icon:'🐼'},
 ]
 export default function SearchOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🔍 {L('AI Search & Discovery','AI 搜索发现','AI 搜索發現')}</h2><p className={styles.subtitle}>{L('37 AI-powered search, research & discovery tools','37款AI搜索、研究和内容发现工具','37款AI搜尋、研究和內容發現工具')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🔍 {L('Search & Discovery','搜索发现','搜索發現')}</h2><p className={styles.subtitle}>{L('37 AI-powered search, research & discovery tools','37款AI搜索、研究和内容发现工具','37款AI搜尋、研究和內容發現工具')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#0ea5e9" scrollTo={scrollTo} catNames={{search:L('AI Search Engines','AI 搜索引擎','AI 搜尋引擎'),research:L('AI Research Tools','AI 研究工具','AI 研究工具'),discovery:L('Content Discovery','内容发现','內容發現')}}/></div>)}

@@ -45,7 +45,7 @@ export default function ChatOverview({ scrollTo }: { scrollTo?: string }) {
   return (
     <div className={styles.page}>
       <div className={styles.head}>
-        <h2 className={styles.title}>💬 {L('AI Chat & Assistants','AI 对话助手','AI 對話助手')}</h2>
+        <h2 className={styles.title}>💬 {L('Chat & Assistants','对话助手','對話助手')}</h2>
         <p className={styles.subtitle}>{L('34 LLM platforms, role-play bots & model comparison tools','34个大模型平台、角色扮演和模型对比工具','34個大模型平台、角色扮演和模型對比工具')}</p>
       </div>
       <LinkNav links={links} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#22c55e" scrollTo={scrollTo} catNames={{

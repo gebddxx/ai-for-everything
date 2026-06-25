@@ -30,5 +30,5 @@ const links:ToolLink[]=[
 {name:'微众银行AI',url:'https://www.webank.com/',desc:{en:'WeBank AI, digital banking, inclusive finance',zh:'微众银行AI,数字银行,普惠金融科技'},cat:'wealth',icon:'🏦'},
 ]
 export default function FinanceOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>💰 {L('AI Finance','AI 金融科技','AI 金融科技')}</h2><p className={styles.subtitle}>{L('28 AI tools — Fraud, Trading, Risk, Wealth','28款AI金融工具——反欺诈、算法交易、风险评估、智能理财','28款AI金融工具——反欺詐、算法交易、風險評估、智能理財')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>💰 {L('Finance','金融科技','金融科技')}</h2><p className={styles.subtitle}>{L('28 AI tools — Fraud, Trading, Risk, Wealth','28款AI金融工具——反欺诈、算法交易、风险评估、智能理财','28款AI金融工具——反欺詐、算法交易、風險評估、智能理財')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#f59e0b" scrollTo={scrollTo} catNames={{fraud:L('Fraud Detection','欺诈检测','欺詐檢測'),trading:L('Algo Trading','算法交易','算法交易'),risk:L('Risk Assessment','风险评估','風險評估'),wealth:L('Wealth Management','智能理财','智能理財')}}/></div>)}

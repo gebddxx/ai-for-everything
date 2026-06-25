@@ -27,5 +27,5 @@ const links:ToolLink[]=[
 {name:'雨课堂',url:'https://www.yuketang.cn/',desc:{en:'Tsinghua, AI smart classroom tools, analytics',zh:'清华出品,AI智慧教学工具+数据分析'},cat:'content',icon:'☔'},
 ]
 export default function EducationOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>📚 {L('AI Education','AI 教育科技','AI 教育科技')}</h2><p className={styles.subtitle}>{L('25 AI tools — Personalized Learning, Tutoring, Grading, Content','25款AI教育工具——个性化学习、智能辅导、自动评分、内容生成','25款AI教育工具——個性化學習、智能輔導、自動評分、內容生成')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>📚 {L('Education','教育科技','教育科技')}</h2><p className={styles.subtitle}>{L('25 AI tools — Personalized Learning, Tutoring, Grading, Content','25款AI教育工具——个性化学习、智能辅导、自动评分、内容生成','25款AI教育工具——個性化學習、智能輔導、自動評分、內容生成')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#8b5cf6" scrollTo={scrollTo} catNames={{personalized:L('Personalized Learning','个性化学习','個性化學習'),tutoring:L('AI Tutoring','AI辅导','AI輔導'),grading:L('Auto Grading','自动评分','自動評分'),content:L('Content Generation','内容生成','內容生成')}}/></div>)}

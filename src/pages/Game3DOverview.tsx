@@ -24,5 +24,5 @@ const links:ToolLink[]=[
 {name:'Rct AI',url:'https://rct.ai/',desc:{en:'AI-driven dynamic game narrative & NPC',zh:'AI驱动的动态游戏叙事和NPC行为'},cat:'npc',icon:'📖'},
 ]
 export default function Game3DOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🎮 {L('AI 3D & Gaming','AI 3D 与游戏','AI 3D 與遊戲')}</h2><p className={styles.subtitle}>{L('22 tools — 3D modeling, game assets, NPC AI','22款工具——3D建模、游戏资产、NPC AI','22款工具——3D建模、遊戲資產、NPC AI')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🎮 {L('3D & Gaming','3D 与游戏','3D 與遊戲')}</h2><p className={styles.subtitle}>{L('22 tools — 3D modeling, game assets, NPC AI','22款工具——3D建模、游戏资产、NPC AI','22款工具——3D建模、遊戲資產、NPC AI')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#7c3aed" scrollTo={scrollTo} catNames={{'3d':L('3D Generation','3D 生成','3D 生成'),game:L('Game Assets','游戏资产生成','遊戲資產生態'),npc:L('NPC AI','NPC AI 与行为','NPC AI 與行為')}}/></div>)}

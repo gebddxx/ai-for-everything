@@ -20,5 +20,5 @@ const links:ToolLink[]=[
 {name:'Missive',url:'https://missiveapp.com/',desc:{en:'Team email + chat, AI draft & summarize',zh:'团队邮件+聊天,AI起草和总结'},cat:'email',icon:'✉️'},
 ]
 export default function OfficeOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>📋 {L('AI Office & Productivity','AI 办公提效','AI 辦公提效')}</h2><p className={styles.subtitle}>{L('18 tools — PPT, Docs, Meetings, Email','18款工具——PPT、文档、会议、邮件','18款工具——PPT、文檔、會議、郵件')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>📋 {L('Office & Productivity','办公提效','辦公提效')}</h2><p className={styles.subtitle}>{L('18 tools — PPT, Docs, Meetings, Email','18款工具——PPT、文档、会议、邮件','18款工具——PPT、文檔、會議、郵件')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#f97316" scrollTo={scrollTo} catNames={{ppt:L('AI PPT','AI 演示文稿','AI 演示文稿'),docs:L('AI Documents','AI 文档处理','AI 文檔處理'),meeting:L('AI Meeting','AI 会议助手','AI 會議助手'),email:L('AI Email','AI 邮件沟通','AI 郵件溝通')}}/></div>)}

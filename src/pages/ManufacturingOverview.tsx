@@ -27,5 +27,5 @@ const links:ToolLink[]=[
 {name:'海尔卡奥斯',url:'https://www.cosmoplat.com/',desc:{en:'Haier COSMOPlat, industrial internet + AI',zh:'海尔工业互联网平台,大规模定制+AI'},cat:'digitaltwin',icon:'🏭'},
 ]
 export default function ManufacturingOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🏗️ {L('AI Manufacturing','AI 智能制造','AI 智慧製造')}</h2><p className={styles.subtitle}>{L('25 AI tools — Maintenance, Quality, Supply Chain, Digital Twin','25款AI制造工具——预测维护、质检、供应链、数字孪生','25款AI製造工具——預測維護、質檢、供應鏈、數字孿生')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🏗️ {L('Manufacturing','智能制造','智慧製造')}</h2><p className={styles.subtitle}>{L('25 AI tools — Maintenance, Quality, Supply Chain, Digital Twin','25款AI制造工具——预测维护、质检、供应链、数字孪生','25款AI製造工具——預測維護、質檢、供應鏈、數字孿生')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#ef4444" scrollTo={scrollTo} catNames={{maintenance:L('Predictive Maintenance','预测性维护','預測性維護'),quality:L('Quality Inspection','质量检测','質量檢測'),supplychain:L('Supply Chain','供应链优化','供應鏈優化'),digitaltwin:L('Digital Twins','数字孪生','數字孿生')}}/></div>)}

@@ -30,7 +30,7 @@ export default function Sidebar({ domain, activePage, onSelectPage, onSelectDoma
   return (
     <nav className={styles.sidebar}>
       <div className={styles.sectionTitle}>
-        {lang === 'zh-CN' ? 'AI 领域' : lang === 'zh-TW' ? 'AI 領域' : 'AI Domains'}
+        {lang === 'zh-CN' ? '导航' : lang === 'zh-TW' ? '導航' : 'Navigation'}
       </div>
 
       {domains.map((d) => {

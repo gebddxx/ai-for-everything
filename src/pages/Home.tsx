@@ -19,34 +19,33 @@ export default function Home({ onEnter }: Props) {
   return (
     <div className={styles.page}>
       <div className={styles.head}>
-        <h2 className={styles.title}>🌐 AI for Everything</h2>
+        <h2 className={styles.title}>🌐 {t.header.title}</h2>
         <p className={styles.subtitle}>
-          {lang === 'zh-CN' ? 'AI 赋能千行百业 · 全景数据看板'
-            : lang === 'zh-TW' ? 'AI 賦能千行百業 · 全景數據看板'
-            : 'AI Empowering Every Industry · Panoramic Dashboard'}
+          {lang === 'zh-CN' ? '实用工具导航 & AIGC 实操教程'
+            : lang === 'zh-TW' ? '實用工具導航 & AIGC 實操教學'
+            : 'Curated Tool Directories & AIGC Hands-on Tutorials'}
         </p>
       </div>
 
       <div className={styles.summary}>
         {lang === 'zh-CN'
-          ? 'AI 正在深刻改变每一个行业。这里汇集了 AI 在物流、医疗、教育、金融、制造、农业等领域的前沿应用与数据洞察。点击任意领域卡片，深入了解 AI 如何重塑该行业。'
+          ? '这里有两大板块：🧭 导航合集 — 精心整理的300+工具网站，覆盖14个领域，一站式查找你需要的工具；🤖 AIGC教程 — 手把手教你用AI生成音频、视频、小说、PPT、网页、App甚至软件。点击下方卡片开始探索。'
           : lang === 'zh-TW'
-            ? 'AI 正在深刻改變每一個行業。這裡彙集了 AI 在物流、醫療、教育、金融、製造、農業等領域的前沿應用與數據洞察。點擊任意領域卡片，深入了解 AI 如何重塑該行業。'
-            : 'AI is transforming every industry. This hub brings together cutting-edge applications and data-driven insights across logistics, healthcare, education, finance, manufacturing, agriculture, and beyond. Click any card to dive in.'}
+            ? '這裡有兩大板塊：🧭 導航合集 — 精心整理的300+工具網站，覆蓋14個領域，一站式查找你需要的工具；🤖 AIGC教學 — 手把手教你用AI生成音頻、影片、小說、PPT、網頁、App甚至軟體。點擊下方卡片開始探索。'
+            : 'Two main sections: 🧭 Navigation Hub — 300+ curated tools across 14 categories, find everything you need in one place; 🤖 AIGC Tutorials — step-by-step guides for generating audio, video, novels, PPTs, web pages, apps, and software with AI. Click a card to start exploring.'}
       </div>
 
       <div className={styles.domainGrid}>
         {domains.map((d) => {
           const title = d.title[lang]
           const desc = d.desc[lang]
-          const isClickable = true
 
           return (
             <div
               key={d.key}
-              className={`${styles.domainCard} ${isClickable ? styles.domainClickable : ''}`}
+              className={`${styles.domainCard} ${styles.domainClickable}`}
               style={{ borderTop: `4px solid ${d.color}` }}
-              onClick={() => isClickable && onEnter(d.key)}
+              onClick={() => onEnter(d.key)}
             >
               <div className={styles.domainHead}>
                 <span className={styles.domainIcon}>{d.icon}</span>
@@ -54,11 +53,9 @@ export default function Home({ onEnter }: Props) {
               </div>
               <h3 className={styles.domainTitle}>{title}</h3>
               <p className={styles.domainDesc}>{desc}</p>
-              {isClickable && (
-                <span className={styles.domainCta}>
-                  {lang === 'zh-CN' ? '进入 →' : lang === 'zh-TW' ? '進入 →' : 'Enter →'}
-                </span>
-              )}
+              <span className={styles.domainCta}>
+                {lang === 'zh-CN' ? '进入 →' : lang === 'zh-TW' ? '進入 →' : 'Enter →'}
+              </span>
             </div>
           )
         })}

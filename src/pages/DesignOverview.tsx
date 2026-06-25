@@ -27,5 +27,5 @@ const links:ToolLink[]=[
 {name:'Lovable',url:'https://lovable.dev/',desc:{en:'GPT Engineer, build web apps from description',zh:'AI工程师,用文字描述直接生成Web应用'},cat:'mockup',icon:'❤️'},
 ]
 export default function DesignOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🎯 {L('AI Design & UI','AI 设计','AI 設計')}</h2><p className={styles.subtitle}>{L('25 design tools — UI/UX, branding, prototyping','25款设计工具——UI/UX、品牌、原型','25款設計工具——UI/UX、品牌、原型')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🎯 {L('Design & UI','设计工具','設計工具')}</h2><p className={styles.subtitle}>{L('25 design tools — UI/UX, branding, prototyping','25款设计工具——UI/UX、品牌、原型','25款設計工具——UI/UX、品牌、原型')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#e11d48" scrollTo={scrollTo} catNames={{ui:L('UI/UX Design','UI/UX 设计','UI/UX 設計'),branding:L('Branding & Logo','品牌与Logo','品牌與Logo'),mockup:L('Prototyping','原型设计','原型設計')}}/></div>)}

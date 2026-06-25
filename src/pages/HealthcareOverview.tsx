@@ -35,5 +35,5 @@ const links:ToolLink[]=[
 {name:'平安健康',url:'https://www.pinganhealth.cn/',desc:{en:'Ping An health, AI health management',zh:'平安集团健康平台,AI健康管理+在线问诊'},cat:'care',icon:'🏥'},
 ]
 export default function HealthcareOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🏥 {L('AI Healthcare','AI 医疗健康','AI 醫療健康')}</h2><p className={styles.subtitle}>{L('33 AI tools — Imaging, Drug Discovery, Clinical, Patient Care','33款AI医疗工具——医学影像、药物研发、临床决策、患者护理','33款AI醫療工具——醫學影像、藥物研發、臨床決策、患者護理')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🏥 {L('Healthcare','医疗健康','醫療健康')}</h2><p className={styles.subtitle}>{L('33 AI tools — Imaging, Drug Discovery, Clinical, Patient Care','33款AI医疗工具——医学影像、药物研发、临床决策、患者护理','33款AI醫療工具——醫學影像、藥物研發、臨床決策、患者護理')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#10b981" scrollTo={scrollTo} catNames={{imaging:L('Medical Imaging','医学影像','醫學影像'),drug:L('Drug Discovery','药物研发','藥物研發'),clinical:L('Clinical Decision','临床决策','臨床決策'),care:L('Patient Care','患者护理','患者護理')}}/></div>)}

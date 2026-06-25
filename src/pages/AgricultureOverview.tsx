@@ -28,5 +28,5 @@ const links:ToolLink[]=[
 {name:'中科原动力',url:'https://www.self-driving.com.cn/',desc:{en:'Chinese autonomous farm machinery AI',zh:'国产自动驾驶农机AI,无人作业系统'},cat:'harvest',icon:'🚜'},
 ]
 export default function AgricultureOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🌾 {L('AI Agriculture','AI 智慧农业','AI 智慧農業')}</h2><p className={styles.subtitle}>{L('26 AI tools — Precision Farming, Monitoring, Yield, Harvest','26款AI农业工具——精准农业、作物监测、产量预测、自动收割','26款AI農業工具——精準農業、作物監測、產量預測、自動收割')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🌾 {L('Agriculture','智慧农业','智慧農業')}</h2><p className={styles.subtitle}>{L('26 AI tools — Precision Farming, Monitoring, Yield, Harvest','26款AI农业工具——精准农业、作物监测、产量预测、自动收割','26款AI農業工具——精準農業、作物監測、產量預測、自動收割')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#06b6d4" scrollTo={scrollTo} catNames={{precision:L('Precision Farming','精准农业','精準農業'),monitoring:L('Crop Monitoring','作物监测','作物監測'),yield:L('Yield Prediction','产量预测','產量預測'),harvest:L('Auto Harvesting','自动收割','自動收割')}}/></div>)}
