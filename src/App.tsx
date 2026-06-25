@@ -13,6 +13,10 @@ import Delivery from './pages/Delivery'
 import Prediction from './pages/Prediction'
 import Operation from './pages/Operation'
 import DomainPlaceholder from './pages/DomainPlaceholder'
+import VibeOverview from './pages/VibeOverview'
+import GeminiTutorial from './pages/GeminiTutorial'
+import CodexTutorial from './pages/CodexTutorial'
+import CCSwitchTutorial from './pages/CCSwitchTutorial'
 import { domains } from './data/domains'
 import type { Lang } from './i18n/translations'
 import styles from './App.module.css'
@@ -75,9 +79,17 @@ function AppContent() {
     setActivePage('overview')
   }
 
+  const VIBE_PAGES: Record<string, React.ReactNode> = {
+    overview: <VibeOverview />,
+    gemini: <GeminiTutorial />,
+    codex: <CodexTutorial />,
+    ccswitch: <CCSwitchTutorial />,
+  }
+
   const renderPage = () => {
     if (domain === null) return <Home onEnter={handleEnterDomain} />
     if (domain === 'logistics') return LOGISTICS_PAGES[activePage] ?? <Overview />
+    if (domain === 'vibe-coding') return VIBE_PAGES[activePage] ?? <VibeOverview />
     return <DomainPlaceholder domainKey={domain} subPage={activePage} />
   }
 
