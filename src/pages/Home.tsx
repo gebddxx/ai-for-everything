@@ -5,60 +5,51 @@ import styles from './Page.module.css'
 
 const statusLabels: Record<string, Record<Lang, string>> = {
   done: { en: '✅ Live', 'zh-CN': '✅ 已上线', 'zh-TW': '✅ 已上線' },
-  wip: { en: '🚧 WIP', 'zh-CN': '🚧 开发中', 'zh-TW': '🚧 開發中' },
-  planned: { en: '📋 Planned', 'zh-CN': '📋 规划中', 'zh-TW': '📋 規劃中' },
 }
 
-interface Props {
-  onEnter: (domainKey: string) => void
-}
+interface Props { onEnter: (domainKey: string) => void }
 
 export default function Home({ onEnter }: Props) {
-  const { t, lang } = useT()
+  const { lang } = useT()
 
   return (
     <div className={styles.page}>
       <div className={styles.head}>
-        <h2 className={styles.title}>🌐 {t.header.title}</h2>
+        <h2 className={styles.title}>🌐 AI Navigator</h2>
         <p className={styles.subtitle}>
-          {lang === 'zh-CN' ? '实用工具导航 & AIGC 实操教程'
-            : lang === 'zh-TW' ? '實用工具導航 & AIGC 實操教學'
-            : 'Curated Tool Directories & AIGC Hands-on Tutorials'}
+          {lang === 'zh-CN' ? '实用工具导航 · AI行业应用 · AIGC实操教程'
+            : lang === 'zh-TW' ? '實用工具導航 · AI行業應用 · AIGC實操教學'
+            : 'Tool Directory · AI in Industries · AIGC Tutorials'}
         </p>
       </div>
 
       <div className={styles.summary}>
         {lang === 'zh-CN'
-          ? '这里有两大板块：🧭 导航合集 — 精心整理的300+工具网站，覆盖14个领域，一站式查找你需要的工具；🤖 AIGC教程 — 手把手教你用AI生成音频、视频、小说、PPT、网页、App甚至软件。点击下方卡片开始探索。'
+          ? '三大板块：🧭 导航工具集 — 精选200+实用网站，搜索/对话/设计/创意/办公/3D/智能体一站式查找；🏭 AI行业应用 — 看AI如何落地8大行业，每个行业都有真实案例和工具推荐；🤖 AIGC教程 — 手把手教你生成音频、视频、小说、PPT、网页、App和软件。'
           : lang === 'zh-TW'
-            ? '這裡有兩大板塊：🧭 導航合集 — 精心整理的300+工具網站，覆蓋14個領域，一站式查找你需要的工具；🤖 AIGC教學 — 手把手教你用AI生成音頻、影片、小說、PPT、網頁、App甚至軟體。點擊下方卡片開始探索。'
-            : 'Two main sections: 🧭 Navigation Hub — 300+ curated tools across 14 categories, find everything you need in one place; 🤖 AIGC Tutorials — step-by-step guides for generating audio, video, novels, PPTs, web pages, apps, and software with AI. Click a card to start exploring.'}
+            ? '三大板塊：🧭 導航工具集 — 精選200+實用網站，搜索/對話/設計/創意/辦公/3D/智能體一站式查找；🏭 AI行業應用 — 看AI如何落地8大行業，每個行業都有真實案例和工具推薦；🤖 AIGC教學 — 手把手教你生成音頻、影片、小說、PPT、網頁、App和軟體。'
+            : 'Three sections: 🧭 Tool Directory — 200+ curated websites across search, chat, design, creative, office, 3D, and AI agents; 🏭 AI in Industries — see how AI is transforming 8 major industries with real cases and tool recommendations; 🤖 AIGC Tutorials — step-by-step guides for generating audio, video, novels, PPTs, web pages, apps, and software.'}
       </div>
 
       <div className={styles.domainGrid}>
-        {domains.map((d) => {
-          const title = d.title[lang]
-          const desc = d.desc[lang]
-
-          return (
-            <div
-              key={d.key}
-              className={`${styles.domainCard} ${styles.domainClickable}`}
-              style={{ borderTop: `4px solid ${d.color}` }}
-              onClick={() => onEnter(d.key)}
-            >
-              <div className={styles.domainHead}>
-                <span className={styles.domainIcon}>{d.icon}</span>
-                <span className={styles.domainStatus}>{statusLabels[d.status][lang]}</span>
-              </div>
-              <h3 className={styles.domainTitle}>{title}</h3>
-              <p className={styles.domainDesc}>{desc}</p>
-              <span className={styles.domainCta}>
-                {lang === 'zh-CN' ? '进入 →' : lang === 'zh-TW' ? '進入 →' : 'Enter →'}
-              </span>
+        {domains.map(d => (
+          <div
+            key={d.key}
+            className={`${styles.domainCard} ${styles.domainClickable}`}
+            style={{ borderTop: `4px solid ${d.color}` }}
+            onClick={() => onEnter(d.key)}
+          >
+            <div className={styles.domainHead}>
+              <span className={styles.domainIcon}>{d.icon}</span>
+              <span className={styles.domainStatus}>{statusLabels[d.status][lang]}</span>
             </div>
-          )
-        })}
+            <h3 className={styles.domainTitle}>{d.title[lang as Lang]}</h3>
+            <p className={styles.domainDesc}>{d.desc[lang as Lang]}</p>
+            <span className={styles.domainCta}>
+              {lang === 'zh-CN' ? '进入 →' : lang === 'zh-TW' ? '進入 →' : 'Enter →'}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   )

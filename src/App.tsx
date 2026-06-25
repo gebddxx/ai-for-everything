@@ -7,22 +7,25 @@ import Breadcrumb from './components/Breadcrumb'
 import { useT } from './contexts/LanguageContext'
 import Home from './pages/Home'
 
-// Navigation Hub pages
-import NavHubOverview from './pages/NavHubOverview'
+// Tool Directory pages
+import NavToolsOverview from './pages/NavToolsOverview'
 import SearchOverview from './pages/SearchOverview'
 import ChatOverview from './pages/ChatOverview'
 import CreativeOverview from './pages/CreativeOverview'
 import DesignOverview from './pages/DesignOverview'
 import Game3DOverview from './pages/Game3DOverview'
-import EnterpriseOverview from './pages/EnterpriseOverview'
+import OfficeOverview from './pages/OfficeOverview'
+import AgentOverview from './pages/AgentOverview'
+
+// AI Industry pages
+import IndustriesOverview from './pages/IndustriesOverview'
+import Overview from './pages/Overview'
 import HealthcareOverview from './pages/HealthcareOverview'
 import FinanceOverview from './pages/FinanceOverview'
 import EducationOverview from './pages/EducationOverview'
 import ManufacturingOverview from './pages/ManufacturingOverview'
 import AgricultureOverview from './pages/AgricultureOverview'
-import OfficeOverview from './pages/OfficeOverview'
-import AgentOverview from './pages/AgentOverview'
-import Overview from './pages/Overview'
+import EnterpriseOverview from './pages/EnterpriseOverview'
 
 // AIGC Tutorial pages
 import AigcOverview from './pages/AigcOverview'
@@ -94,22 +97,26 @@ function AppContent() {
     setActivePage('overview')
   }
 
-  const NAV_PAGES: Record<string, React.ReactNode> = {
-    overview: <NavHubOverview onSelectPage={setActivePage} />,
+  const NAV_TOOLS_PAGES: Record<string, React.ReactNode> = {
+    overview: <NavToolsOverview onSelectPage={setActivePage} />,
     search: <SearchOverview />,
     chat: <ChatOverview />,
     creative: <CreativeOverview />,
     design: <DesignOverview />,
     '3d-game': <Game3DOverview />,
-    enterprise: <EnterpriseOverview />,
+    office: <OfficeOverview />,
+    agents: <AgentOverview />,
+  }
+
+  const INDUSTRIES_PAGES: Record<string, React.ReactNode> = {
+    overview: <IndustriesOverview onSelectPage={setActivePage} />,
+    logistics: <Overview />,
     healthcare: <HealthcareOverview />,
     finance: <FinanceOverview />,
     education: <EducationOverview />,
     manufacturing: <ManufacturingOverview />,
     agriculture: <AgricultureOverview />,
-    office: <OfficeOverview />,
-    agents: <AgentOverview />,
-    logistics: <Overview />,
+    enterprise: <EnterpriseOverview />,
   }
 
   const AIGC_PAGES: Record<string, React.ReactNode> = {
@@ -132,33 +139,22 @@ function AppContent() {
 
   const renderPage = () => {
     if (domain === null) return <Home onEnter={handleEnterDomain} />
-    if (domain === 'nav-hub') return NAV_PAGES[activePage] ?? <NavHubOverview onSelectPage={setActivePage} />
+    if (domain === 'nav-tools') return NAV_TOOLS_PAGES[activePage] ?? <NavToolsOverview onSelectPage={setActivePage} />
+    if (domain === 'ai-industries') return INDUSTRIES_PAGES[activePage] ?? <IndustriesOverview onSelectPage={setActivePage} />
     if (domain === 'aigc') return AIGC_PAGES[activePage] ?? <AigcOverview onSelectPage={setActivePage} />
     return null
   }
 
-  const handleBack = () => {
-    setDomain(null)
-  }
+  const handleBack = () => setDomain(null)
 
   return (
     <div className={styles.app}>
       <Header onBack={domain ? handleBack : undefined} />
       <div className={styles.body}>
-        <Sidebar
-          domain={domain}
-          activePage={activePage}
-          onSelectPage={setActivePage}
-          onSelectDomain={handleEnterDomain}
-        />
+        <Sidebar domain={domain} activePage={activePage} onSelectPage={setActivePage} onSelectDomain={handleEnterDomain} />
         <div className={styles.handle} onMouseDown={onMouseDown} />
         <main className={styles.content}>
-          <BreadcrumbBlock
-            domain={domain}
-            activePage={activePage}
-            onBack={handleBack}
-            onSelectPage={setActivePage}
-          />
+          <BreadcrumbBlock domain={domain} activePage={activePage} onBack={handleBack} onSelectPage={setActivePage} />
           {renderPage()}
         </main>
       </div>
@@ -167,38 +163,17 @@ function AppContent() {
 }
 
 function BreadcrumbBlock({ domain, activePage, onBack, onSelectPage }: {
-  domain: string | null
-  activePage: string
-  onBack: () => void
-  onSelectPage: (key: string) => void
+  domain: string | null; activePage: string; onBack: () => void; onSelectPage: (key: string) => void
 }) {
   const { lang } = useT()
-
-  if (!domain) {
-    return <Breadcrumb path={[]} />
-  }
-
+  if (!domain) return <Breadcrumb path={[]} />
   const d = domains.find(dd => dd.key === domain)
   const domainLabel = d?.title[lang as Lang] ?? domain
   const sub = d?.subModules.find(s => s.key === activePage)
   const pageLabel = sub?.title[lang as Lang] ?? activePage
-
-  return (
-    <Breadcrumb
-      path={[
-        { label: domainLabel, onClick: onBack },
-        { label: pageLabel, onClick: () => onSelectPage(activePage) },
-      ]}
-    />
-  )
+  return <Breadcrumb path={[{ label: domainLabel, onClick: onBack }, { label: pageLabel, onClick: () => onSelectPage(activePage) }]} />
 }
 
 export default function App() {
-  return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <AppContent />
-      </LanguageProvider>
-    </ThemeProvider>
-  )
+  return <ThemeProvider><LanguageProvider><AppContent /></LanguageProvider></ThemeProvider>
 }
