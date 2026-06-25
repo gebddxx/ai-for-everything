@@ -37,6 +37,11 @@ import AgentFrameworks from './pages/AgentFrameworks'
 import AgentAssistants from './pages/AgentAssistants'
 import AgentWorkflow from './pages/AgentWorkflow'
 import AgentMultiAgent from './pages/AgentMultiAgent'
+import SearchOverview from './pages/SearchOverview'
+import ChatOverview from './pages/ChatOverview'
+import DesignOverview from './pages/DesignOverview'
+import Game3DOverview from './pages/Game3DOverview'
+import EnterpriseOverview from './pages/EnterpriseOverview'
 import { domains } from './data/domains'
 import type { Lang } from './i18n/translations'
 import styles from './App.module.css'
@@ -134,6 +139,11 @@ function AppContent() {
     if (domain === 'creative') return CREATIVE_PAGES[activePage] ?? <CreativeOverview />
     if (domain === 'office') return OFFICE_PAGES[activePage] ?? <OfficeOverview />
     if (domain === 'agents') return AGENT_PAGES[activePage] ?? <AgentOverview />
+    if (domain === 'search') return <SearchOverview />
+    if (domain === 'chat') return <ChatOverview />
+    if (domain === 'design') return <DesignOverview />
+    if (domain === '3d-game') return <Game3DOverview />
+    if (domain === 'enterprise') return <EnterpriseOverview />
     if (domain === 'logistics') return LOGISTICS_PAGES[activePage] ?? <Overview />
     return <DomainPlaceholder domainKey={domain} subPage={activePage} />
   }

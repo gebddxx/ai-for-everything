@@ -1,0 +1,19 @@
+import { useT } from '../contexts/LanguageContext';import styles from './Page.module.css'
+export default function EnterpriseOverview(){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
+const links=[
+{name:'HubSpot AI',url:'https://www.hubspot.com/',dEn:'AI CRM: content assistant, predictive lead scoring, chatbots',dZh:'AI CRM：内容助手、预测线索评分、聊天机器人',cat:'marketing'},
+{name:'Jasper AI',url:'https://www.jasper.ai/',dEn:'Enterprise content creation, brand voice, team collaboration',dZh:'企业级内容创作，品牌语调统一，团队协作',cat:'marketing'},
+{name:'Clay',url:'https://www.clay.com/',dEn:'AI-powered sales prospecting & data enrichment',dZh:'AI销售线索挖掘+数据充实',cat:'marketing'},
+{name:'Copy.ai',url:'https://www.copy.ai/',dEn:'GTM Bloat: AI workflows for sales & marketing automation',dZh:'GTM Bloat：AI销售和营销自动化工作流',cat:'marketing'},
+{name:'Eightfold AI',url:'https://eightfold.ai/',dEn:'Talent intelligence: AI matching, skill gap analysis, retention',dZh:'人才智能平台：AI匹配、技能缺口分析、留存预测',cat:'hr'},
+{name:'Paradox',url:'https://www.paradox.ai/',dEn:'AI recruiting assistant Olivia: screen, schedule, onboard',dZh:'AI招聘助手Olivia：筛选、排面试、入职流程',cat:'hr'},
+{name:'Metaview',url:'https://www.metaview.ai/',dEn:'AI interview notes: auto-summarize, highlight key moments',dZh:'AI面试记录：自动总结、高亮关键时刻',cat:'hr'},
+{name:'Harvey AI',url:'https://www.harvey.ai/',dEn:'AI for law firms: contract analysis, due diligence, research',dZh:'律所AI：合同分析、尽职调查、法律研究',cat:'legal'},
+{name:'Ironclad',url:'https://ironcladapp.com/',dEn:'AI contract lifecycle management: draft, review, negotiate',dZh:'AI合同全生命周期管理：起草→审核→谈判',cat:'legal'},
+{name:'EvenUp',url:'https://www.evenuplaw.com/',dEn:'AI demand letter & settlement estimation for personal injury',dZh:'AI生成索赔函+和解金额估算',cat:'legal'},
+]
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🏢 {L('AI for Enterprise','AI 企业应用','AI 企業應用')}</h2><p className={styles.subtitle}>{L('Marketing, HR, Legal — enterprise-grade AI solutions','营销、HR、法律——企业级AI解决方案','行銷、HR、法律——企業級AI解決方案')}</p></div>
+<div className={styles.summary}>{L('Enterprise AI goes beyond chatbots. Modern companies are adopting AI across every function: marketing teams generate personalized campaigns at scale, HR uses AI for talent matching and retention prediction, and legal teams automate contract review. These are production-grade tools that integrate into existing enterprise workflows.','企业AI不止是聊天机器人。现代企业正在每个职能中采用AI：营销团队批量生成个性化投放、HR用AI做人才匹配和留存预测、法务用AI自动化合同审查。这些都是能融入现有企业工作流的生产级工具。','企業AI不止是聊天機器人。現代企業正在每個職能中採用AI：行銷團隊批量生成個性化投放、HR用AI做人才匹配和留存預測、法務用AI自動化合同審查。這些都是能融入現有企業工作流的生產級工具。')}</div>
+<Dir links={links} lang={lang} catNames={{marketing:L('Marketing & Sales','营销销售','行銷銷售'),hr:L('HR & Recruitment','人力资源','人力資源'),legal:L('Legal & Compliance','法律合规','法律合規')}} /></div>)}
+function Dir({links,lang,catNames}:{links:{name:string;url:string;dEn:string;dZh:string;cat:string}[],lang:string,catNames:Record<string,string>}){const cats=[...new Set(links.map(l=>l.cat))]
+return <div>{cats.map(cat=>(<div key={cat} style={{marginBottom:20}}><h3 style={{fontSize:15,fontWeight:700,color:'var(--text)',marginBottom:10}}>{catNames[cat]||cat}</h3><div style={{display:'flex',flexDirection:'column',gap:8}}>{links.filter(l=>l.cat===cat).map(l=>(<a key={l.name} href={l.url} target="_blank" rel="noopener" style={{display:'flex',alignItems:'center',gap:12,padding:'12px 16px',background:'var(--bg-card)',borderRadius:10,textDecoration:'none',border:'1px solid var(--border)',transition:'all .15s'}}><span style={{fontWeight:600,color:'var(--primary)',fontSize:14,minWidth:100}}>{l.name}</span><span style={{color:'var(--text-secondary)',fontSize:13,flex:1}}>{lang==='zh-CN'?l.dZh:l.dEn}</span><span style={{color:'var(--text-muted)',fontSize:16}}>↗</span></a>))}</div></div>))}</div>}
