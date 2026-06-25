@@ -204,7 +204,7 @@ export const domains: Domain[] = [
       'zh-TW': '醫學影像、藥物研發、臨床決策支持、患者護理自動化。',
     },
     color: '#10b981',
-    status: 'planned',
+    status: 'done',
     subModules: [
       { key: 'overview', icon: '🏥', title: { en: 'Overview', 'zh-CN': '总览', 'zh-TW': '總覽' } },
       { key: 'imaging', icon: '🩻', title: { en: 'Medical Imaging', 'zh-CN': '医学影像', 'zh-TW': '醫學影像' } },
@@ -223,7 +223,7 @@ export const domains: Domain[] = [
       'zh-TW': '個性化學習、智能輔導、自動評分、教育內容生成。',
     },
     color: '#8b5cf6',
-    status: 'planned',
+    status: 'done',
     subModules: [
       { key: 'overview', icon: '📚', title: { en: 'Overview', 'zh-CN': '总览', 'zh-TW': '總覽' } },
       { key: 'personalized', icon: '🎯', title: { en: 'Personalized Learning', 'zh-CN': '个性化学习', 'zh-TW': '個性化學習' } },
@@ -242,7 +242,7 @@ export const domains: Domain[] = [
       'zh-TW': '欺詐檢測、算法交易、風險評估、智能理財。',
     },
     color: '#f59e0b',
-    status: 'planned',
+    status: 'done',
     subModules: [
       { key: 'overview', icon: '💰', title: { en: 'Overview', 'zh-CN': '总览', 'zh-TW': '總覽' } },
       { key: 'fraud', icon: '🔒', title: { en: 'Fraud Detection', 'zh-CN': '欺诈检测', 'zh-TW': '欺詐檢測' } },
@@ -261,7 +261,7 @@ export const domains: Domain[] = [
       'zh-TW': '預測性維護、質量檢測、供應鏈優化、數字孿生。',
     },
     color: '#ef4444',
-    status: 'planned',
+    status: 'done',
     subModules: [
       { key: 'overview', icon: '🏗️', title: { en: 'Overview', 'zh-CN': '总览', 'zh-TW': '總覽' } },
       { key: 'maintenance', icon: '🔧', title: { en: 'Predictive Maintenance', 'zh-CN': '预测性维护', 'zh-TW': '預測性維護' } },
@@ -280,7 +280,7 @@ export const domains: Domain[] = [
       'zh-TW': '精準農業、作物監測、產量預測、自動收割。',
     },
     color: '#06b6d4',
-    status: 'planned',
+    status: 'done',
     subModules: [
       { key: 'overview', icon: '🌾', title: { en: 'Overview', 'zh-CN': '总览', 'zh-TW': '總覽' } },
       { key: 'precision', icon: '🎯', title: { en: 'Precision Farming', 'zh-CN': '精准农业', 'zh-TW': '精準農業' } },

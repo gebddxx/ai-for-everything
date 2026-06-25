@@ -42,6 +42,11 @@ import ChatOverview from './pages/ChatOverview'
 import DesignOverview from './pages/DesignOverview'
 import Game3DOverview from './pages/Game3DOverview'
 import EnterpriseOverview from './pages/EnterpriseOverview'
+import HealthcareOverview from './pages/HealthcareOverview'
+import FinanceOverview from './pages/FinanceOverview'
+import EducationOverview from './pages/EducationOverview'
+import ManufacturingOverview from './pages/ManufacturingOverview'
+import AgricultureOverview from './pages/AgricultureOverview'
 import { domains } from './data/domains'
 import type { Lang } from './i18n/translations'
 import styles from './App.module.css'
@@ -153,6 +158,11 @@ function AppContent() {
     if (domain === 'design') return <DesignOverview scrollTo={activePage} />
     if (domain === '3d-game') return <Game3DOverview scrollTo={activePage} />
     if (domain === 'enterprise') return <EnterpriseOverview scrollTo={activePage} />
+    if (domain === 'healthcare') return <HealthcareOverview scrollTo={activePage} />
+    if (domain === 'finance') return <FinanceOverview scrollTo={activePage} />
+    if (domain === 'education') return <EducationOverview scrollTo={activePage} />
+    if (domain === 'manufacturing') return <ManufacturingOverview scrollTo={activePage} />
+    if (domain === 'agriculture') return <AgricultureOverview scrollTo={activePage} />
     if (domain === 'logistics') return LOGISTICS_PAGES[activePage] ?? <Overview />
     return <DomainPlaceholder domainKey={domain} subPage={activePage} />
   }
