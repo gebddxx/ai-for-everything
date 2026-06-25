@@ -3,9 +3,16 @@ import { type Lang } from '../i18n/translations'
 export interface ToolLink {
   name: string
   url: string
-  desc: string
+  desc: string | { en?: string; zh?: string; tw?: string }
   cat: string
-  icon?: string     // emoji or custom icon URL
+  icon?: string
+}
+
+function getDesc(d: ToolLink['desc'], lang: string): string {
+  if (typeof d === 'string') return d
+  if (lang === 'zh-CN') return d.zh || d.en || ''
+  if (lang === 'zh-TW') return d.tw || d.zh || d.en || ''
+  return d.en || d.zh || ''
 }
 
 interface Props {
@@ -88,7 +95,7 @@ export default function LinkNav({ links, lang, catNames, color }: Props) {
                   {l.name}
                 </span>
                 <span style={{ color: 'var(--text-secondary)', fontSize: 12, flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  {l.desc}
+                  {getDesc(l.desc, lang)}
                 </span>
                 <span style={{ color: 'var(--text-muted)', fontSize: 14, flexShrink: 0 }}>↗</span>
               </a>
