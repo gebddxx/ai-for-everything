@@ -16,6 +16,24 @@ export interface Domain {
 
 export const domains: Domain[] = [
   {
+    key: 'vibe-coding',
+    title: { en: 'AI Vibe Coding', 'zh-CN': 'AI Vibe Coding', 'zh-TW': 'AI Vibe Coding' },
+    icon: '💻',
+    desc: {
+      en: 'Set up AI-powered coding environments: Gemini CLI, Codex CLI, and CCSwitch with Claude + DeepSeek. Step-by-step tutorials to get you coding with AI.',
+      'zh-CN': '搭建 AI 编程环境：Gemini CLI、Codex CLI、CCSwitch + Claude + DeepSeek。手把手教程，让你用 AI 写代码。',
+      'zh-TW': '搭建 AI 編程環境：Gemini CLI、Codex CLI、CCSwitch + Claude + DeepSeek。手把手教學，讓你用 AI 寫程式。',
+    },
+    color: '#a855f7',
+    status: 'done',
+    subModules: [
+      { key: 'overview', icon: '💻', title: { en: 'Overview', 'zh-CN': '总览', 'zh-TW': '總覽' } },
+      { key: 'gemini', icon: '🔷', title: { en: 'Gemini CLI', 'zh-CN': 'Gemini CLI', 'zh-TW': 'Gemini CLI' } },
+      { key: 'codex', icon: '🟢', title: { en: 'Codex CLI', 'zh-CN': 'Codex CLI', 'zh-TW': 'Codex CLI' } },
+      { key: 'ccswitch', icon: '🔀', title: { en: 'CCSwitch + Claude + DeepSeek', 'zh-CN': 'CCSwitch + Claude + DeepSeek', 'zh-TW': 'CCSwitch + Claude + DeepSeek' } },
+    ],
+  },
+  {
     key: 'logistics',
     title: { en: 'AI Logistics', 'zh-CN': 'AI 物流', 'zh-TW': 'AI 物流' },
     icon: '📦',
@@ -128,24 +146,6 @@ export const domains: Domain[] = [
       { key: 'monitoring', icon: '🛰️', title: { en: 'Crop Monitoring', 'zh-CN': '作物监测', 'zh-TW': '作物監測' } },
       { key: 'yield', icon: '📊', title: { en: 'Yield Prediction', 'zh-CN': '产量预测', 'zh-TW': '產量預測' } },
       { key: 'harvest', icon: '🚜', title: { en: 'Auto Harvesting', 'zh-CN': '自动收割', 'zh-TW': '自動收割' } },
-    ],
-  },
-  {
-    key: 'vibe-coding',
-    title: { en: 'AI Vibe Coding', 'zh-CN': 'AI Vibe Coding', 'zh-TW': 'AI Vibe Coding' },
-    icon: '💻',
-    desc: {
-      en: 'Set up AI-powered coding environments: Gemini CLI, Codex CLI, and CCSwitch with Claude + DeepSeek. Step-by-step tutorials to get you coding with AI.',
-      'zh-CN': '搭建 AI 编程环境：Gemini CLI、Codex CLI、CCSwitch + Claude + DeepSeek。手把手教程，让你用 AI 写代码。',
-      'zh-TW': '搭建 AI 編程環境：Gemini CLI、Codex CLI、CCSwitch + Claude + DeepSeek。手把手教學，讓你用 AI 寫程式。',
-    },
-    color: '#a855f7',
-    status: 'done',
-    subModules: [
-      { key: 'overview', icon: '💻', title: { en: 'Overview', 'zh-CN': '总览', 'zh-TW': '總覽' } },
-      { key: 'gemini', icon: '🔷', title: { en: 'Gemini CLI', 'zh-CN': 'Gemini CLI', 'zh-TW': 'Gemini CLI' } },
-      { key: 'codex', icon: '🟢', title: { en: 'Codex CLI', 'zh-CN': 'Codex CLI', 'zh-TW': 'Codex CLI' } },
-      { key: 'ccswitch', icon: '🔀', title: { en: 'CCSwitch + Claude + DeepSeek', 'zh-CN': 'CCSwitch + Claude + DeepSeek', 'zh-TW': 'CCSwitch + Claude + DeepSeek' } },
     ],
   },
 ]
