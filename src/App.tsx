@@ -92,6 +92,44 @@ function AppContent() {
     document.documentElement.style.setProperty('--sidebar-width', `${sidebarWidth}px`)
   }, [sidebarWidth])
 
+  // Scroll observer: highlight sidebar based on visible section
+  useEffect(() => {
+    if (domain === null) return
+    const visibleSections = new Map<string, number>()
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          const key = entry.target.id.replace('section-', '')
+          if (entry.isIntersecting) {
+            visibleSections.set(key, entry.intersectionRatio)
+          } else {
+            visibleSections.delete(key)
+          }
+        })
+        // Find section with highest visibility ratio
+        let best = ''
+        let bestRatio = 0
+        visibleSections.forEach((ratio, key) => {
+          if (ratio > bestRatio) { bestRatio = ratio; best = key }
+        })
+        if (best && bestRatio > 0.1) {
+          setActivePage(best)
+        }
+      },
+      { rootMargin: '-80px 0px 0px 0px', threshold: [0, 0.1, 0.25, 0.5, 0.75, 1] }
+    )
+
+    // Observe after a brief delay to let DOM render
+    const timer = setTimeout(() => {
+      document.querySelectorAll('[id^="section-"]').forEach(el => observer.observe(el))
+    }, 300)
+
+    return () => {
+      clearTimeout(timer)
+      observer.disconnect()
+    }
+  }, [domain])
+
   const handleEnterDomain = (key: string) => {
     setDomain(key)
     setActivePage('overview')
