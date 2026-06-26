@@ -98,7 +98,7 @@ function AppContent() {
   }
 
   const NAV_TOOLS_PAGES: Record<string, React.ReactNode> = {
-    overview: <NavToolsOverview onSelectPage={setActivePage} />,
+    overview: <NavToolsOverview  />,
     search: <SearchOverview />,
     chat: <ChatOverview />,
     creative: <CreativeOverview />,
@@ -109,7 +109,7 @@ function AppContent() {
   }
 
   const INDUSTRIES_PAGES: Record<string, React.ReactNode> = {
-    overview: <IndustriesOverview onSelectPage={setActivePage} />,
+    overview: <IndustriesOverview  />,
     logistics: <Overview />,
     healthcare: <HealthcareOverview />,
     finance: <FinanceOverview />,
@@ -120,7 +120,7 @@ function AppContent() {
   }
 
   const AIGC_PAGES: Record<string, React.ReactNode> = {
-    overview: <AigcOverview onSelectPage={setActivePage} />,
+    overview: <AigcOverview  />,
     gemini: <GeminiTutorial />,
     codex: <CodexTutorial />,
     ccswitch: <CCSwitchTutorial />,
@@ -139,9 +139,9 @@ function AppContent() {
 
   const renderPage = () => {
     if (domain === null) return <Home onEnter={handleEnterDomain} />
-    if (domain === 'nav-tools') return NAV_TOOLS_PAGES[activePage] ?? <NavToolsOverview onSelectPage={setActivePage} />
-    if (domain === 'ai-industries') return INDUSTRIES_PAGES[activePage] ?? <IndustriesOverview onSelectPage={setActivePage} />
-    if (domain === 'aigc') return AIGC_PAGES[activePage] ?? <AigcOverview onSelectPage={setActivePage} />
+    if (domain === 'nav-tools') return NAV_TOOLS_PAGES[activePage] ?? <NavToolsOverview  />
+    if (domain === 'ai-industries') return INDUSTRIES_PAGES[activePage] ?? <IndustriesOverview  />
+    if (domain === 'aigc') return AIGC_PAGES[activePage] ?? <AigcOverview  />
     return null
   }
 
@@ -151,10 +151,10 @@ function AppContent() {
     <div className={styles.app}>
       <Header onBack={domain ? handleBack : undefined} />
       <div className={styles.body}>
-        <Sidebar domain={domain} activePage={activePage} onSelectPage={setActivePage} onSelectDomain={handleEnterDomain} />
+        <Sidebar domain={domain} activePage={activePage}  onSelectDomain={handleEnterDomain} />
         <div className={styles.handle} onMouseDown={onMouseDown} />
         <main className={styles.content}>
-          <BreadcrumbBlock domain={domain} activePage={activePage} onBack={handleBack} onSelectPage={setActivePage} />
+          <BreadcrumbBlock domain={domain} activePage={activePage} onBack={handleBack}  />
           {renderPage()}
         </main>
       </div>
