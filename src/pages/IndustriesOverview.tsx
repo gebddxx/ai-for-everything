@@ -5,6 +5,11 @@ import EducationOverview from './EducationOverview'
 import ManufacturingOverview from './ManufacturingOverview'
 import AgricultureOverview from './AgricultureOverview'
 import EnterpriseOverview from './EnterpriseOverview'
+import RetailOverview from './RetailOverview'
+import TransportOverview from './TransportOverview'
+import EnergyOverview from './EnergyOverview'
+import MediaOverview from './MediaOverview'
+import SecurityOverview from './SecurityOverview'
 
 const sections = [
   { key: 'logistics', Component: Overview },
@@ -14,6 +19,11 @@ const sections = [
   { key: 'manufacturing', Component: ManufacturingOverview },
   { key: 'agriculture', Component: AgricultureOverview },
   { key: 'enterprise', Component: EnterpriseOverview },
+  { key: 'retail', Component: RetailOverview },
+  { key: 'transport', Component: TransportOverview },
+  { key: 'energy', Component: EnergyOverview },
+  { key: 'media', Component: MediaOverview },
+  { key: 'security', Component: SecurityOverview },
 ]
 
 export default function IndustriesOverview() {
