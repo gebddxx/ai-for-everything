@@ -6,6 +6,7 @@ export interface ToolLink {
   desc: string | { en?: string; zh?: string; tw?: string }
   cat: string
   icon?: string
+  source?: string
 }
 
 function getDesc(d: ToolLink['desc'], lang: string): string {
@@ -77,9 +78,10 @@ export default function LinkNav({ links, lang, color }: Props) {
               onError={() => {}}
             />
           </div>
-          <span style={{ fontWeight: 600, color: accent, fontSize: 13, minWidth: 100, maxWidth: 160, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <span style={{ fontWeight: 600, color: accent, fontSize: 13, minWidth: 80, maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {l.name}
           </span>
+          {l.source && <span style={{ fontSize: 9, color: 'var(--text-muted)', background: 'var(--hover-bg)', padding: '1px 5px', borderRadius: 4, flexShrink: 0, fontWeight: 500 }}>{l.source}</span>}
           <span style={{ color: 'var(--text-secondary)', fontSize: 12, flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {getDesc(l.desc, lang)}
           </span>
