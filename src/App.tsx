@@ -168,7 +168,7 @@ function AppContent() {
 
   return (
     <div className={styles.app}>
-      <Header onBack={domain ? handleBack : undefined} />
+      <Header onBack={domain ? handleBack : undefined} onNavigate={(d, s) => { if (!d) { handleBack(); return } handleEnterDomain(d); if (s) { setActivePage(s); setTimeout(() => { const el = document.getElementById(`section-${s}`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }) }, 400) } }} />
       <div className={styles.body}>
         <Sidebar domain={domain} activePage={activePage} onSelectPage={handleSelectPage} onSelectDomain={handleEnterDomain} onHome={handleBack} />
         <div className={styles.handle} onMouseDown={onMouseDown} />

@@ -2,13 +2,15 @@ import { useTheme } from '../contexts/ThemeContext'
 import { useT } from '../contexts/LanguageContext'
 import { LANGS } from '../i18n/translations'
 import type { Lang } from '../i18n/translations'
+import SearchBox from './SearchBox'
 import styles from './Header.module.css'
 
 interface Props {
   onBack?: () => void
+  onNavigate?: (domain: string | null, section?: string) => void
 }
 
-export default function Header({ onBack }: Props) {
+export default function Header({ onBack, onNavigate }: Props) {
   const { theme, toggle } = useTheme()
   const { lang, setLang, t } = useT()
 
@@ -25,6 +27,7 @@ export default function Header({ onBack }: Props) {
       </div>
       <span className={styles.badge}>{t.header.badge}</span>
       <span className={styles.spacer} />
+      {onNavigate && <SearchBox onNavigate={onNavigate} />}
       <div className={styles.langGroup}>
         {LANGS.map((l) => (
           <button
