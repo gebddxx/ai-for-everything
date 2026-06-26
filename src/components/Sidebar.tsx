@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useT } from '../contexts/LanguageContext'
 import { domains } from '../data/domains'
 import type { Lang } from '../i18n/translations'
@@ -14,9 +14,12 @@ interface Props {
 export default function Sidebar({ domain, activePage, onSelectPage, onSelectDomain }: Props) {
   const { t, lang } = useT()
   const [expanded, setExpanded] = useState<Set<string>>(() => {
-    // auto-expand the current domain
     return domain ? new Set([domain]) : new Set()
   })
+
+  useEffect(() => {
+    setExpanded(domain ? new Set([domain]) : new Set())
+  }, [domain])
 
   const toggle = (key: string) => {
     setExpanded(prev => {
