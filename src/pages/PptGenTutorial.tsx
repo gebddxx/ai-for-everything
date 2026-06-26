@@ -24,7 +24,7 @@ export default function PptGenTutorial() {
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>📊 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
       <LinkNav links={toolLinks} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#a855f7" />
-      <div className={styles.chart} style={{ margin: '32px 0 20px' }}><div style={{ height: 1, background: 'var(--border)', marginBottom: 20 }} />
+      <div className={styles.chart} style={{ margin: '32px 0 20px' }}><div style={{ height: 1, background: 'var(--border)', marginBottom: 20 }} /></div>
       <div className={styles.cases}>
         <Card title={l.whatIs}><p style={pStyle}>{l.whatIsBody}</p></Card>
         <Card title={l.tools}>
