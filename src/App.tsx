@@ -19,9 +19,24 @@ const MIN_SIDEBAR = 120
 const MAX_SIDEBAR = 420
 const DEFAULT_SIDEBAR = 180
 
+// --- hash helpers ---
+function parseHash(): [string | null, string] {
+  const raw = window.location.hash.replace(/^#\/?/, '')
+  if (!raw) return [null, 'overview']
+  const parts = raw.split('/')
+  const domain = parts[0] || null
+  const page = parts[1] || 'overview'
+  return [domain, page]
+}
+function toHash(domain: string | null, page: string) {
+  if (!domain) return '#/'
+  return `#/${domain}/${page}`
+}
+
 function AppContent() {
-  const [domain, setDomain] = useState<string | null>(null)
-  const [activePage, setActivePage] = useState('overview')
+  const [initialDomain, initialPage] = parseHash()
+  const [domain, setDomain] = useState<string | null>(initialDomain)
+  const [activePage, setActivePage] = useState(initialPage)
   const [sidebarWidth, setSidebarWidth] = useState(() => {
     const saved = localStorage.getItem('ai-logistics-sidebar-width')
     return saved ? Number(saved) : DEFAULT_SIDEBAR
@@ -97,6 +112,38 @@ function AppContent() {
     }
   }, [domain])
 
+  // sync state → URL hash
+  const updatingHash = useRef(false)
+  useEffect(() => {
+    updatingHash.current = true
+    window.location.hash = toHash(domain, activePage)
+    // reset flag after this microtask
+    setTimeout(() => { updatingHash.current = false }, 0)
+  }, [domain, activePage])
+
+  // listen for browser back/forward
+  useEffect(() => {
+    const onHashChange = () => {
+      if (updatingHash.current) return // we triggered this, skip
+      const [d, p] = parseHash()
+      setDomain(d)
+      setActivePage(p)
+    }
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  // scroll to section on hash load (after DOM renders)
+  useEffect(() => {
+    if (domain && activePage !== 'overview') {
+      const timer = setTimeout(() => {
+        const el = document.getElementById(`section-${activePage}`)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 500)
+      return () => clearTimeout(timer)
+    }
+  }, []) // only on mount
+
   const handleEnterDomain = (key: string) => {
     setDomain(key)
     setActivePage('overview')
@@ -126,7 +173,7 @@ function AppContent() {
         <Sidebar domain={domain} activePage={activePage} onSelectPage={handleSelectPage} onSelectDomain={handleEnterDomain} onHome={handleBack} />
         <div className={styles.handle} onMouseDown={onMouseDown} />
         <main className={styles.content}>
-          <BreadcrumbBlock domain={domain} activePage={activePage} onBack={handleBack}  />
+          <BreadcrumbBlock domain={domain} activePage={activePage} onBack={handleBack} onSelectPage={handleSelectPage} />
           {renderPage()}
         </main>
       </div>
