@@ -10,6 +10,9 @@ import TransportOverview from './TransportOverview'
 import EnergyOverview from './EnergyOverview'
 import MediaOverview from './MediaOverview'
 import SecurityOverview from './SecurityOverview'
+import LawOverview from './LawOverview'
+import ClimateOverview from './ClimateOverview'
+import GovTechOverview from './GovTechOverview'
 
 const sections = [
   { key: 'logistics', Component: Overview },
@@ -24,6 +27,9 @@ const sections = [
   { key: 'energy', Component: EnergyOverview },
   { key: 'media', Component: MediaOverview },
   { key: 'security', Component: SecurityOverview },
+  { key: 'law', Component: LawOverview },
+  { key: 'climate', Component: ClimateOverview },
+  { key: 'govtech', Component: GovTechOverview },
 ]
 
 export default function IndustriesOverview() {

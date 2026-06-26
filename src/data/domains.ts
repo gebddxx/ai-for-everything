@@ -42,8 +42,8 @@ export const domains: Domain[] = [
     title: { en: 'AI in Industries', 'zh-CN': 'AI行业应用', 'zh-TW': 'AI行業應用' },
     icon: '🏭',
     desc: {
-      en: 'See how AI is transforming 13 major industries — logistics, healthcare, finance, education, manufacturing, agriculture, enterprise, retail, transportation, energy, media, cybersecurity, and more. Real cases, key metrics, and tool directories for each sector.',
-      'zh-CN': '看AI如何变革13大行业——物流、医疗、金融、教育、制造、农业、企业、零售、交通、能源、媒体、安全等。每个行业都有真实案例、关键指标和精选工具。',
+      en: 'See how AI is transforming 16 major industries — logistics, healthcare, finance, education, manufacturing, agriculture, enterprise, retail, transportation, energy, media, cybersecurity, and more. Real cases, key metrics, and tool directories for each sector.',
+      'zh-CN': '看AI如何变革16大行业——物流、医疗、金融、教育、制造、农业、企业、零售、交通、能源、媒体、安全等。每个行业都有真实案例、关键指标和精选工具。',
       'zh-TW': '看AI如何變革13大行業——物流、醫療、金融、教育、製造、農業、企業、零售、交通、能源、媒體、安全等。每個行業都有真實案例、關鍵指標和精選工具。',
     },
     color: '#10b981',
@@ -62,6 +62,9 @@ export const domains: Domain[] = [
       { key: 'energy', icon: '⚡', title: { en: 'Energy', 'zh-CN': '能源电力', 'zh-TW': '能源電力' } },
       { key: 'media', icon: '🎬', title: { en: 'Media & Entertainment', 'zh-CN': '媒体娱乐', 'zh-TW': '媒體娛樂' } },
       { key: 'security', icon: '🔒', title: { en: 'Cybersecurity', 'zh-CN': '网络安全', 'zh-TW': '網路安全' } },
+      { key: 'law', icon: '⚖️', title: { en: 'Legal Tech', 'zh-CN': '法律科技', 'zh-TW': '法律科技' } },
+      { key: 'climate', icon: '🌍', title: { en: 'Climate & Environment', 'zh-CN': '环保气候', 'zh-TW': '環保氣候' } },
+      { key: 'govtech', icon: '🏛️', title: { en: 'GovTech & Smart City', 'zh-CN': '政务智慧城市', 'zh-TW': '政務智慧城市' } },
     ],
   },
   {
