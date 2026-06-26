@@ -19,7 +19,7 @@ export default function Header({ onBack }: Props) {
           ←
         </button>
       )}
-      <span className={styles.logo}>📦</span>
+      <span className={styles.logo} onClick={onBack} title="Back to home" style={{ cursor: onBack ? 'pointer' : 'default' }}>📦</span>
       <h1 className={styles.title}>{t.header.title}</h1>
       <span className={styles.badge}>{t.header.badge}</span>
       <span className={styles.spacer} />
