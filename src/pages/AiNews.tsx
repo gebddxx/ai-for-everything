@@ -14,7 +14,7 @@ export default function AiNews() {
   return (
     <div className={styles.page}>
       <div className={styles.head}>
-        <h2 className={styles.title}>📰 {L('AI News Brief', '大黑AI速报', '大黑AI速報')}</h2>
+        <h2 className={styles.title}>📰 {L('AI News Brief', 'AI速报', 'AI速報')}</h2>
         <p className={styles.subtitle}>
           {L('Updated every 4 hours · ', '每4小时更新 · 已更新', '每4小時更新 · 已更新')}
           <strong style={{ color: 'var(--primary)' }}>{newsIssues[0]?.id ?? 1379}</strong>
@@ -111,7 +111,7 @@ export default function AiNews() {
       )}
 
       <div style={{ textAlign: 'center', padding: '20px 0', color: 'var(--text-muted)', fontSize: 13 }}>
-        {L('By Dahei · AI News Brief · Since 2022', '由人工大黑 制作 · AI速报 · 始于2022', '由人工大黑 製作 · AI速報 · 始於2022')}
+        {L('AI News Brief · Since 2022', 'AI速报 · 始于2022', 'AI速報 · 始於2022')}
       </div>
     </div>
   )
