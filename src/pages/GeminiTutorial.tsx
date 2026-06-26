@@ -326,22 +326,4 @@ pwd                            # verify you're in project root
 ls                             # verify files are visible`,
 }
 
-const pStyle: React.CSSProperties = { color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: 14 }
-const ulStyle: React.CSSProperties = { paddingLeft: 20, color: 'var(--text-secondary)', lineHeight: 2.2 }
-
-function Card({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div style={{ background: 'var(--bg-card)', borderRadius: 12, padding: 22, boxShadow: 'var(--shadow)', marginBottom: 16 }}>
-      <h3 style={{ marginBottom: 12, color: 'var(--text)', fontSize: 16 }}>{title}</h3>
-      {children}
-    </div>
-  )
-}
-
-function Code({ children }: { children: string }) {
-  return (
-    <pre style={{ background: '#0f172a', color: '#e2e8f0', borderRadius: 8, padding: 16, fontSize: 13, lineHeight: 1.6, overflowX: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word', margin: 0 }}>
-      <code>{children}</code>
-    </pre>
-  )
-}
+import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'

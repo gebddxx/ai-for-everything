@@ -16,8 +16,7 @@ export default function WebGenTutorial() {
     tips: lang === 'zh-CN' ? '提示词技巧' : lang === 'zh-TW' ? '提示詞技巧' : 'Prompt Engineering Tips',
     links: lang === 'zh-CN' ? '资源链接' : lang === 'zh-TW' ? '資源連結' : 'Resources',
   }
-  const pStyle: React.CSSProperties = { color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: 14 }
-  const ulStyle: React.CSSProperties = { paddingLeft: 20, color: 'var(--text-secondary)', lineHeight: 2.2 }
+import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
   return (
     <div className={styles.page}>

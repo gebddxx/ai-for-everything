@@ -9,7 +9,7 @@ export default function PptGenTutorial() {
     whatIs: lang === 'zh-CN' ? 'AI PPT生成概览' : lang === 'zh-TW' ? 'AI PPT生成概覽' : 'Overview',
     whatIsBody: lang === 'zh-CN' ? 'Gamma、Beautiful.ai、Tome等工具可以用一句话或一个文档生成整份精美PPT。不再需要花几个小时调排版——AI自动处理设计、配色、字体、图片。本教程覆盖：一句话生成、文档转PPT、AI美化现有PPT、多格式导出。' : lang === 'zh-TW' ? 'Gamma、Beautiful.ai、Tome等工具可以用一句話或一個文檔生成整份精美PPT。不再需要花幾個小時調排版——AI自動處理設計、配色、字體、圖片。本教學覆蓋：一句話生成、文檔轉PPT、AI美化現有PPT、多格式導出。' : 'Gamma, Beautiful.ai, Tome, and more can generate entire decks from a single prompt or document. No more hours tweaking layouts — AI handles design, colors, fonts, and images automatically. This guide covers: one-prompt generation, document-to-PPT, AI beautification, and multi-format export.',
     tools: lang === 'zh-CN' ? '推荐工具' : lang === 'zh-TW' ? '推薦工具' : 'Recommended Tools',
-    tools: lang === 'zh-CN' ? 'PPT生成工具直达' : lang === 'zh-TW' ? 'PPT生成工具直達' : 'PPT Tools — Click to Try',
+    quickTools: lang === 'zh-CN' ? 'PPT生成工具直达' : lang === 'zh-TW' ? 'PPT生成工具直達' : 'PPT Tools — Click to Try',
     toolLinks: lang === 'zh-CN' ? '👇 点击下方链接直接打开PPT生成工具' : lang === 'zh-TW' ? '👇 點擊下方鏈接直接打開PPT生成工具' : '👇 Click any link below to open the PPT tool directly',
     step1: lang === 'zh-CN' ? '第1步：一句话生成PPT (Gamma)' : lang === 'zh-TW' ? '第1步：一句話生成PPT (Gamma)' : 'Step 1: One-Prompt PPT with Gamma',
     step2: lang === 'zh-CN' ? '第2步：文档转PPT' : lang === 'zh-TW' ? '第2步：文檔轉PPT' : 'Step 2: Document → PPT',
@@ -17,8 +17,7 @@ export default function PptGenTutorial() {
     step4: lang === 'zh-CN' ? '第4步：进阶技巧' : lang === 'zh-TW' ? '第4步：進階技巧' : 'Step 4: Advanced Tips',
     links: lang === 'zh-CN' ? '资源链接' : lang === 'zh-TW' ? '資源連結' : 'Resources',
   }
-  const pStyle: React.CSSProperties = { color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: 14 }
-  const ulStyle: React.CSSProperties = { paddingLeft: 20, color: 'var(--text-secondary)', lineHeight: 2.2 }
+import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
   return (
     <div className={styles.page}>
@@ -39,7 +38,7 @@ export default function PptGenTutorial() {
             </tbody>
           </table>
         </Card>
-        <Card title={l.tools}><p style={{...pStyle,marginBottom:12}}>{l.toolLinks}</p><div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(220px,1fr))',gap:8}}>
+        <Card title={l.quickTools}><p style={{...pStyle,marginBottom:12}}>{l.toolLinks}</p><div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(220px,1fr))',gap:8}}>
 <a href="https://gamma.app/" target="_blank" rel="noopener" style={{padding:'10px 14px',background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:8,textDecoration:'none',color:'var(--text)',fontSize:14,fontWeight:600,display:'flex',alignItems:'center',gap:8}}>📊 Gamma — 一句话生成整份PPT，支持导出PPTX</a>
 <a href="https://www.aippt.cn/" target="_blank" rel="noopener" style={{padding:'10px 14px',background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:8,textDecoration:'none',color:'var(--text)',fontSize:14,fontWeight:600,display:'flex',alignItems:'center',gap:8}}>📊 AiPPT — 国产AI PPT，自动生成大纲和模板</a>
 <a href="https://www.beautiful.ai/" target="_blank" rel="noopener" style={{padding:'10px 14px',background:'var(--bg-card)',border:'1px solid var(--border)',borderRadius:8,textDecoration:'none',color:'var(--text)',fontSize:14,fontWeight:600,display:'flex',alignItems:'center',gap:8}}>💎 Beautiful.ai — 智能模板自动排版</a>
@@ -141,12 +140,4 @@ Generate a slide-by-slide outline for a presentation about
 # 2. "Smart Beautify" → AI applies consistent theme
 # 3. "AI Outline" → auto-generates table of contents
 # 4. "AI Image" → generates custom illustrations for slides`,
-}
-
-function Card({ title, children }: { title: string; children: React.ReactNode }) {
-  return <div style={{ background: 'var(--bg-card)', borderRadius: 12, padding: 22, boxShadow: 'var(--shadow)', marginBottom: 16 }}><h3 style={{ marginBottom: 12, color: 'var(--text)', fontSize: 16 }}>{title}</h3>{children}</div>
-}
-
-function Code({ children }: { children: string }) {
-  return <pre style={{ background: '#0f172a', color: '#e2e8f0', borderRadius: 8, padding: 16, fontSize: 13, lineHeight: 1.6, overflowX: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-word', margin: 0 }}><code>{children}</code></pre>
 }
