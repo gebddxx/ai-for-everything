@@ -11,32 +11,38 @@ export default function SearchBox({ onNavigate }: Props) {
   const [selected, setSelected] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  // Fuzzy match: split query into chars, all must be found in order in keywords
+  // Fuzzy match with Chinese-friendly behavior
   const results = query.trim().length >= 1
     ? searchIndex.filter(entry => {
         const q = query.toLowerCase().trim()
-        // Score each entry by best keyword match
-        let bestScore = 0
+        // Combine ALL keywords into one big string for cross-keyword matching
+        const allText = entry.keywords.join(' ').toLowerCase()
+        // Simple substring match anywhere in combined keywords
+        if (allText.includes(q)) return true
+        // For Chinese: match each query char anywhere in combined text (order doesn't matter)
+        if (/[^\x00-\x7F]/.test(q)) {
+          let allMatch = true
+          for (const ch of q) {
+            if (!allText.includes(ch)) { allMatch = false; break }
+          }
+          if (allMatch) return true
+        }
+        // For 2+ char queries: fuzzy sequential match within individual keywords
         for (const kw of entry.keywords) {
           const kl = kw.toLowerCase()
-          // Exact substring match = highest score
-          if (kl.includes(q)) { bestScore = Math.max(bestScore, q.length * 10 + (kl === q ? 100 : 0)); continue }
-          // Fuzzy: each query char must appear in order
-          if (q.length >= 2) {
-            let pos = 0, matched = 0
-            for (const ch of q) {
-              pos = kl.indexOf(ch, pos)
-              if (pos === -1) { matched = -1; break }
-              pos++; matched++
-            }
-            if (matched > 0) bestScore = Math.max(bestScore, matched * 2)
+          let pos = 0, matched = 0
+          for (const ch of q) {
+            pos = kl.indexOf(ch, pos)
+            if (pos === -1) { matched = 0; break }
+            pos++; matched++
           }
+          if (matched >= q.length) return true
         }
-        return bestScore > 0
+        return false
       })
       .sort((a, b) => {
-        // Sort by relevance: shorter name = more precise match
         const q = query.toLowerCase().trim()
+        // Prefer: name contains query > shorter name
         const aExact = a.name.toLowerCase().includes(q) ? 1 : 0
         const bExact = b.name.toLowerCase().includes(q) ? 1 : 0
         return bExact - aExact || a.name.length - b.name.length

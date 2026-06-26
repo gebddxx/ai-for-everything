@@ -109,4 +109,14 @@ const links: ToolLink[] = [
   {name:'User-Agent 解析',url:'https://www.jyshare.com/front-end/96/',desc:{en:'Parse and decode User-Agent strings',zh:'User-Agent解析,浏览器/系统识别'},cat:'网络工具',icon:'🔎',source:'jyshare'},
   {name:'DNS 查询',url:'https://www.jyshare.com/front-end/98/',desc:{en:'DNS lookup, A/AAAA/MX/NS/TXT records',zh:'DNS查询,A/AAAA/MX/NS/TXT记录'},cat:'网络工具',icon:'🔗',source:'jyshare'},
   {name:'Ping 检测',url:'https://www.jyshare.com/front-end/99/',desc:{en:'Online ping test, check server latency',zh:'在线Ping检测,测试服务器延迟'},cat:'网络工具',icon:'📶',source:'jyshare'},
+  // === 计算器工具 ===
+  {name:'在线计算器',url:'https://www.jyshare.com/front-end/63/',desc:{en:'Online scientific calculator, basic + advanced math',zh:'在线科学计算器,基础+高级数学运算'},cat:'计算工具',icon:'🔢',source:'jyshare'},
+  {name:'汇率换算器',url:'https://www.jyshare.com/front-end/64/',desc:{en:'Currency converter, real-time exchange rates, 150+ currencies',zh:'汇率换算器,实时汇率,150+货币转换'},cat:'计算工具',icon:'💱',source:'jyshare'},
+  {name:'房贷计算器',url:'https://www.jyshare.com/front-end/66/',desc:{en:'Mortgage calculator, equal principal/interest, amortization',zh:'房贷计算器,等额本息/等额本金,还款明细'},cat:'计算工具',icon:'🏠',source:'jyshare'},
+  {name:'个税计算器',url:'https://www.jyshare.com/front-end/67/',desc:{en:'Chinese income tax calculator, salary after tax',zh:'个税计算器,工资税后计算,五险一金'},cat:'计算工具',icon:'💰',source:'jyshare'},
+  {name:'BMI 计算器',url:'https://www.jyshare.com/front-end/68/',desc:{en:'BMI calculator, body mass index, health reference',zh:'BMI计算器,身体质量指数,健康参考'},cat:'计算工具',icon:'⚕️',source:'jyshare'},
+  {name:'日期计算器',url:'https://www.jyshare.com/front-end/69/',desc:{en:'Date calculator, days between dates, add/subtract days',zh:'日期计算器,日期间隔天数,日期加减'},cat:'计算工具',icon:'📅',source:'jyshare'},
+  {name:'年龄计算器',url:'https://www.jyshare.com/front-end/70/',desc:{en:'Age calculator, precise to days, zodiac sign',zh:'年龄计算器,精确到天,星座生肖'},cat:'计算工具',icon:'🎂',source:'jyshare'},
+  {name:'孕期计算器',url:'https://www.jyshare.com/front-end/71/',desc:{en:'Pregnancy calculator, due date, trimester tracker',zh:'孕期计算器,预产期,孕期周数追踪'},cat:'计算工具',icon:'🤰',source:'jyshare'},
+  {name:'油耗计算器',url:'https://www.jyshare.com/front-end/72/',desc:{en:'Fuel consumption calculator, km/L, cost per km',zh:'油耗计算器,百公里油耗,每公里费用'},cat:'计算工具',icon:'⛽',source:'jyshare'},
 ]
