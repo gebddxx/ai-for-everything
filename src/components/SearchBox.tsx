@@ -14,23 +14,34 @@ export default function SearchBox({ onNavigate }: Props) {
   // Fuzzy match: split query into chars, all must be found in order in keywords
   const results = query.trim().length >= 1
     ? searchIndex.filter(entry => {
-        const q = query.toLowerCase()
-        return entry.keywords.some(kw => {
-          // simple substring match for most cases
-          if (kw.includes(q)) return true
-          // if query is 2+ chars, check if each char appears in order (fuzzy)
+        const q = query.toLowerCase().trim()
+        // Score each entry by best keyword match
+        let bestScore = 0
+        for (const kw of entry.keywords) {
+          const kl = kw.toLowerCase()
+          // Exact substring match = highest score
+          if (kl.includes(q)) { bestScore = Math.max(bestScore, q.length * 10 + (kl === q ? 100 : 0)); continue }
+          // Fuzzy: each query char must appear in order
           if (q.length >= 2) {
-            let pos = 0
+            let pos = 0, matched = 0
             for (const ch of q) {
-              pos = kw.indexOf(ch, pos)
-              if (pos === -1) return false
-              pos++
+              pos = kl.indexOf(ch, pos)
+              if (pos === -1) { matched = -1; break }
+              pos++; matched++
             }
-            return true
+            if (matched > 0) bestScore = Math.max(bestScore, matched * 2)
           }
-          return false
-        })
-      }).slice(0, 12)
+        }
+        return bestScore > 0
+      })
+      .sort((a, b) => {
+        // Sort by relevance: shorter name = more precise match
+        const q = query.toLowerCase().trim()
+        const aExact = a.name.toLowerCase().includes(q) ? 1 : 0
+        const bExact = b.name.toLowerCase().includes(q) ? 1 : 0
+        return bExact - aExact || a.name.length - b.name.length
+      })
+      .slice(0, 12)
     : []
 
   useEffect(() => {

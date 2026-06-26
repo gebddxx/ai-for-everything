@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "vite build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "build-index": "node scripts/build-search-index.cjs"
   },
   "dependencies": {
     "react": "^18.3.1",
