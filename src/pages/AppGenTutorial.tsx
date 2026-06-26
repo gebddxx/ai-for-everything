@@ -1,4 +1,5 @@
 import { useT } from '../contexts/LanguageContext'
+import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
@@ -22,6 +23,8 @@ export default function AppGenTutorial() {
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>📱 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
+      <LinkNav links={toolLinks} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#a855f7" />
+      <div className={styles.chart} style={{ margin: '32px 0 20px' }}><div style={{ height: 1, background: 'var(--border)', marginBottom: 20 }} /></div>
       <div className={styles.cases}>
         <Card title={l.whatIs}><p style={pStyle}>{l.whatIsBody}</p></Card>
         <Card title={l.tools}>
@@ -49,6 +52,7 @@ export default function AppGenTutorial() {
   )
 }
 
+const toolLinks: ToolLink[] = [  {name:'FlutterFlow',url:'https://flutterflow.io/',desc:{en:'AI iOS+Android, visual builder',zh:'AI生成iOS+Android原生App'},cat:'App',icon:'🦋'},  {name:'Replit Agent',url:'https://replit.com/agent',desc:{en:'Full-stack app, browser-ready',zh:'全栈App,浏览器即用'},cat:'App',icon:'🔄'},  {name:'Bolt.new',url:'https://bolt.new/',desc:{en:'Web+mobile full-stack AI',zh:'Web+移动端全栈AI'},cat:'App',icon:'⚡'},  {name:'Bubble',url:'https://bubble.io/',desc:{en:'No-code web app builder',zh:'无代码Web App构建'},cat:'App',icon:'🫧'},  {name:'Supabase',url:'https://supabase.com/',desc:{en:'Open-source backend-as-service',zh:'开源后端即服务'},cat:'App',icon:'🟢'},  {name:'Firebase',url:'https://firebase.google.com/',desc:{en:'Google mobile backend',zh:'Google移动后端'},cat:'App',icon:'🔥'},  {name:'扣子Coze',url:'https://www.coze.cn/',desc:{en:'Zero-code AI bot builder',zh:'零代码AI Bot搭建'},cat:'App',icon:'🧩'},  {name:'Dify',url:'https://dify.ai/',desc:{en:'Open-source LLM app platform',zh:'开源LLM应用开发平台'},cat:'App',icon:'🔮'},]
 const CODE = {
   step1: `# FlutterFlow — AI-Powered Mobile App Builder
 # Visit: https://flutterflow.io/

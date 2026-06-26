@@ -1,4 +1,5 @@
 import { useT } from '../contexts/LanguageContext'
+import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
@@ -22,6 +23,8 @@ export default function VideoGenTutorial() {
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>🎬 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
+      <LinkNav links={toolLinks} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#a855f7" />
+      <div className={styles.chart} style={{ margin: '32px 0 20px' }}><div style={{ height: 1, background: 'var(--border)', marginBottom: 20 }} /></div>
       <div className={styles.cases}>
         <Card title={l.whatIs}><p style={pStyle}>{l.whatIsBody}</p></Card>
         <Card title={l.tools}>
@@ -50,6 +53,7 @@ export default function VideoGenTutorial() {
   )
 }
 
+const toolLinks: ToolLink[] = [  {name:'Runway Gen-3',url:'https://runwayml.com/',desc:{en:'Best text-to-video, cinematic quality',zh:'文生视频最强,电影级画质'},cat:'视频',icon:'🎬'},  {name:'可灵AI',url:'https://klingai.com/',desc:{en:'Kuaishou, top AI image+video',zh:'快手出品,画质极高'},cat:'视频',icon:'🎬'},  {name:'Vidu',url:'https://www.vidu.com/',desc:{en:'Top Chinese video model',zh:'国产视频大模型,中文友好'},cat:'视频',icon:'🎞️'},  {name:'PixVerse',url:'https://pixverse.ai/',desc:{en:'Fast video gen, viral effects',zh:'快速出视频,创意特效'},cat:'视频',icon:'✨'},  {name:'HeyGen',url:'https://www.heygen.com/',desc:{en:'AI avatar video, multi-language',zh:'AI数字人播报,多语种配音'},cat:'视频',icon:'🎙️'},  {name:'Pika',url:'https://pika.art/',desc:{en:'Quick social clips, fun effects',zh:'快速社媒短视频'},cat:'视频',icon:'⚡'},  {name:'剪映/CapCut',url:'https://www.capcut.com/',desc:{en:'AI editing, auto captions',zh:'AI剪辑+字幕'},cat:'视频',icon:'✂️'},  {name:'智影',url:'https://zenvideo.qq.com/',desc:{en:'Tencent digital human studio',zh:'腾讯数字人播报'},cat:'视频',icon:'🎬'},]
 const CODE = {
   step1: `# Runway Gen-3 — Best Text-to-Video
 # Visit: https://runwayml.com/

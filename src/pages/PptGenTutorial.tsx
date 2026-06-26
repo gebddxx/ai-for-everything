@@ -1,4 +1,5 @@
 import { useT } from '../contexts/LanguageContext'
+import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
@@ -22,6 +23,8 @@ export default function PptGenTutorial() {
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>📊 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
+      <LinkNav links={toolLinks} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#a855f7" />
+      <div className={styles.chart} style={{ margin: '32px 0 20px' }}><div style={{ height: 1, background: 'var(--border)', marginBottom: 20 }} />
       <div className={styles.cases}>
         <Card title={l.whatIs}><p style={pStyle}>{l.whatIsBody}</p></Card>
         <Card title={l.tools}>
@@ -61,6 +64,21 @@ export default function PptGenTutorial() {
     </div>
   )
 }
+
+const toolLinks: ToolLink[] = [
+  {name:'Gamma',url:'https://gamma.app/',desc:{en:'Best AI PPT, one-click design, export PPTX',zh:'最好用的AI PPT,一键设计,在线展示,导出PPTX'},cat:'PPT',icon:'📊'},
+  {name:'AiPPT',url:'https://www.aippt.cn/',desc:{en:'Auto-generate PPT outline + template, one-click',zh:'自动生成PPT大纲和模板,一键完成'},cat:'PPT',icon:'📊'},
+  {name:'Beautiful.ai',url:'https://www.beautiful.ai/',desc:{en:'Smart templates, auto-layout, brand consistency',zh:'智能模板,自动排版,品牌风格统一'},cat:'PPT',icon:'💎'},
+  {name:'Tome',url:'https://tome.app/',desc:{en:'Storytelling slides, interactive embeds',zh:'叙事型幻灯片,支持交互式嵌入'},cat:'PPT',icon:'📖'},
+  {name:'ChatPPT',url:'https://www.chatppt.com/',desc:{en:'Chinese-native AI PPT, WeChat mini-program',zh:'中文原生AI PPT,微信小程序可用'},cat:'PPT',icon:'💬'},
+  {name:'SlidesAI',url:'https://www.slidesai.io/',desc:{en:'Google Slides plugin, text→slides',zh:'Google Slides插件,文字直接生成幻灯片'},cat:'PPT',icon:'📄'},
+  {name:'Boardmix',url:'https://boardmix.cn/',desc:{en:'AI whiteboard: mind map, flowchart, PPT gen',zh:'AI白板:思维导图/流程图/PPT一键生成'},cat:'PPT',icon:'🖼️'},
+  {name:'歌者AI',url:'https://www.gezhe.com/',desc:{en:'Topic/WeChat article/text → PPT generation',zh:'话题/微信文章/文本→PPT自动生成'},cat:'PPT',icon:'🎤'},
+  {name:'百度文库AI',url:'https://wenku.baidu.com/',desc:{en:'Baidu Wenku AI, input topic→generate PPT',zh:'百度文库AI,输入主题自动生成PPT'},cat:'PPT',icon:'📚'},
+  {name:'WPS AI',url:'https://www.wps.com/ai/',desc:{en:'Kingsoft WPS built-in AI, doc/sheet/slide AI',zh:'金山WPS内置AI,文档/表格/演示全AI化'},cat:'PPT',icon:'📎'},
+  {name:'Decktopus',url:'https://www.decktopus.com/',desc:{en:'Sales & pitch decks, AI-powered',zh:'销售/路演PPT专用,AI驱动'},cat:'PPT',icon:'🎯'},
+  {name:'Canva',url:'https://www.canva.com/',desc:{en:'Magic Design, AI PPT, rich templates',zh:'魔法设计+AI PPT,模板丰富'},cat:'PPT',icon:'🖼️'},
+]
 
 const CODE = {
   step1: `# Gamma — Best AI PPT Generator

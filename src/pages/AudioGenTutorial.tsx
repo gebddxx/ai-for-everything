@@ -1,4 +1,5 @@
 import { useT } from '../contexts/LanguageContext'
+import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
@@ -26,6 +27,8 @@ export default function AudioGenTutorial() {
         <h2 className={styles.title}>🎵 {l.pageTitle}</h2>
         <p className={styles.subtitle}>{l.pageSub}</p>
       </div>
+      <LinkNav links={toolLinks} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#a855f7" />
+      <div className={styles.chart} style={{ margin: '32px 0 20px' }}><div style={{ height: 1, background: 'var(--border)', marginBottom: 20 }} /></div>
       <div className={styles.cases}>
         <Card title={l.whatIs}><p style={pStyle}>{l.whatIsBody}</p></Card>
         <Card title={l.tools}>
@@ -62,6 +65,7 @@ export default function AudioGenTutorial() {
   )
 }
 
+const toolLinks: ToolLink[] = [  {name:'Suno',url:'https://suno.com/',desc:{en:'Full songs from text, multiple genres',zh:'文字→完整歌曲,多风格支持'},cat:'音频',icon:'☀️'},  {name:'Udio',url:'https://www.udio.com/',desc:{en:'High-quality AI music generation',zh:'高质量AI音乐,音质出众'},cat:'音频',icon:'🎵'},  {name:'ElevenLabs',url:'https://elevenlabs.io/',desc:{en:'Best TTS, voice cloning, 29 languages',zh:'最自然的AI语音,声音克隆,29种语言'},cat:'音频',icon:'🔊'},  {name:'海绵音乐',url:'https://haimian.music.163.com/',desc:{en:'Netease AI music, easy creation',zh:'网易AI音乐,门槛低,随手创作'},cat:'音频',icon:'🧽'},  {name:'AIVA',url:'https://www.aiva.ai/',desc:{en:'Classical/ambient composition',zh:'古典/氛围音乐创作'},cat:'音频',icon:'🎼'},  {name:'Murf.ai',url:'https://murf.ai/',desc:{en:'Professional AI voiceovers',zh:'专业AI配音'},cat:'音频',icon:'🎤'},  {name:'TTSMaker',url:'https://ttsmaker.com/',desc:{en:'Text-to-speech, 50+ languages',zh:'文本转语音,50+语种'},cat:'音频',icon:'🗣️'},  {name:'讯飞智作',url:'https://peiyin.xunfei.cn/',desc:{en:'iFlytek AI dubbing, voice cloning',zh:'科大讯飞AI配音,声音克隆'},cat:'音频',icon:'🎙️'},]
 const CODE = {
   step1: `# Suno — Text to Full Songs
 # Visit: https://suno.com/

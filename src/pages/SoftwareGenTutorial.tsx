@@ -1,4 +1,5 @@
 import { useT } from '../contexts/LanguageContext'
+import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
@@ -23,6 +24,8 @@ export default function SoftwareGenTutorial() {
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>💻 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
+      <LinkNav links={toolLinks} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#a855f7" />
+      <div className={styles.chart} style={{ margin: '32px 0 20px' }}><div style={{ height: 1, background: 'var(--border)', marginBottom: 20 }} /></div>
       <div className={styles.cases}>
         <Card title={l.whatIs}><p style={pStyle}>{l.whatIsBody}</p></Card>
         <Card title={l.tools}>
@@ -52,6 +55,7 @@ export default function SoftwareGenTutorial() {
   )
 }
 
+const toolLinks: ToolLink[] = [  {name:'Cursor',url:'https://cursor.com/',desc:{en:'AI-first IDE, best code gen',zh:'AI编程IDE,最强代码生成'},cat:'软件',icon:'🖱️'},  {name:'Trae',url:'https://www.trae.ai/',desc:{en:'ByteDance AI IDE, free Claude',zh:'字节AI编程,免费Claude'},cat:'软件',icon:'💻'},  {name:'GitHub Copilot',url:'https://github.com/features/copilot',desc:{en:'VS Code AI autocomplete',zh:'VS Code AI补全'},cat:'软件',icon:'🐙'},  {name:'CodeGeeX',url:'https://codegeex.cn/',desc:{en:'Tsinghua AI coding assistant',zh:'清华AI编程助手'},cat:'软件',icon:'🔧'},  {name:'MarsCode',url:'https://www.marscode.cn/',desc:{en:'ByteDance AI code tool',zh:'豆包AI编程工具'},cat:'软件',icon:'🚀'},  {name:'通义灵码',url:'https://tongyi.aliyun.com/lingma/',desc:{en:'Alibaba AI code assistant',zh:'阿里云AI代码助手'},cat:'软件',icon:'🧩'},  {name:'Electron',url:'https://www.electronjs.org/',desc:{en:'Desktop app framework',zh:'Web→桌面应用框架'},cat:'软件',icon:'⚛️'},  {name:'Tauri',url:'https://tauri.app/',desc:{en:'Lightweight desktop (Rust)',zh:'轻量桌面应用(Rust)'},cat:'软件',icon:'🦀'},]
 const CODE = {
   step1: `# AI Coding Environment Setup
 

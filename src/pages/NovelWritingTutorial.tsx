@@ -1,4 +1,5 @@
 import { useT } from '../contexts/LanguageContext'
+import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
@@ -23,6 +24,8 @@ export default function NovelWritingTutorial() {
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>📝 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
+      <LinkNav links={toolLinks} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#a855f7" />
+      <div className={styles.chart} style={{ margin: '32px 0 20px' }}><div style={{ height: 1, background: 'var(--border)', marginBottom: 20 }} /></div>
       <div className={styles.cases}>
         <Card title={l.whatIs}><p style={pStyle}>{l.whatIsBody}</p></Card>
         <Card title={l.tools}>
@@ -51,6 +54,7 @@ export default function NovelWritingTutorial() {
   )
 }
 
+const toolLinks: ToolLink[] = [  {name:'Claude',url:'https://claude.ai/',desc:{en:'200K context, deep writing',zh:'200K上下文深度写作'},cat:'写作',icon:'🟠'},  {name:'ChatGPT',url:'https://chat.openai.com/',desc:{en:'Brainstorming+ dialogue gen',zh:'头脑风暴+对话生成'},cat:'写作',icon:'⚫'},  {name:'DeepSeek',url:'https://chat.deepseek.com/',desc:{en:'1M token context, low cost',zh:'百万token,低成本长文'},cat:'写作',icon:'🐋'},  {name:'Kimi',url:'https://kimi.moonshot.cn/',desc:{en:'2M Chinese chars, long text',zh:'200万字中文长文本'},cat:'写作',icon:'🌙'},  {name:'秘塔写作猫',url:'https://xiezuocat.com/',desc:{en:'Chinese AI writing, polish',zh:'中文纠错润色'},cat:'写作',icon:'🐱'},  {name:'彩云小梦',url:'https://caiyunai.com/',desc:{en:'AI novel continuation',zh:'AI续写小说剧本'},cat:'写作',icon:'🌈'},  {name:'Grammarly',url:'https://www.grammarly.com/',desc:{en:'Grammar, tone, clarity',zh:'语法校对+语调优化'},cat:'写作',icon:'✅'},  {name:'DeepL Write',url:'https://www.deepl.com/write',desc:{en:'Multilingual style polish',zh:'多语种润色'},cat:'写作',icon:'🌍'},]
 const CODE = {
   step1: `# Worldbuilding & Character Creation
 # Use this prompt with Claude/ChatGPT:

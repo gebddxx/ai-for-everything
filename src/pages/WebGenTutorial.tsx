@@ -1,4 +1,5 @@
 import { useT } from '../contexts/LanguageContext'
+import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
@@ -22,6 +23,8 @@ export default function WebGenTutorial() {
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>🌐 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
+      <LinkNav links={toolLinks} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#a855f7" />
+      <div className={styles.chart} style={{ margin: '32px 0 20px' }}><div style={{ height: 1, background: 'var(--border)', marginBottom: 20 }} /></div>
       <div className={styles.cases}>
         <Card title={l.whatIs}><p style={pStyle}>{l.whatIsBody}</p></Card>
         <Card title={l.tools}>
@@ -49,6 +52,7 @@ export default function WebGenTutorial() {
   )
 }
 
+const toolLinks: ToolLink[] = [  {name:'v0.dev',url:'https://v0.dev/',desc:{en:'Vercel, text→React UI code, copy-paste',zh:'Vercel出品,文字→React UI代码,复制即用'},cat:'网页',icon:'🟢'},  {name:'Bolt.new',url:'https://bolt.new/',desc:{en:'Full-stack web app, browser-ready',zh:'全栈Web应用,浏览器即运行'},cat:'网页',icon:'⚡'},  {name:'Lovable',url:'https://lovable.dev/',desc:{en:'Complete SaaS app, Supabase integration',zh:'完整SaaS应用,Supabase集成'},cat:'网页',icon:'❤️'},  {name:'Replit Agent',url:'https://replit.com/agent',desc:{en:'Full-stack app, prototype→deploy',zh:'全栈应用,原型→生产部署'},cat:'网页',icon:'🔄'},  {name:'Framer AI',url:'https://www.framer.com/ai/',desc:{en:'AI website builder, design→live site',zh:'AI建站,设计→上线网站'},cat:'网页',icon:'🟣'},  {name:'Webflow',url:'https://webflow.com/',desc:{en:'Visual site builder + AI',zh:'可视化建站+AI'},cat:'网页',icon:'🌊'},  {name:'Cursor',url:'https://cursor.com/',desc:{en:'AI-first code editor, build websites',zh:'AI编程IDE,从零写网站'},cat:'网页',icon:'🖱️'},  {name:'Trae',url:'https://www.trae.ai/',desc:{en:'ByteDance AI IDE, free Claude 3.7',zh:'字节AI编程IDE,免费Claude'},cat:'网页',icon:'💻'},]
 const CODE = {
   step1: `# v0.dev — Text to React Components
 # Visit: https://v0.dev/
