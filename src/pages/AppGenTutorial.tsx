@@ -6,9 +6,9 @@ import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 export default function AppGenTutorial() {
   const { lang } = useT()
   const l = {
-    pageTitle: lang === 'zh-CN' ? 'AI App 生成教程' : lang === 'zh-TW' ? 'AI App 生成教學' : 'AI App Generation — Complete Guide',
-    pageSub: lang === 'zh-CN' ? '提示词→移动App · FlutterFlow/Replit/Bolt · iOS+Android' : lang === 'zh-TW' ? '提示詞→移動App · FlutterFlow/Replit/Bolt · iOS+Android' : 'Prompt→Mobile App · FlutterFlow/Replit/Bolt · iOS+Android',
-    whatIs: lang === 'zh-CN' ? 'AI App生成概览' : lang === 'zh-TW' ? 'AI App生成概覽' : 'Overview',
+    pageTitle: lang === 'zh-CN' ? '手机App 生成教程' : lang === 'zh-TW' ? '手機App 生成教學' : 'AI App Generation — Complete Guide',
+    pageSub: lang === 'zh-CN' ? '提示词→手机App · FlutterFlow/Replit/Bolt · iOS+Android' : lang === 'zh-TW' ? '提示詞→手機App · FlutterFlow/Replit/Bolt · iOS+Android' : 'Prompt→Mobile App · FlutterFlow/Replit/Bolt · iOS+Android',
+    whatIs: lang === 'zh-CN' ? '手机App生成概览' : lang === 'zh-TW' ? '手機App生成概覽' : 'Overview',
     whatIsBody: lang === 'zh-CN' ? '现在你可以用AI在几小时内生成一个完整的App——包括前端UI、后端API、数据库和用户认证。FlutterFlow专注移动App，Replit Agent可以生成全栈应用，Bolt.new支持Web+移动端。本教程覆盖：App原型生成、后端搭建、打包发布全流程。' : lang === 'zh-TW' ? '現在你可以用AI在幾小時內生成一個完整的App——包括前端UI、後端API、數據庫和用戶認證。FlutterFlow專注移動App，Replit Agent可以生成全棧應用，Bolt.new支援Web+移動端。本教學覆蓋：App原型生成、後端搭建、打包發布全流程。' : 'You can now generate a complete app in hours — frontend UI, backend API, database, and auth. FlutterFlow focuses on mobile, Replit Agent handles full-stack, and Bolt.new supports web+mobile. This guide covers: prototyping, backend setup, and publishing.',
     tools: lang === 'zh-CN' ? '推荐工具' : lang === 'zh-TW' ? '推薦工具' : 'Recommended Tools',
     quickLinks: lang === 'zh-CN' ? '👇 工具直达' : lang === 'zh-TW' ? '👇 工具直達' : '👇 Quick Links',

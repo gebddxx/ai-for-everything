@@ -577,6 +577,7 @@ export const searchIndex: SearchEntry[] = [
   { name:'通义灵码', keywords:['通义灵码','通','义','灵','码','阿里云AI代码助手'], domain:'aigc', section:'software-gen' },
   { name:'Electron', keywords:['electron','Web→桌面应用框架'], domain:'aigc', section:'software-gen' },
   { name:'Tauri', keywords:['tauri','轻量桌面应用(Rust)'], domain:'aigc', section:'software-gen' },
+  { name:'Manus', keywords:['manus','AI智能体,提示词自动生成桌面软件'], domain:'aigc', section:'software-gen' },
   { name:'Waymo', keywords:['waymo','Alphabet旗下,L4级无人驾驶,每','交通','出行','自动驾驶','无人车','jiaotong'], domain:'ai-industries', section:'transport' },
   { name:'特斯拉FSD', keywords:['特斯拉fsd','特','斯','拉','端到端神经网络驾驶,训练数据超10亿英里','交通','出行','自动驾驶','无人车','jiaotong'], domain:'ai-industries', section:'transport' },
   { name:'百度Apollo', keywords:['百度apollo','百','度','L4无人驾驶开放平台,萝卜快跑武汉500','交通','出行','自动驾驶','无人车','jiaotong'], domain:'ai-industries', section:'transport' },

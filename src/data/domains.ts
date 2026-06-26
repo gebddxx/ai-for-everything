@@ -90,8 +90,8 @@ export const domains: Domain[] = [
       { key: 'novel', icon: '📝', title: { en: 'Novel', 'zh-CN': '小说写作', 'zh-TW': '小說寫作' } },
       { key: 'ppt-gen', icon: '📊', title: { en: 'PPT', 'zh-CN': 'PPT生成', 'zh-TW': 'PPT生成' } },
       { key: 'web-gen', icon: '🌐', title: { en: 'Web Page', 'zh-CN': '网页生成', 'zh-TW': '網頁生成' } },
-      { key: 'app-gen', icon: '📱', title: { en: 'App', 'zh-CN': 'App生成', 'zh-TW': 'App生成' } },
-      { key: 'software-gen', icon: '💻', title: { en: 'Software', 'zh-CN': '软件生成', 'zh-TW': '軟體生成' } },
+      { key: 'app-gen', icon: '📱', title: { en: 'Mobile App', 'zh-CN': 'App生成', 'zh-TW': 'App生成' } },
+      { key: 'software-gen', icon: '💻', title: { en: 'Desktop Software', 'zh-CN': '桌面软件生成', 'zh-TW': '桌面軟體生成' } },
     ],
   },
   {

@@ -13,8 +13,8 @@ const sections = [
   { key: 'novel', icon: '📝', title: { en: 'Novel', 'zh-CN': '小说写作', 'zh-TW': '小說寫作' }, Component: NovelWritingTutorial },
   { key: 'ppt-gen', icon: '📊', title: { en: 'PPT', 'zh-CN': 'PPT生成', 'zh-TW': 'PPT生成' }, Component: PptGenTutorial },
   { key: 'web-gen', icon: '🌐', title: { en: 'Web Page', 'zh-CN': '网页生成', 'zh-TW': '網頁生成' }, Component: WebGenTutorial },
-  { key: 'app-gen', icon: '📱', title: { en: 'App', 'zh-CN': 'App生成', 'zh-TW': 'App生成' }, Component: AppGenTutorial },
-  { key: 'software-gen', icon: '💻', title: { en: 'Software', 'zh-CN': '软件生成', 'zh-TW': '軟體生成' }, Component: SoftwareGenTutorial },
+  { key: 'app-gen', icon: '📱', title: { en: 'App', 'zh-CN': '手机App生成', 'zh-TW': '手机App生成' }, Component: AppGenTutorial },
+  { key: 'software-gen', icon: '💻', title: { en: 'Software', 'zh-CN': '桌面软件生成', 'zh-TW': '桌面軟體生成' }, Component: SoftwareGenTutorial },
 ]
 
 export default function AigcOverview() {
