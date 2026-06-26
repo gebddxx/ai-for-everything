@@ -20,8 +20,8 @@ export const domains: Domain[] = [
     title: { en: 'Tool Directory', 'zh-CN': '导航工具集', 'zh-TW': '導航工具集' },
     icon: '🧭',
     desc: {
-      en: 'Curated directories of 200+ useful tools across 7 categories — search engines, chatbots, design, creative, office, 3D/gaming, AI agents, and more. One-stop find for everything you need.',
-      'zh-CN': '精选200+实用工具导航，覆盖搜索、对话、设计、创意、办公、3D/游戏、智能体等7大分类。一站式找到你需要的工具。',
+      en: 'Curated directories of 200+ useful tools across 8 categories — search engines, chatbots, design, creative, office, 3D/gaming, AI agents, and more. One-stop find for everything you need.',
+      'zh-CN': '精选200+实用工具导航，覆盖搜索、对话、设计、创意、办公、3D/游戏、智能体等8大分类。一站式找到你需要的工具。',
       'zh-TW': '精選200+實用工具導航，覆蓋搜索、對話、設計、創意、辦公、3D/遊戲、智能體等8大分類。一站式找到你需要的工具。',
     },
     color: '#3b82f6',
@@ -35,6 +35,7 @@ export const domains: Domain[] = [
       { key: '3d-game', icon: '🎮', title: { en: '3D & Gaming', 'zh-CN': '3D与游戏', 'zh-TW': '3D與遊戲' } },
       { key: 'office', icon: '📋', title: { en: 'Office & Productivity', 'zh-CN': '办公提效', 'zh-TW': '辦公提效' } },
       { key: 'agents', icon: '🤖', title: { en: 'Agents & Automation', 'zh-CN': '智能体', 'zh-TW': '智能體' } },
+      { key: 'dev-tools', icon: '🔧', title: { en: 'Dev Tools', 'zh-CN': '开发工具', 'zh-TW': '開發工具' } },
     ],
   },
   {
