@@ -19,7 +19,7 @@ export default function Header({ onBack }: Props) {
           ←
         </button>
       )}
-      <div onClick={() => onBack?.()} title="回到首页" style={{ display: 'flex', alignItems: 'center', gap: 12, cursor: onBack ? 'pointer' : 'default', userSelect: 'none' }}>
+      <div onClick={() => onBack?.()} title="回到首页" style={{ display: 'flex', alignItems: 'center', gap: 12, cursor: 'pointer', userSelect: 'none' }}>
         <span className={styles.logo}>📦</span>
         <h1 className={styles.title}>{t.header.title}</h1>
       </div>
