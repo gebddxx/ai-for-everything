@@ -9,9 +9,10 @@ interface Props {
   activePage: string
   onSelectPage: (key: string) => void
   onSelectDomain: (key: string) => void
+  onHome: () => void
 }
 
-export default function Sidebar({ domain, activePage, onSelectPage, onSelectDomain }: Props) {
+export default function Sidebar({ domain, activePage, onSelectPage, onSelectDomain, onHome }: Props) {
   const { t, lang } = useT()
   const [expanded, setExpanded] = useState<Set<string>>(() => {
     return domain ? new Set([domain]) : new Set()
@@ -35,6 +36,16 @@ export default function Sidebar({ domain, activePage, onSelectPage, onSelectDoma
       <div className={styles.sectionTitle}>
         {lang === 'zh-CN' ? '导航' : lang === 'zh-TW' ? '導航' : 'Navigation'}
       </div>
+
+      {/* Home button */}
+      <button
+        className={`${styles.item} ${domain === null ? styles.activeDomain : ''}`}
+        onClick={onHome}
+        style={{ marginBottom: 6 }}
+      >
+        <span className={styles.icon}>🏠</span>
+        <span className={styles.label}>{lang === 'zh-CN' ? '首页' : lang === 'zh-TW' ? '首頁' : 'Home'}</span>
+      </button>
 
       {domains.map((d) => {
         const title = d.title[lang as Lang]

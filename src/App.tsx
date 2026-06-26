@@ -123,7 +123,7 @@ function AppContent() {
     <div className={styles.app}>
       <Header onBack={domain ? handleBack : undefined} />
       <div className={styles.body}>
-        <Sidebar domain={domain} activePage={activePage} onSelectPage={handleSelectPage} onSelectDomain={handleEnterDomain} />
+        <Sidebar domain={domain} activePage={activePage} onSelectPage={handleSelectPage} onSelectDomain={handleEnterDomain} onHome={handleBack} />
         <div className={styles.handle} onMouseDown={onMouseDown} />
         <main className={styles.content}>
           <BreadcrumbBlock domain={domain} activePage={activePage} onBack={handleBack}  />
