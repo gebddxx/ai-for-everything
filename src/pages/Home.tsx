@@ -168,10 +168,31 @@ export default function Home({ onEnter }: Props) {
           : lang === 'zh-TW'
           ? '點擊上方任意卡片進入對應板塊 · 側邊欄可展開子目錄 · 點擊左上角 📦 隨時回到這裡'
           : 'Click any card above to explore · Sidebar expands sub-categories · Click 📦 logo to return here'}
-        <br />
-        <span onClick={() => onEnter('ai-news')} style={{ color: 'var(--primary)', cursor: 'pointer', fontWeight: 600 }}>
-          📰 {lang === 'zh-CN' ? 'AI速报' : lang === 'zh-TW' ? 'AI速報' : 'AI News Brief'} → {lang === 'zh-CN' ? '查看最新AI行业快讯' : lang === 'zh-TW' ? '查看最新AI行業快訊' : 'Latest AI industry updates'}
-        </span>
+        <div onClick={() => onEnter('ai-news')} style={{
+          background: 'linear-gradient(135deg, #1e3a5f, #3b5998)',
+          borderRadius: 12,
+          padding: '16px 24px',
+          marginTop: 20,
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          color: '#fff',
+          transition: 'transform .15s',
+        }}
+        onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.01)' }}
+        onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1)' }}
+        >
+          <div>
+            <div style={{ fontSize: 18, fontWeight: 700, marginBottom: 4 }}>
+              📰 {lang === 'zh-CN' ? 'AI速报' : lang === 'zh-TW' ? 'AI速報' : 'AI News Brief'}
+            </div>
+            <div style={{ fontSize: 13, opacity: 0.8 }}>
+              {lang === 'zh-CN' ? '每4小时更新的AI行业快讯，已更新1,379+期' : lang === 'zh-TW' ? '每4小時更新的AI行業快訊，已更新1,379+期' : 'AI industry news updated every 4 hours, 1,379+ issues'}
+            </div>
+          </div>
+          <span style={{ fontSize: 28 }}>→</span>
+        </div>
       </div>
     </div>
   )
