@@ -10,6 +10,7 @@ export default function NovelWritingTutorial() {
     whatIs: lang === 'zh-CN' ? 'AI辅助写作概览' : lang === 'zh-TW' ? 'AI輔助寫作概覽' : 'Overview',
     whatIsBody: lang === 'zh-CN' ? 'Claude的200K上下文可一次性处理整本小说，ChatGPT擅长头脑风暴和对话生成，DeepSeek以极低成本支持百万token。本教程手把手教你用AI完成：世界观构建、人物设定、情节大纲、逐章写作、润色校对、投稿排版全流程。' : lang === 'zh-TW' ? 'Claude的200K上下文可一次性處理整本小說，ChatGPT擅長頭腦風暴和對話生成，DeepSeek以極低成本支持百萬token。本教學手把手教你用AI完成：世界觀構建、人物設定、情節大綱、逐章寫作、潤色校對、投稿排版全流程。' : 'Claude\'s 200K context handles entire novels at once, ChatGPT excels at brainstorming and dialogue, and DeepSeek supports a million tokens at low cost. This guide walks you through worldbuilding, character development, plotting, chapter-by-chapter writing, editing, and formatting.',
     tools: lang === 'zh-CN' ? '推荐AI写作工具' : lang === 'zh-TW' ? '推薦AI寫作工具' : 'Recommended Writing Tools',
+    quickLinks: lang === 'zh-CN' ? '👇 工具直达' : lang === 'zh-TW' ? '👇 工具直達' : '👇 Quick Links',
     step1: lang === 'zh-CN' ? '第1步：世界观与人物设定' : lang === 'zh-TW' ? '第1步：世界觀與人物設定' : 'Step 1: Worldbuilding & Characters',
     step2: lang === 'zh-CN' ? '第2步：大纲与章节规划' : lang === 'zh-TW' ? '第2步：大綱與章節規劃' : 'Step 2: Outline & Chapter Planning',
     step3: lang === 'zh-CN' ? '第3步：逐章写作' : lang === 'zh-TW' ? '第3步：逐章寫作' : 'Step 3: Chapter Writing',

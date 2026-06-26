@@ -10,4 +10,13 @@ export default defineConfig(({ mode }) => ({
       interval: 1000,
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          recharts: ['recharts'],
+        },
+      },
+    },
+  },
 }))

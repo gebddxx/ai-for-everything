@@ -10,6 +10,7 @@ export default function SoftwareGenTutorial() {
     whatIs: lang === 'zh-CN' ? 'AI软件生成概览' : lang === 'zh-TW' ? 'AI軟體生成概覽' : 'Overview',
     whatIsBody: lang === 'zh-CN' ? '不只是网页和App——AI还能帮你生成桌面软件（.exe/.dmg）、命令行工具、自动化脚本、浏览器插件、后端服务器。Cursor、Claude Code、GitHub Copilot等工具让非程序员也能"说出需求，得到软件"。本教程覆盖：桌面应用、CLI工具、浏览器插件、打包分发全流程。' : lang === 'zh-TW' ? '不只是網頁和App——AI還能幫你生成桌面軟體（.exe/.dmg）、命令列工具、自動化腳本、瀏覽器擴充功能、後端伺服器。Cursor、Claude Code、GitHub Copilot等工具讓非程式設計師也能"說出需求，得到軟體"。本教學覆蓋：桌面應用、CLI工具、瀏覽器擴充功能、打包分發全流程。' : 'Beyond web and mobile — AI can generate desktop software (.exe/.dmg), CLI tools, automation scripts, browser extensions, and backend servers. Tools like Cursor, Claude Code, and GitHub Copilot let non-programmers "describe what they want and get software." This guide covers: desktop apps, CLI tools, browser extensions, and packaging.',
     tools: lang === 'zh-CN' ? '推荐AI编程工具' : lang === 'zh-TW' ? '推薦AI編程工具' : 'Recommended AI Coding Tools',
+    quickLinks: lang === 'zh-CN' ? '👇 工具直达' : lang === 'zh-TW' ? '👇 工具直達' : '👇 Quick Links',
     step1: lang === 'zh-CN' ? '第1步：AI编程环境搭建' : lang === 'zh-TW' ? '第1步：AI編程環境搭建' : 'Step 1: AI Coding Environment Setup',
     step2: lang === 'zh-CN' ? '第2步：生成桌面应用 (Electron/Tauri)' : lang === 'zh-TW' ? '第2步：生成桌面應用 (Electron/Tauri)' : 'Step 2: Desktop App with Electron/Tauri',
     step3: lang === 'zh-CN' ? '第3步：生成命令行工具 (CLI)' : lang === 'zh-TW' ? '第3步：生成命令列工具 (CLI)' : 'Step 3: CLI Tool Generation',

@@ -10,6 +10,7 @@ export default function WebGenTutorial() {
     whatIs: lang === 'zh-CN' ? 'AI网页生成概览' : lang === 'zh-TW' ? 'AI網頁生成概覽' : 'Overview',
     whatIsBody: lang === 'zh-CN' ? '现在你可以用自然语言描述一个网站，AI在几秒钟内生成完整的代码并部署上线。v0.dev专注React组件生成，Bolt.new可以生成全栈应用，Lovable能打造完整的Web App。本教程教你从零构建和部署AI生成的网站。' : lang === 'zh-TW' ? '現在你可以用自然語言描述一個網站，AI在幾秒鐘內生成完整的程式碼並部署上線。v0.dev專注React組件生成，Bolt.new可以生成全棧應用，Lovable能打造完整的Web App。本教學教你從零構建和部署AI生成的網站。' : 'You can now describe a website in natural language, and AI generates complete code and deploys it in seconds. v0.dev focuses on React components, Bolt.new generates full-stack apps, and Lovable builds complete web apps. This guide teaches you how to build and deploy AI-generated websites from scratch.',
     tools: lang === 'zh-CN' ? '推荐工具' : lang === 'zh-TW' ? '推薦工具' : 'Recommended Tools',
+    quickLinks: lang === 'zh-CN' ? '👇 工具直达' : lang === 'zh-TW' ? '👇 工具直達' : '👇 Quick Links',
     step1: lang === 'zh-CN' ? '第1步：v0.dev — 提示词生成React组件' : lang === 'zh-TW' ? '第1步：v0.dev — 提示詞生成React組件' : 'Step 1: v0.dev for React Components',
     step2: lang === 'zh-CN' ? '第2步：Bolt.new — 全栈应用生成' : lang === 'zh-TW' ? '第2步：Bolt.new — 全棧應用生成' : 'Step 2: Bolt.new for Full-Stack Apps',
     step3: lang === 'zh-CN' ? '第3步：Lovable — 完整的Web App' : lang === 'zh-TW' ? '第3步：Lovable — 完整的Web App' : 'Step 3: Lovable for Complete Web Apps',

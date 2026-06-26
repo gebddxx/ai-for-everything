@@ -10,6 +10,7 @@ export default function VideoGenTutorial() {
     whatIs: lang === 'zh-CN' ? 'AI视频生成概览' : lang === 'zh-TW' ? 'AI影片生成概覽' : 'Overview',
     whatIsBody: lang === 'zh-CN' ? 'AI视频生成是AIGC增长最快的领域之一。OpenAI Sora实现了照片级真实感视频生成，Runway Gen-3在电影级画质上不断突破，HeyGen让普通人也能制作专业数字人视频。本教程涵盖文生视频、数字人播报、AI视频剪辑、特效制作四大模块。' : lang === 'zh-TW' ? 'AI影片生成是AIGC增長最快的領域之一。OpenAI Sora實現了照片級真實感影片生成，Runway Gen-3在電影級畫質上不斷突破，HeyGen讓普通人也能製作專業數字人影片。本教學涵蓋文生影片、數字人播報、AI影片剪輯、特效製作四大模塊。' : 'AI video generation is one of the fastest-growing AIGC areas. OpenAI Sora achieves photorealism, Runway Gen-3 keeps pushing cinematic quality, and HeyGen enables anyone to create professional avatar videos. This guide covers text-to-video, AI avatars, AI editing, and visual effects.',
     tools: lang === 'zh-CN' ? '推荐工具' : lang === 'zh-TW' ? '推薦工具' : 'Recommended Tools',
+    quickLinks: lang === 'zh-CN' ? '👇 工具直达' : lang === 'zh-TW' ? '👇 工具直達' : '👇 Quick Links',
     step1: lang === 'zh-CN' ? '第1步：文生视频 (Runway / Sora)' : lang === 'zh-TW' ? '第1步：文生影片 (Runway / Sora)' : 'Step 1: Text-to-Video',
     step2: lang === 'zh-CN' ? '第2步：AI数字人视频 (HeyGen)' : lang === 'zh-TW' ? '第2步：AI數字人影片 (HeyGen)' : 'Step 2: AI Avatar Videos',
     step3: lang === 'zh-CN' ? '第3步：AI视频剪辑 (剪映/Descript)' : lang === 'zh-TW' ? '第3步：AI影片剪輯 (剪映/Descript)' : 'Step 3: AI Video Editing',

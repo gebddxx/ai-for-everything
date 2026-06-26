@@ -10,6 +10,7 @@ export default function AudioGenTutorial() {
     whatIs: lang === 'zh-CN' ? 'AI音频生成概览' : lang === 'zh-TW' ? 'AI音頻生成概覽' : 'Overview of AI Audio Generation',
     whatIsBody: lang === 'zh-CN' ? 'AI音频生成已从实验室走向实用——Suno和Udio可以生成完整的歌曲，ElevenLabs能克隆任何声音，Adobe Podcast一键降噪。本教程从零开始，带你掌握四大技能：音乐生成、语音合成、声音克隆、播客制作。' : lang === 'zh-TW' ? 'AI音頻生成已從實驗室走向實用——Suno和Udio可以生成完整的歌曲，ElevenLabs能克隆任何聲音，Adobe Podcast一鍵降噪。本教學從零開始，帶你掌握四大技能：音樂生成、語音合成、聲音克隆、播客製作。' : 'AI audio has gone from lab to practical: Suno and Udio generate complete songs, ElevenLabs clones any voice, and Adobe Podcast removes noise with one click. This guide takes you from zero to mastering: music generation, TTS, voice cloning, and podcast production.',
     tools: lang === 'zh-CN' ? '推荐工具' : lang === 'zh-TW' ? '推薦工具' : 'Recommended Tools',
+    quickLinks: lang === 'zh-CN' ? '👇 工具直达' : lang === 'zh-TW' ? '👇 工具直達' : '👇 Quick Links',
     step1: lang === 'zh-CN' ? '第1步：AI音乐生成 (Suno)' : lang === 'zh-TW' ? '第1步：AI音樂生成 (Suno)' : 'Step 1: AI Music with Suno',
     step2: lang === 'zh-CN' ? '第2步：AI语音合成 (ElevenLabs)' : lang === 'zh-TW' ? '第2步：AI語音合成 (ElevenLabs)' : 'Step 2: TTS with ElevenLabs',
     step3: lang === 'zh-CN' ? '第3步：声音克隆' : lang === 'zh-TW' ? '第3步：聲音克隆' : 'Step 3: Voice Cloning',

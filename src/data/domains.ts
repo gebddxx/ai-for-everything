@@ -20,8 +20,8 @@ export const domains: Domain[] = [
     title: { en: 'Tool Directory', 'zh-CN': '导航工具集', 'zh-TW': '導航工具集' },
     icon: '🧭',
     desc: {
-      en: 'Curated directories of 200+ useful tools across 8 categories — search engines, chatbots, design, creative, office, 3D/gaming, AI agents, and more. One-stop find for everything you need.',
-      'zh-CN': '精选200+实用工具导航，覆盖搜索、对话、设计、创意、办公、3D/游戏、智能体等8大分类。一站式找到你需要的工具。',
+      en: 'Curated directories of 200+ useful tools across 7 categories — search engines, chatbots, design, creative, office, 3D/gaming, AI agents, and more. One-stop find for everything you need.',
+      'zh-CN': '精选200+实用工具导航，覆盖搜索、对话、设计、创意、办公、3D/游戏、智能体等7大分类。一站式找到你需要的工具。',
       'zh-TW': '精選200+實用工具導航，覆蓋搜索、對話、設計、創意、辦公、3D/遊戲、智能體等8大分類。一站式找到你需要的工具。',
     },
     color: '#3b82f6',
@@ -44,7 +44,7 @@ export const domains: Domain[] = [
     desc: {
       en: 'See how AI is transforming 16 major industries — logistics, healthcare, finance, education, manufacturing, agriculture, enterprise, retail, transportation, energy, media, cybersecurity, and more. Real cases, key metrics, and tool directories for each sector.',
       'zh-CN': '看AI如何变革16大行业——物流、医疗、金融、教育、制造、农业、企业、零售、交通、能源、媒体、安全等。每个行业都有真实案例、关键指标和精选工具。',
-      'zh-TW': '看AI如何變革13大行業——物流、醫療、金融、教育、製造、農業、企業、零售、交通、能源、媒體、安全等。每個行業都有真實案例、關鍵指標和精選工具。',
+      'zh-TW': '看AI如何變革16大行業——物流、醫療、金融、教育、製造、農業、企業、零售、交通、能源、媒體、安全、法律、環保、政務等。每個行業都有真實案例、關鍵指標和精選工具。',
     },
     color: '#10b981',
     status: 'done',
