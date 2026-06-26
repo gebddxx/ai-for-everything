@@ -45,6 +45,11 @@ const links: ToolLink[] = [
   { name:'Coze',url:'https://www.coze.com/',desc:{en:'ByteDance, zero-code AI bot builder, plugins+API',zh:'字节跳动,零代码AI Bot搭建平台,插件+API'},cat:'llm',icon:'🤖'},
   { name:'Dify',url:'https://dify.ai/',desc:{en:'Open-source LLM app platform, RAG+Agent framework',zh:'开源LLM应用开发平台,RAG+Agent框架'},cat:'llm',icon:'🔮'},
   { name:'扣子',url:'https://www.coze.cn/',desc:{en:'Coze China, AI bot marketplace, WeChat integration',zh:'Coze国内版,AI Bot商店,微信/飞书集成'},cat:'llm',icon:'🧩'},
+  { name:'腾讯智影',url:'https://zenvideo.qq.com/',desc:{en:'Tencent AI digital human, lip-sync, short video creation',zh:'腾讯AI数字人,口型同步<0.1秒,短视频创作'},cat:'digital',icon:'🎭'},
+  { name:'硅基智能',url:'https://www.guiji.ai/',desc:{en:'2D hyper-realistic digital human, 30s cloning, API/SDK',zh:'2D超写实数字人,30秒克隆形象声音,API接入'},cat:'digital',icon:'🤖'},
+  { name:'D-ID',url:'https://www.d-id.com/',desc:{en:'AI avatar video, 100+ language lip-sync, e-learning',zh:'AI数字人视频,100+语种口型同步,教育/营销'},cat:'digital',icon:'🎬'},
+  { name:'商汤如影',url:'https://www.sensetime.com/',desc:{en:'SenseTime, 3D digital human, 98% expression accuracy',zh:'商汤出品,3D数字人,表情自然度98%,企业级'},cat:'digital',icon:'🧬'},
+  { name:'PromptPilot',url:'https://promptpilot.volcengine.com/',desc:{en:'ByteDance, prompt optimizer, multi-model benchmark',zh:'字节跳动提示词优化平台,自动生成+评测+迭代'},cat:'code',icon:'✈️'},
 ]
 
 export default function ChatOverview({ scrollTo }: { scrollTo?: string }) {
@@ -54,7 +59,7 @@ export default function ChatOverview({ scrollTo }: { scrollTo?: string }) {
     <div className={styles.page}>
       <div className={styles.head}>
         <h2 className={styles.title}>💬 {L('Chat & Assistants','对话助手','對話助手')}</h2>
-        <p className={styles.subtitle}>{L('43 platforms — LLMs, coding, role-play, benchmarks','43个平台——大模型、编程、角色扮演、评测','43個平台——大模型、編程、角色扮演、評測')}</p>
+        <p className={styles.subtitle}>{L('48 platforms — LLMs, coding, digital humans, role-play, benchmarks','48个平台——大模型、编程、数字人、角色扮演、评测','48個平台——大模型、編程、數字人、角色扮演、評測')}</p>
       </div>
       <LinkNav links={links} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#22c55e" scrollTo={scrollTo} catNames={{
         llm: L('LLM Platforms','大模型平台','大模型平台'),

@@ -30,8 +30,18 @@ const links:ToolLink[]=[
 {name:'ProcessOn',url:'https://www.processon.com/',desc:{en:'AI mind map, flowchart, UML diagram generation',zh:'AI思维导图/流程图/UML图一键生成'},cat:'meeting',icon:'🔗'},
 {name:'亿图脑图',url:'https://www.edrawsoft.cn/',desc:{en:'AI mind mapping, brainstorming, outline mode',zh:'AI思维导图,头脑风暴,大纲模式'},cat:'meeting',icon:'🧠'},
 {name:'360苏打办公',url:'https://suda.360.cn/',desc:{en:'360 office AI, doc automation, contract templates',zh:'360办公AI,文档自动化,合同模板生成'},cat:'docs',icon:'🛡️'},
-{name:'沉浸式翻译',url:'https://immersivetranslate.com/',desc:{en:'AI bilingual translation, web/PDF/video subtitles',zh:'AI双语翻译,网页/PDF/视频字幕,全网最好用'},cat:'docs',icon:'🌐'},
+{name:'沉浸式翻译',url:'https://immersivetranslate.com/',desc:{en:'AI bilingual translation, web/PDF/video subtitles',zh:'AI双语翻译,网页/PDF/视频字幕,全网最好用'},cat:'translate',icon:'🌐'},
+{name:'百度翻译',url:'https://fanyi.baidu.com/',desc:{en:'Baidu AI translation, 200+ languages, doc/image/voice',zh:'百度AI翻译,200+语种,文档/图片/语音翻译'},cat:'translate',icon:'🐻'},
+{name:'彩云小译',url:'https://fanyi.caiyunapp.com/',desc:{en:'AI bilingual web translator, real-time voice translation',zh:'AI双语网页翻译,实时语音翻译,同声传译'},cat:'translate',icon:'🌈'},
+{name:'火山翻译',url:'https://translate.volcengine.com/',desc:{en:'ByteDance translation engine, multi-language, API available',zh:'字节跳动翻译引擎,多语种,提供API接入'},cat:'translate',icon:'🌋'},
+{name:'有道翻译',url:'https://fanyi.youdao.com/',desc:{en:'Netease, dictionary+translation, TTS, OCR translate',zh:'网易有道,词典+翻译一体,TTS发音,OCR翻译'},cat:'translate',icon:'📖'},
+{name:'会译',url:'https://www.huiyiai.com/',desc:{en:'AI multi-modal translation, 54 languages, video subtitle',zh:'AI多模翻译,54种语言,视频双语字幕,对照式翻译'},cat:'translate',icon:'💬'},
+{name:'DeepL',url:'https://www.deepl.com/',desc:{en:'Best quality NL translation, doc translation, write assist',zh:'翻译质量天花板,文档翻译,写作助手,欧洲语言最强'},cat:'translate',icon:'🌍'},
+{name:'Julius AI',url:'https://julius.ai/',desc:{en:'AI data analyst, CSV/Excel, charts+stats, Python-backed',zh:'AI数据分析师,CSV/Excel导入,自动图表+统计建模'},cat:'data',icon:'📊'},
+{name:'Rows.com',url:'https://rows.com/',desc:{en:'AI spreadsheet, dynamic charts, formula gen, data-linked',zh:'AI电子表格,动态图表,公式生成,数据实时联动'},cat:'data',icon:'📈'},
+{name:'Powerdrill',url:'https://powerdrill.ai/',desc:{en:'File→insight automation, report gen, team sharing',zh:'文件→洞察自动化,一键生成分析报告,团队共享'},cat:'data',icon:'🔬'},
+{name:'OfferNow',url:'https://chromewebstore.google.com/',desc:{en:'AI resume auto-fill, 100+ job sites, semantic matching',zh:'AI简历自动填写,适配100+招聘网站,语义匹配'},cat:'data',icon:'📄'},
 ]
 export default function OfficeOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>📋 {L('Office & Productivity','办公提效','辦公提效')}</h2><p className={styles.subtitle}>{L('32 tools — PPT, Docs, Meetings, Email','32款工具——PPT、文档、会议、邮件','32款工具——PPT、文檔、會議、郵件')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>📋 {L('Office & Productivity','办公提效','辦公提效')}</h2><p className={styles.subtitle}>{L('43 tools — PPT, Docs, Meetings, Email, Translate, Data','43款工具——PPT、文档、会议、邮件、翻译、数据','43款工具——PPT、文檔、會議、郵件、翻譯、數據')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#f97316" scrollTo={scrollTo} catNames={{ppt:L('AI PPT','AI 演示文稿','AI 演示文稿'),docs:L('AI Documents','AI 文档处理','AI 文檔處理'),meeting:L('AI Meeting','AI 会议助手','AI 會議助手'),email:L('AI Email','AI 邮件沟通','AI 郵件溝通')}}/></div>)}

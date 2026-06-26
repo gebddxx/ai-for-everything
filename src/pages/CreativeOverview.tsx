@@ -57,6 +57,9 @@ const links:ToolLink[]=[
 {name:'Recraft',url:'https://www.recraft.ai/',desc:{en:'Designer favorite, vector gen, style transfer',zh:'设计师最爱,矢量图生成,风格迁移'},cat:'image',icon:'✏️'},
 {name:'Ideogram',url:'https://ideogram.ai/',desc:{en:'Text embedding in images, logo/badge gen',zh:'文字嵌入图像超强,Logo/徽章生成'},cat:'image',icon:'🔤'},
 {name:'Flux',url:'https://blackforestlabs.ai/',desc:{en:'Ultra-realistic image gen, open source',zh:'图像逼真度极高,开源免费,社区模型丰富'},cat:'image',icon:'🌿'},
+{name:'腾讯ARC',url:'https://arc.tencent.com/',desc:{en:'Tencent AI: portrait restore, cutout, face enhancement',zh:'腾讯AI人像修复,人像抠图,画质增强'},cat:'image',icon:'🔧'},
+{name:'妙鸭相机',url:'https://miaoya.ai/',desc:{en:'AI写真, 20+ portrait styles, one-click generation',zh:'AI写真生成,20+风格,上传照片一键生成写真'},cat:'image',icon:'📸'},
+{name:'Remini',url:'https://remini.ai/',desc:{en:'AI photo enhancer, old photo restore, face detail',zh:'AI照片增强,老照片修复,面部细节还原'},cat:'image',icon:'✨'},
 {name:'Vidu',url:'https://www.vidu.com/',desc:{en:'Top Chinese video model, affordable, Chinese-friendly',zh:'第一流国产视频大模型,价格亲民,中文友好'},cat:'video',icon:'🎞️'},
 {name:'PixVerse',url:'https://pixverse.ai/',desc:{en:'Chinese team, V3.5 fast video gen, viral effects',zh:'国内团队,V3.5快速出视频,毒液特效走红'},cat:'video',icon:'✨'},
 {name:'度加创作',url:'https://dujia.baidu.com/',desc:{en:'Baidu, hot topics→script→video pipeline',zh:'百度出品,热搜一键成稿→文稿一键成片'},cat:'video',icon:'📰'},
@@ -69,5 +72,5 @@ const links:ToolLink[]=[
 {name:'LALAL.AI',url:'https://www.lalal.ai/',desc:{en:'Vocal/instrument separation, lossless quality',zh:'人声/伴奏分离,音质无损'},cat:'audio',icon:'🎵'},
 ]
 export default function CreativeOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
-return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🎨 {L('Creative Studio','创意工坊','創意工坊')}</h2><p className={styles.subtitle}>{L('68 tools — Writing, Image, Video, Audio','68款工具——写作、绘画、视频、音频','68款工具——寫作、繪畫、影片、音頻')}</p></div>
+return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🎨 {L('Creative Studio','创意工坊','創意工坊')}</h2><p className={styles.subtitle}>{L('71 tools — Writing, Image, Video, Audio','71款工具——写作、绘画、视频、音频','71款工具——寫作、繪畫、影片、音頻')}</p></div>
 <LinkNav links={links} lang={lang as'en'|'zh-CN'|'zh-TW'} color="#ec4899" scrollTo={scrollTo} catNames={{writing:L('AI Writing','AI 写作','AI 寫作'),image:L('AI Image','AI 绘画','AI 繪畫'),video:L('AI Video','AI 视频','AI 影片'),audio:L('AI Audio & Music','AI 音频音乐','AI 音頻音樂')}}/></div>)}
