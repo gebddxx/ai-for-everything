@@ -1,5 +1,6 @@
 import { useT } from '../contexts/LanguageContext'
 import styles from './Page.module.css'
+import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
 export default function PptGenTutorial() {
   const { lang } = useT()
@@ -17,7 +18,6 @@ export default function PptGenTutorial() {
     step4: lang === 'zh-CN' ? '第4步：进阶技巧' : lang === 'zh-TW' ? '第4步：進階技巧' : 'Step 4: Advanced Tips',
     links: lang === 'zh-CN' ? '资源链接' : lang === 'zh-TW' ? '資源連結' : 'Resources',
   }
-import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
   return (
     <div className={styles.page}>

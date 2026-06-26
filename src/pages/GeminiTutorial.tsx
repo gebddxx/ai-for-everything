@@ -1,5 +1,6 @@
 import { useT } from '../contexts/LanguageContext'
 import styles from './Page.module.css'
+import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
 
 export default function GeminiTutorial() {
   const { lang } = useT()
@@ -326,4 +327,3 @@ pwd                            # verify you're in project root
 ls                             # verify files are visible`,
 }
 
-import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
