@@ -1,43 +1,30 @@
 import { useT } from '../contexts/LanguageContext'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
-
 export default function EnergyOverview() {
   const { lang } = useT()
   const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
-  return (
-    <div className={styles.page}>
-      <div className={styles.head}><h2 className={styles.title}>⚡ {L('AI in Energy','AI 能源电力','AI 能源電力')}</h2><p className={styles.subtitle}>{L('How AI optimizes power grids, renewables, and carbon reduction','AI如何优化电网调度、新能源发电和碳减排','AI如何優化電網調度、新能源發電和碳減排')}</p></div>
-      <section className={styles.chart} style={{marginBottom:20}}>
-        <div style={{height:1,background:'var(--border)',margin:'36px 0 20px'}} /><h3 style={{fontSize:17,fontWeight:700,color:'var(--text)',marginBottom:16,display:'flex',alignItems:'center',gap:8}}>{L('AI is Transforming Energy','AI能源正在改变什么','AI正在改變能源')}</h3>
-        <p style={{color:'var(--text-secondary)',lineHeight:1.8,fontSize:14,marginBottom:12}}>{L('The energy sector is undergoing its biggest transformation in a century — AI is the core driver. DeepMind used AI to reduce Google data center cooling energy by 40%; AI wind power forecasting cuts curtailment from 15% to under 5%; smart grid AI balances supply-demand in real-time. China is the world\'s largest energy consumer and renewables installer — State Grid AI covers 1.1B users. IEA projects AI can reduce global carbon emissions by 5-10% by 2030.','能源行业正经历百年未有之变革——AI是核心驱动力。DeepMind用AI将谷歌数据中心冷却能耗降低40%；AI风电功率预测将弃风率从15%降至5%以下；智能电网AI实时平衡供需，每避免一次停电可节省数百万美元。中国是全球最大能源消费国和新能源装机国，国家电网AI调度系统覆盖11亿用户，南方电网AI将线损率降至全球最低的4.3%。据IEA预测，AI可帮助全球在2030年前减少5-10%碳排放。','能源行業正經歷百年未有之變革——AI是核心驅動力。DeepMind用AI將谷歌數據中心冷卻能耗降低40%；AI風電功率預測將棄風率從15%降至5%以下；智能電網AI即時平衡供需。中國是全球最大能源消費國和新能源裝機國，國家電網AI調度系統覆蓋11億用戶。據IEA預測，AI可幫助全球在2030年前減少5-10%碳排放。')}</p>
-      </section>
-      <section className={styles.chart} style={{marginBottom:20}}>
-        <div style={{height:1,background:'var(--border)',margin:'36px 0 20px'}} /><h3 style={{fontSize:17,fontWeight:700,color:'var(--text)',marginBottom:16,display:'flex',alignItems:'center',gap:8}}>{L('Cutting-Edge Applications','前沿应用场景','前沿應用場景')}</h3>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(300px,1fr))',gap:12}}>
-          {[{icon:'🔋',t:L('Smart Grid','AI智能电网','AI智慧電網'),d:L('AI predicts power demand and renewable output in real-time, dynamically dispatching generation and storage. State Grid AI processes terabytes of data daily to balance supply-demand for 1.1B users. AutoGrid provides AI optimization to 50+ utilities globally.','AI实时预测电力需求和新能源出力，动态调度发电和储能。国家电网的AI调度系统每天处理TB级数据，实现11亿用户的电力供需平衡。AutoGrid为全球50+电力公司提供AI优化方案，节省5-15%的运营成本。','AI即時預測電力需求和新能源出力，動態調度發電和儲能。國家電網的AI調度系統每天處理TB級數據，實現11億用戶的電力供需平衡。')},
-          {icon:'💨',t:L('Renewables Forecasting','新能源功率预测','新能源功率預測'),d:L('AI fuses weather, terrain and equipment data to forecast wind/solar output. Google DeepMind boosted wind power value by 20%. Goldwind AI prediction achieves 92%+ accuracy, saving Chinese wind farms hundreds of millions in curtailment losses annually.','AI融合气象、地形和设备数据预测风电/光伏出力。谷歌DeepMind将风电价值提升20%。金风科技的AI预测系统将风电功率预测准确率提升至92%以上，每年为中国风电场减少数亿元弃风损失。','AI融合氣象、地形和設備數據預測風電/光伏出力。谷歌DeepMind將風電價值提升20%。金風科技的AI預測系統將風電功率預測準確率提升至92%以上。')},
-          {icon:'🏭',t:L('Carbon Capture & Reduction','碳捕集与减排','碳捕集與減排'),d:L('AI optimizes industrial processes to reduce emissions. Carbon Re uses AI to cut cement plant fuel consumption by 8%. Siemens Energy AI gas turbine optimization saves millions of tons of CO2 annually. China Huaneng uses AI to improve coal plant efficiency.','AI优化工业流程减少碳排放。Carbon Re用AI将水泥厂燃料消耗降低8%。Siemens Energy的AI燃气轮机优化系统每年减少数百万吨CO2。中国华能集团用AI优化燃煤电厂效率，每度电煤耗降低3克。','AI優化工業流程減少碳排放。Carbon Re用AI將水泥廠燃料消耗降低8%。Siemens Energy的AI燃氣輪機優化系統每年減少數百萬噸CO2。')},
-          {icon:'⚡',t:L('Energy Storage','AI储能优化','AI儲能優化'),d:L('AI predicts electricity price fluctuations, automatically deciding charge/discharge for arbitrage. Tesla Autobidder manages gigawatt-hours of global storage with AI, generating hundreds of millions in revenue. Fluence AI platform operates in 40+ markets.','AI预测电价波动，自动决定充放电策略实现套利。特斯拉Autobidder用AI管理全球数GWh储能资产，每年创造数亿美元收入。Fluence的AI储能平台在全球40+市场运营，优化收益的同时支撑电网稳定性。','AI預測電價波動，自動決定充放電策略實現套利。特斯拉Autobidder用AI管理全球數GWh儲能資產。Fluence的AI儲能平台在全球40+市場運營。')},
-        ].map(item => (<div key={item.t} style={{padding:14,background:'var(--bg-card)',borderRadius:10,border:'1px solid var(--border)'}}><h4 style={{fontSize:15,fontWeight:600,color:'var(--text)',margin:'0 0 4px'}}>{item.icon} {item.t}</h4><p style={{fontSize:13,color:'var(--text-secondary)',lineHeight:1.7,margin:0}}>{item.d}</p></div>))}
-        </div>
-      </section>
-      <section className={styles.chart} style={{marginBottom:20}}>
-        <div style={{height:1,background:'var(--border)',margin:'36px 0 20px'}} /><h3 style={{fontSize:17,fontWeight:700,color:'var(--text)',marginBottom:16,display:'flex',alignItems:'center',gap:8}}>{L('Key Metrics','关键数据','關鍵數據')}</h3>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(180px,1fr))',gap:10}}>
-          {[{v:'↓40%',l:L('Cooling Energy Drop','AI降低冷却能耗','AI降低冷卻能耗')},{v:'92%+',l:L('Wind Forecast Accuracy','风电功率预测准确率','風電功率預測準確率')},{v:'5-10%',l:L('2030 AI Carbon Cut','2030年AI减排潜力','2030年AI減排潛力')},{v:'11亿',l:L('State Grid AI Users','国家电网AI覆盖用户','國家電網AI用戶')}].map(m => (<div key={m.l} style={{textAlign:'center',padding:'16px 12px',background:'var(--bg-card)',borderRadius:10,border:'1px solid var(--border)'}}><div style={{fontSize:24,fontWeight:800,color:'var(--primary)'}}>{m.v}</div><div style={{fontSize:12,color:'var(--text-secondary)',marginTop:4}}>{m.l}</div></div>))}
-        </div>
-      </section>
-      <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12,marginTop:24}}>{L('Industry Tool Directory','行业工具导航','行業工具導航')}</h3>
-      <LinkNav links={links} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#f59e0b" />
+  const LA = (en: string[], zh: string[], tw: string[]) => lang === 'zh-CN' ? zh : lang === 'zh-TW' ? tw : en
+  return (<div className={styles.page}>
+    <div style={{background:'linear-gradient(135deg,#713f12 0%,#854d0e 50%,#a16207 100%)',borderRadius:14,padding:'24px 28px',marginBottom:24,color:'#fff'}}>
+      <h2 style={{fontSize:24,fontWeight:800,margin:'0 0 16px'}}>⚡ {L('AI in Energy','AI 能源电力','AI 能源電力')}</h2>
+      <div style={{display:'flex',gap:10,flexWrap:'wrap'}}>{[{v:'↓40%',t:'冷却能耗'},{v:'92%+',t:'风电预测'},{v:'5-10%',t:'2030减排'},{v:'11亿',t:'电网覆盖'}].map(s=>(<div key={s.t} style={{textAlign:'center',background:'rgba(255,255,255,0.13)',borderRadius:10,padding:'14px 18px',minWidth:80}}><div style={{fontSize:28,fontWeight:800}}>{s.v}</div><div style={{fontSize:12,opacity:.8,marginTop:2}}>{s.t}</div></div>))}</div>
     </div>
-  )
-}
+    <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12}}>🔌 {L('AI × Energy','AI × 能源','AI × 能源')}</h3>
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:10,marginBottom:24}}>
+      {[{icon:'🔋',t:L('智能电网','智能电网','智慧電網'),items:LA(['⚡ 实时供需平衡调度','📊 TB级数据处理','👥 11亿用户覆盖'],['⚡ 实时供需平衡调度','📊 TB级数据处理','👥 11亿用户覆盖'],['⚡ Real-time supply-demand','📊 Terabytes processed','👥 1.1B users covered'])},
+        {icon:'💨',t:L('新能源预测','新能源预测','新能源預測'),items:LA(['🌬️ 气象+地形+设备融合','📈 功率预测 92%+准确','💰 减少数亿元弃风损失'],['🌬️ 气象+地形+设备融合','📈 功率预测 92%+准确','💰 减少数亿元弃风损失'],['🌬️ Weather+terrain+equip','📈 92%+ forecast accuracy','💰 $100M+ curtailment saved'])},
+        {icon:'🏭',t:L('碳减排','碳减排','碳減排'),items:LA(['🪨 水泥燃料 ↓8%','🔥 燃气轮机优化 CO2↓','🏭 火电每度煤耗 ↓3g'],['🪨 水泥燃料 ↓8%','🔥 燃气轮机优化 CO2↓','🏭 火电每度煤耗 ↓3g'],['🪨 Cement fuel ↓8%','🔥 Turbine CO2 optimized','🏭 Coal per kWh ↓3g'])},
+        {icon:'⚡',t:L('AI储能','AI储能','AI儲能'),items:LA(['🔮 电价波动预测','💰 自动充放电套利','🌍 40+ 全球市场运营'],['🔮 电价波动预测','💰 自动充放电套利','🌍 40+ 全球市场运营'],['🔮 Price fluctuation predict','💰 Auto charge/discharge','🌍 40+ markets'])},
+      ].map(c=>(<div key={c.t} style={{padding:14,background:'var(--bg-card)',borderRadius:10,border:'1px solid var(--border)'}}><h4 style={{fontSize:15,fontWeight:600,color:'var(--text)',margin:'0 0 10px'}}>{c.icon} {c.t}</h4><div style={{display:'flex',flexDirection:'column',gap:6}}>{c.items.map((item,i)=>(<div key={i} style={{fontSize:13,color:'var(--text-secondary)',lineHeight:1.5}}>{item}</div>))}</div></div>))}
+    </div>
+    <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',margin:'28px 0 12px',paddingBottom:8,borderBottom:'2px solid var(--border)'}}>🔗 {L('Tools','工具导航','工具導航')}</h3>
+    <LinkNav links={links} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#f59e0b" />
+  </div>)}
 const links: ToolLink[] = [
-  {name:'AutoGrid',url:'https://www.auto-grid.com/',desc:{en:'AI energy optimization, 50+ utilities worldwide',zh:'AI能源优化平台,服务全球50+电力公司'},cat:'tools',icon:'🔋'},
-  {name:'Tesla Autobidder',url:'https://www.tesla.com/autobidder',desc:{en:'AI energy trading, manages GWh of global storage',zh:'AI能源交易平台,管理全球数GWh储能资产'},cat:'tools',icon:'⚡'},
-  {name:'Carbon Re',url:'https://carbonre.com/',desc:{en:'AI cement/steel decarbonization, -8% fuel use',zh:'AI水泥/钢铁脱碳,降低8%燃料消耗'},cat:'tools',icon:'🏭'},
-  {name:'Stem',url:'https://www.stem.com/',desc:{en:'AI energy storage management, Athena platform',zh:'AI储能管理,Athena平台,商业+工业场景'},cat:'tools',icon:'🔌'},
-  {name:'国家电网AI',url:'https://www.sgcc.com.cn/',desc:{en:'AI power dispatch, covers 1.1B users in China',zh:'AI电力调度系统,覆盖中国11亿用户'},cat:'tools',icon:'🇨🇳'},
-  {name:'Fluence',url:'https://fluenceenergy.com/',desc:{en:'AI energy storage platform, 40+ global markets',zh:'AI储能平台,全球40+市场,优化收益+电网稳定'},cat:'tools',icon:'🔋'},
+  {name:'AutoGrid',url:'https://www.auto-grid.com/',desc:{en:'AI energy optimization, 50+ utilities',zh:'AI能源优化,50+电力公司'},cat:'工具',icon:'🔋'},
+  {name:'Tesla Autobidder',url:'https://www.tesla.com/',desc:{en:'AI energy trading, GWh storage',zh:'AI能源交易,管理GWh储能'},cat:'工具',icon:'⚡'},
+  {name:'Carbon Re',url:'https://carbonre.com/',desc:{en:'AI cement/steel decarbonization',zh:'AI水泥/钢铁脱碳'},cat:'工具',icon:'🏭'},
+  {name:'国家电网AI',url:'https://www.sgcc.com.cn/',desc:{en:'AI power dispatch, 1.1B users',zh:'AI电力调度,11亿用户'},cat:'工具',icon:'🇨🇳'},
+  {name:'Fluence',url:'https://fluenceenergy.com/',desc:{en:'AI storage platform, 40+ markets',zh:'AI储能平台,40+市场'},cat:'工具',icon:'🔋'},
 ]
