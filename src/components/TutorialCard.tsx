@@ -13,7 +13,7 @@ export function Card({ title, children }: { title: string; children: ReactNode }
   )
 }
 
-const COLLAPSE_LINES = 16
+const COLLAPSE_LINES = 8
 
 export function Code({ children }: { children: string }) {
   const lines = children.split('\n')
@@ -26,7 +26,7 @@ export function Code({ children }: { children: string }) {
         background: '#0f172a', color: '#e2e8f0', borderRadius: 8, padding: 16,
         fontSize: 13, lineHeight: 1.6, overflowX: 'auto',
         whiteSpace: 'pre-wrap', wordBreak: 'break-word', margin: 0,
-        maxHeight: open ? 'none' : `${COLLAPSE_LINES * 20.8}px`, overflowY: 'hidden',
+        maxHeight: open ? 'none' : `${COLLAPSE_LINES * 21}px`, overflowY: 'hidden',
       }}>
         <code>{children}</code>
       </pre>
