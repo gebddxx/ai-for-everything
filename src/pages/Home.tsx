@@ -84,7 +84,7 @@ export default function Home({ onEnter }: Props) {
     <div className={styles.page}>
       {/* Hero Section */}
       <div style={{
-        background: 'linear-gradient(135deg, #1e3a5f 0%, #3b5998 30%, #667eea 70%, #764ba2 100%)',
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 30%, #3730a3 70%, #4c1d95 100%)',
         borderRadius: 16,
         padding: '40px 36px 32px',
         marginBottom: 28,
@@ -169,7 +169,7 @@ export default function Home({ onEnter }: Props) {
           ? '點擊上方任意卡片進入對應板塊 · 側邊欄可展開子目錄 · 點擊左上角 📦 隨時回到這裡'
           : 'Click any card above to explore · Sidebar expands sub-categories · Click 📦 logo to return here'}
         <div onClick={() => onEnter('ai-news')} style={{
-          background: 'linear-gradient(135deg, #1e3a5f, #3b5998)',
+          background: 'linear-gradient(135deg, #0f172a, #1e3a5f)',
           borderRadius: 12,
           padding: '16px 24px',
           marginTop: 20,

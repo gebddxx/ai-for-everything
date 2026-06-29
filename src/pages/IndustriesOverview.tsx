@@ -41,7 +41,7 @@ export default function IndustriesOverview() {
     <div>
       {/* Overview Intro */}
       <div id="section-overview" style={{
-        background: 'linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%)',
+        background: 'linear-gradient(135deg, #064e3b 0%, #047857 50%, #065f46 100%)',
         borderRadius: 14,
         padding: '28px 32px',
         marginBottom: 32,
