@@ -114,6 +114,7 @@ export const domains: Domain[] = [
       { key: 'assistants', icon: '💬', title: { en: 'AI Assistants', 'zh-CN': '个人助手', 'zh-TW': '個人助手' } },
       { key: 'workflow', icon: '⚡', title: { en: 'Workflow', 'zh-CN': '工作流', 'zh-TW': '工作流' } },
       { key: 'multi-agent', icon: '🕸️', title: { en: 'Multi-Agent', 'zh-CN': '多Agent', 'zh-TW': '多Agent' } },
+      { key: 'agent-tools', icon: '🤖', title: { en: 'Agent Directory', 'zh-CN': '智能体目录', 'zh-TW': '智能體目錄' } },
     ],
   },
 ]
