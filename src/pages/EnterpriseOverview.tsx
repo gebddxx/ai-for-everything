@@ -18,6 +18,7 @@ export default function EnterpriseOverview() {
       {[{icon:'📢',t:L('营销自动化','营销自动化','行銷自動化'),items:LA(['🎯 个性化推荐 转化 ↑3-5×','🤖 AI批量生成营销内容','📊 线索评分 转化 ↑40%'],['🎯 个性化推荐 转化 ↑3-5×','🤖 AI批量生成营销内容','📊 线索评分 转化 ↑40%'],['🎯 Personalization 3-5x conv','🤖 AI bulk content gen','📊 Lead scoring +40% conv'])},
         {icon:'👥',t:L('HR与招聘','HR与招聘','HR與招聘'),items:LA(['📋 AI自动筛选简历','🤖 面试机器人 百万级/年','🎯 技能图谱 人才匹配'],['📋 AI自动筛选简历','🤖 面试机器人 百万级/年','🎯 技能图谱 人才匹配'],['📋 AI resume screening','🤖 Bot interviews millions/yr','🎯 Skill graph matching'])},
         {icon:'⚖️',t:L('法务与合规','法务与合规','法務與合規'),items:LA(['📄 AI合同审查 20×加速','🔍 风险条款自动识别','🏛️ 全球顶级律所标配'],['📄 AI合同审查 20×加速','🔍 风险条款自动识别','🏛️ 全球顶级律所标配'],['📄 AI contract 20x faster','🔍 Auto risk clause detect','🏛️ Top law firm standard'])},
+        {icon:'🤖',t:L('AI智能助手','AI智能助手','AI智能助手'),items:LA(['🦞 AI Agent 自动处理事务','📧 邮件/审批/日程自动化','🏭 生产监控+故障预警'],['🦞 AI Agent 自动处理事务','📧 邮件/审批/日程自动化','🏭 生产监控+故障预警'],['🦞 AI Agent auto tasks','📧 Email/approval/calendar','🏭 Production monitoring'])},
         {icon:'📊',t:L('客户成功','客户成功','客戶成功'),items:LA(['🔮 流失预测+自动挽留','📡 智能路由工单','💬 100B+/天 AI预测'],['🔮 流失预测+自动挽留','📡 智能路由工单','💬 100B+/天 AI预测'],['🔮 Churn predict+auto retain','📡 Smart ticket routing','💬 100B+ AI predictions/day'])},
       ].map(c=>(<div key={c.t} style={{padding:14,background:'var(--bg-card)',borderRadius:10,border:'1px solid var(--border)'}}><h4 style={{fontSize:15,fontWeight:600,color:'var(--text)',margin:'0 0 10px'}}>{c.icon} {c.t}</h4><div style={{display:'flex',flexDirection:'column',gap:6}}>{c.items.map((item,i)=>(<div key={i} style={{fontSize:13,color:'var(--text-secondary)',lineHeight:1.5}}>{item}</div>))}</div></div>))}
     </div>
@@ -33,4 +34,10 @@ const links: ToolLink[] = [
   {name:'Harvey AI',url:'https://www.harvey.ai/',desc:{en:'AI for law firms, research',zh:'律所AI:合同/尽调/研究'},cat:'法务',icon:'⚖️'},
   {name:'Ironclad',url:'https://ironcladapp.com/',desc:{en:'AI contract lifecycle',zh:'AI合同全生命周期管理'},cat:'法务',icon:'🛡️'},
   {name:'法大大',url:'https://www.fadada.com/',desc:{en:'Chinese e-signature + AI',zh:'国产电子签章+AI审查'},cat:'法务',icon:'✍️'},
+  {name:'OpenClaw 龙虾',url:'https://github.com/openclaw/openclaw',desc:{en:'Open-source AI agent, auto tasks, browser ops',zh:'开源AI智能体,自动处理事务,操控电脑/浏览器'},cat:'助手',icon:'🦞'},
+  {name:'Coze 扣子',url:'https://www.coze.cn/',desc:{en:'ByteDance AI bot builder, enterprise agents',zh:'字节AI Bot平台,企业级智能体搭建'},cat:'助手',icon:'🤖'},
+  {name:'钉钉AI',url:'https://www.dingtalk.com/',desc:{en:'DingTalk AI workspace, enterprise agents',zh:'钉钉AI工作平台,企业智能助手'},cat:'助手',icon:'💙'},
+  {name:'飞书智能伙伴',url:'https://www.feishu.cn/',desc:{en:'Feishu AI, docs+meeting+automation',zh:'飞书AI,文档/会议/审批/自动化'},cat:'助手',icon:'🐦'},
+  {name:'Dify',url:'https://dify.ai/',desc:{en:'Open-source LLM app, RAG+Agent framework',zh:'开源LLM应用平台,RAG+Agent框架'},cat:'助手',icon:'🔮'},
+  {name:'Manus',url:'https://manus.im/',desc:{en:'AI agent, auto-generate software from prompts',zh:'AI智能体,提示词自动执行任务'},cat:'助手',icon:'🤖'},
 ]
