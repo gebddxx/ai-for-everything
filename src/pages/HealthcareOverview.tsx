@@ -17,9 +17,9 @@ export default function HealthcareOverview() {
         <div style={{height:1,background:"var(--border)",margin:"36px 0 20px"}} /><h3 style={{fontSize:17,fontWeight:700,color:"var(--text)",marginBottom:16,display:"flex",alignItems:"center",gap:8}}>{L('AI is Transforming Healthcare','AI医疗正在改变什么','AI正在改變醫療')}</h3>
         <p style={{color:'var(--text-secondary)',lineHeight:1.8,fontSize:14,marginBottom:12}}>
           {L(
+            'AI in healthcare has evolved from an assistant to a core productivity tool. Medical imaging AI can detect strokes and pulmonary embolisms in seconds with 90%+ accuracy; AI drug discovery shortens R&D cycles from 10 years to 2-3 years; clinical decision support reduces misdiagnosis; patient monitoring AI enables 24/7 vital sign tracking. McKinsey estimates AI can create $350B annual value for global healthcare.',
             'AI在医疗领域的应用已经从辅助工具升级为核心生产力。医学影像AI可以秒级识别脑卒中和肺栓塞，准确率超过90%；AI药物发现将新药研发周期从10年缩短至2-3年；临床决策支持系统帮助医生减少误诊；患者监护AI实现24小时无间断生命体征监测。据麦肯锡预测，AI每年可为全球医疗行业创造3500亿美元价值。',
-            'AI的醫療應用已從輔助工具升級為核心生產力。醫學影像AI可秒級識別腦中風和肺栓塞，準確率超90%；AI藥物發現將新藥研發週期從10年縮短至2-3年；臨床決策支援系統幫助醫生減少誤診；患者監護AI實現24小時生命體徵監測。據麥肯錫預測，AI每年可為全球醫療產業創造3500億美元價值。',
-            'AI in healthcare has evolved from an assistant to a core productivity tool. Medical imaging AI can detect strokes and pulmonary embolisms in seconds with 90%+ accuracy; AI drug discovery shortens R&D cycles from 10 years to 2-3 years; clinical decision support reduces misdiagnosis; patient monitoring AI enables 24/7 vital sign tracking. McKinsey estimates AI can create $350B annual value for global healthcare.'
+            'AI的醫療應用已從輔助工具升級為核心生產力。醫學影像AI可秒級識別腦中風和肺栓塞，準確率超90%；AI藥物發現將新藥研發週期從10年縮短至2-3年；臨床決策支援系統幫助醫生減少誤診；患者監護AI實現24小時生命體徵監測。據麥肯錫預測，AI每年可為全球醫療產業創造3500億美元價值。'
           )}
         </p>
       </section>
