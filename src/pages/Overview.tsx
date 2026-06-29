@@ -144,14 +144,20 @@ export default function Overview() {
 
       <h3 className={styles.chartTitle}>🏆 {t.overview.highlightsTitle}</h3>
       <div className={styles.highlights}>
-        {t.overviewHighlights.map((h: { module: string; company: string; result: string }) => (
-          <div key={h.company} className={styles.highlightCard}>
+        {[
+          { module:t.overviewHighlights[0]?.module||'智能仓储', company:'中科富创', result:t.overviewHighlights[0]?.result||'运能：200万→500万吨', url:'https://www.zkfc.com/' },
+          { module:t.overviewHighlights[1]?.module||'运输调度', company:'埃森哲', result:t.overviewHighlights[1]?.result||'装载率：90%→97%', url:'https://www.accenture.com/' },
+          { module:t.overviewHighlights[2]?.module||'末端配送', company:'美团无人机', result:t.overviewHighlights[2]?.result||'深圳完成10万+单', url:'https://www.meituan.com/' },
+          { module:t.overviewHighlights[3]?.module||'预测决策', company:'极兔速递', result:t.overviewHighlights[3]?.result||'提前3-5天预警', url:'https://www.jtexpress.com/' },
+          { module:t.overviewHighlights[4]?.module||'运营客服', company:'牛卡福', result:t.overviewHighlights[4]?.result||'效率提升15倍', url:'https://www.niukafu.com/' },
+        ].map(h => (
+          <a key={h.company} href={h.url} target='_blank' rel='noopener' className={styles.highlightCard} style={{textDecoration:'none'}}>
             <span className={styles.highlightBadge}>{h.module}</span>
             <div className={styles.highlightBody}>
-              <div className={styles.highlightCase}>{h.company}</div>
+              <div className={styles.highlightCase}>{h.company} ↗</div>
               <div className={styles.highlightResult}>{h.result}</div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
