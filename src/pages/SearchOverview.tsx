@@ -42,6 +42,7 @@ const links:ToolLink[]=[
 {name:'天工AI搜索',url:'https://www.tiangong.cn/',desc:{en:'Kunlun Wanwei, intelligent search result aggregation',zh:'昆仑万维出品,海量搜索结果智能聚合'},cat:'搜索引擎',icon:'☁️'},
 {name:'AIbase',url:'https://www.aibase.com/',desc:{en:'AI tool collection, daily updates, new AI products',zh:'AI工具合集站,每日更新最新AI产品'},cat:'内容发现',icon:'🆕'},
 {name:'豌豆AI',url:'https://www.wandouai.com/',desc:{en:'Chinese AI tool navigation, categorized discovery',zh:'国产AI工具导航,分类发现新工具'},cat:'内容发现',icon:'🫛'},
+{name:'2048AI',url:'https://2048ai.net/',desc:{en:'AI tool navigation, curated directory, latest AI apps',zh:'AI工具导航站,精选AI应用目录'},cat:'内容发现',icon:'🧭'},
 ]
 export default function SearchOverview({ scrollTo }:{ scrollTo?: string }){const{lang}=useT();const L=(e:string,z:string,t:string)=>lang==='zh-CN'?z:lang==='zh-TW'?t:e
 return(<div className={styles.page}><div className={styles.head}><h2 className={styles.title}>🔍 {L('Search & Discovery','搜索发现','搜索發現')}</h2><p className={styles.subtitle}>{L('42 search, research & discovery tools','42款搜索、研究和内容发现工具','42款搜尋、研究和內容發現工具')}</p></div>
