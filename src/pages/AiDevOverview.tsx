@@ -6,6 +6,7 @@ import AgentFrameworks from './AgentFrameworks'
 import AgentAssistants from './AgentAssistants'
 import AgentWorkflow from './AgentWorkflow'
 import AgentMultiAgent from './AgentMultiAgent'
+import AgentToolsOverview from './AgentToolsOverview'
 
 const sections = [
   { key: 'gemini', icon: '🔷', title: { en: 'Gemini CLI', 'zh-CN': 'Gemini CLI', 'zh-TW': 'Gemini CLI' }, Component: GeminiTutorial },
@@ -15,6 +16,7 @@ const sections = [
   { key: 'assistants', icon: '💬', title: { en: 'AI Assistants', 'zh-CN': '个人助手', 'zh-TW': '個人助手' }, Component: AgentAssistants },
   { key: 'workflow', icon: '⚡', title: { en: 'Workflow', 'zh-CN': '工作流', 'zh-TW': '工作流' }, Component: AgentWorkflow },
   { key: 'multi-agent', icon: '🕸️', title: { en: 'Multi-Agent', 'zh-CN': '多Agent', 'zh-TW': '多Agent' }, Component: AgentMultiAgent },
+  { key: 'agent-tools', icon: '🤖', title: { en: 'Agent Directory', 'zh-CN': '智能体目录', 'zh-TW': '智能體目錄' }, Component: AgentToolsOverview },
 ]
 
 export default function AiDevOverview() {
