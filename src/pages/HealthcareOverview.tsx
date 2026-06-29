@@ -9,12 +9,12 @@ export default function HealthcareOverview() {
   return (
     <div className={styles.page}>
       <div className={styles.head}>
-        <h2 className={styles.title}>🏥 {L('AI 醫療健康','AI in Healthcare','AI 医疗健康')}</h2>
-        <p className={styles.subtitle}>{L('AI如何重塑診斷、藥物研發和患者護理','How AI is reshaping diagnosis, drug discovery, and patient care','AI如何重塑诊断、药物研发和患者护理')}</p>
+        <h2 className={styles.title}>🏥 {L('AI in Healthcare','AI 医疗健康','AI 醫療健康')}</h2>
+        <p className={styles.subtitle}>{L('How AI is reshaping diagnosis, drug discovery, and patient care','AI如何重塑诊断、药物研发和患者护理','AI如何重塑診斷、藥物研發和患者護理')}</p>
       </div>
 
       <section className={styles.chart} style={{marginBottom:20}}>
-        <div style={{height:1,background:"var(--border)",margin:"36px 0 20px"}} /><h3 style={{fontSize:17,fontWeight:700,color:"var(--text)",marginBottom:16,display:"flex",alignItems:"center",gap:8}}>{L('AI正在改變醫療','AI医疗正在改变什么','AI is Transforming Healthcare')}</h3>
+        <div style={{height:1,background:"var(--border)",margin:"36px 0 20px"}} /><h3 style={{fontSize:17,fontWeight:700,color:"var(--text)",marginBottom:16,display:"flex",alignItems:"center",gap:8}}>{L('AI医疗正在改变什么','AI is Transforming Healthcare','AI正在改變醫療')}</h3>
         <p style={{color:'var(--text-secondary)',lineHeight:1.8,fontSize:14,marginBottom:12}}>
           {L(
             'AI在医疗领域的应用已经从辅助工具升级为核心生产力。医学影像AI可以秒级识别脑卒中和肺栓塞，准确率超过90%；AI药物发现将新药研发周期从10年缩短至2-3年；临床决策支持系统帮助医生减少误诊；患者监护AI实现24小时无间断生命体征监测。据麦肯锡预测，AI每年可为全球医疗行业创造3500亿美元价值。',
@@ -25,13 +25,13 @@ export default function HealthcareOverview() {
       </section>
 
       <section className={styles.chart} style={{marginBottom:20}}>
-        <div style={{height:1,background:"var(--border)",margin:"36px 0 20px"}} /><h3 style={{fontSize:17,fontWeight:700,color:"var(--text)",marginBottom:16,display:"flex",alignItems:"center",gap:8}}>{L('前沿應用場景','前沿应用场景','Cutting-Edge Applications')}</h3>
+        <div style={{height:1,background:"var(--border)",margin:"36px 0 20px"}} /><h3 style={{fontSize:17,fontWeight:700,color:"var(--text)",marginBottom:16,display:"flex",alignItems:"center",gap:8}}>{L('前沿应用场景','Cutting-Edge Applications','前沿應用場景')}</h3>
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(300px,1fr))',gap:12}}>
           {[
-            {icon:'🧠',t:L('AI醫學影像','AI医学影像','AI Medical Imaging'),d:L('深度學習模型分析CT/MRI/X光圖像，秒級檢出病灶。FDA已批准超500個AI醫療設備。','深度学习模型分析CT/MRI/X光图像，秒级检出病灶。FDA已批准超500个AI医疗设备，Aidoc的脑卒中检测将诊断时间缩短52%。','Deep learning models analyze CT/MRI/X-ray images for instant lesion detection. FDA has approved 500+ AI medical devices. Aidoc reduces stroke diagnosis time by 52%.')},
-            {icon:'💊',t:L('AI藥物研發','AI药物研发','AI Drug Discovery'),d:L('生成式AI加速靶點發現和分子設計。Insilico Medicine用AI將纖維化藥物研發從4.5年縮短至18個月。','生成式AI加速靶点发现和分子设计。Insilico Medicine用AI将纤维化药物研发从4.5年缩短到18个月，成本降低90%。','Generative AI accelerates target discovery and molecular design. Insilico Medicine reduced fibrosis drug R&D from 4.5 years to 18 months with 90% cost reduction.')},
-            {icon:'🩺',t:L('臨床決策','临床决策支持','Clinical Decision'),d:L('AI分析電子病歷、檢驗報告和文獻，輔助醫生制定診療方案。','AI分析电子病历、检验报告和文献，辅助医生制定诊疗方案。Babylon Health的AI分诊系统在85%的案例中给出与医生一致的判断。','AI analyzes EHRs, lab results and literature to assist treatment decisions. Babylon Health AI triage matches doctor judgment in 85% of cases.')},
-            {icon:'❤️',t:L('患者智慧監護','患者智能监护','Smart Patient Care'),d:L('可穿戴設備+AI實現遠程健康監測。Care.ai的醫院AI監控系統減少跌倒事件60%。','可穿戴设备+AI实现远程健康监测。Care.ai的医院AI监控系统减少跌倒事件60%，Medisafe提高用药依从性40%。','Wearables + AI enable remote health monitoring. Care.ai hospital monitoring reduces falls by 60%, Medisafe improves medication adherence by 40%.')},
+            {icon:'🧠',t:L('AI医学影像','AI Medical Imaging','AI醫學影像'),d:L('深度学习模型分析CT/MRI/X光图像，秒级检出病灶。FDA已批准超500个AI医疗设备，Aidoc的脑卒中检测将诊断时间缩短52%。','Deep learning models analyze CT/MRI/X-ray images for instant lesion detection. FDA has approved 500+ AI medical devices. Aidoc reduces stroke diagnosis time by 52%.','深度學習模型分析CT/MRI/X光圖像，秒級檢出病灶。FDA已批准超500個AI醫療設備。')},
+            {icon:'💊',t:L('AI药物研发','AI Drug Discovery','AI藥物研發'),d:L('生成式AI加速靶点发现和分子设计。Insilico Medicine用AI将纤维化药物研发从4.5年缩短到18个月，成本降低90%。','Generative AI accelerates target discovery and molecular design. Insilico Medicine reduced fibrosis drug R&D from 4.5 years to 18 months with 90% cost reduction.','生成式AI加速靶點發現和分子設計。Insilico Medicine用AI將纖維化藥物研發從4.5年縮短至18個月。')},
+            {icon:'🩺',t:L('临床决策支持','Clinical Decision','臨床決策'),d:L('AI分析电子病历、检验报告和文献，辅助医生制定诊疗方案。Babylon Health的AI分诊系统在85%的案例中给出与医生一致的判断。','AI analyzes EHRs, lab results and literature to assist treatment decisions. Babylon Health AI triage matches doctor judgment in 85% of cases.','AI分析電子病歷、檢驗報告和文獻，輔助醫生制定診療方案。')},
+            {icon:'❤️',t:L('患者智能监护','Smart Patient Care','患者智慧監護'),d:L('可穿戴设备+AI实现远程健康监测。Care.ai的医院AI监控系统减少跌倒事件60%，Medisafe提高用药依从性40%。','Wearables + AI enable remote health monitoring. Care.ai hospital monitoring reduces falls by 60%, Medisafe improves medication adherence by 40%.','可穿戴設備+AI實現遠程健康監測。Care.ai的醫院AI監控系統減少跌倒事件60%。')},
           ].map(item => (
             <div key={item.t} style={{padding:14,background:'var(--bg-card)',borderRadius:10,border:'1px solid var(--border)'}}>
               <h4 style={{fontSize:15,fontWeight:600,color:'var(--text)',margin:'0 0 4px'}}>{item.icon} {item.t}</h4>
@@ -42,14 +42,14 @@ export default function HealthcareOverview() {
       </section>
 
       <section className={styles.chart} style={{marginBottom:20}}>
-        <div style={{height:1,background:"var(--border)",margin:"36px 0 20px"}} /><h3 style={{fontSize:17,fontWeight:700,color:"var(--text)",marginBottom:16,display:"flex",alignItems:"center",gap:8}}>{L('關鍵數據','关键数据','Key Metrics')}</h3>
+        <div style={{height:1,background:"var(--border)",margin:"36px 0 20px"}} /><h3 style={{fontSize:17,fontWeight:700,color:"var(--text)",marginBottom:16,display:"flex",alignItems:"center",gap:8}}>{L('关键数据','Key Metrics','關鍵數據')}</h3>
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(180px,1fr))',gap:10}}>
           {[
-            {v:'500+',l:L('FDA批准AI醫療設備','FDA批准AI医疗设备','FDA-Approved AI Devices')},
-            {v:'↓52%',l:L('AI縮短腦中風診斷時間','AI缩短脑卒中诊断时间','Stroke Diagnosis Time Reduced')},
-            {v:'18月',l:L('AI藥物研發週期','AI药物研发周期(传统4.5年)','AI Drug R&D Cycle (vs 4.5yr)')},
-            {v:'90%',l:L('成本降低','成本降低','Cost Reduction')},
-            {v:'$350B',l:L('年價值潛力','年价值潜力(麦肯锡)','Annual Value Potential')},
+            {v:'500+',l:L('FDA批准AI医疗设备','FDA-Approved AI Devices','FDA批准AI醫療設備')},
+            {v:'↓52%',l:L('AI缩短脑卒中诊断时间','Stroke Diagnosis Time Reduced','AI縮短腦中風診斷時間')},
+            {v:'18月',l:L('AI药物研发周期(传统4.5年)','AI Drug R&D Cycle (vs 4.5yr)','AI藥物研發週期')},
+            {v:'90%',l:L('成本降低','Cost Reduction','成本降低')},
+            {v:'$350B',l:L('年价值潜力(麦肯锡)','Annual Value Potential','年價值潛力')},
           ].map(m => (
             <div key={m.l} style={{textAlign:'center',padding:'16px 12px',background:'var(--bg-card)',borderRadius:10,border:'1px solid var(--border)'}}>
               <div style={{fontSize:24,fontWeight:800,color:'var(--primary)'}}>{m.v}</div>
@@ -59,7 +59,7 @@ export default function HealthcareOverview() {
         </div>
       </section>
 
-      <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12,marginTop:24}}>{L('行業工具導航','行业工具导航','Industry Tool Directory')}</h3>
+      <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12,marginTop:24}}>{L('行业工具导航','Industry Tool Directory','行業工具導航')}</h3>
       <LinkNav links={links} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#10b981" />
     </div>
   )
