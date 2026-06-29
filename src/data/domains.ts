@@ -110,6 +110,7 @@ export const domains: Domain[] = [
       { key: 'gemini', icon: '🔷', title: { en: 'Gemini CLI', 'zh-CN': 'Gemini 教程', 'zh-TW': 'Gemini 教學' } },
       { key: 'codex', icon: '🟢', title: { en: 'Codex CLI', 'zh-CN': 'Codex 教程', 'zh-TW': 'Codex 教學' } },
       { key: 'deepseek', icon: '🐋', title: { en: 'DeepSeek Guide', 'zh-CN': 'DeepSeek 教程', 'zh-TW': 'DeepSeek 教學' } },
+      { key: 'claude-code', icon: '🟠', title: { en: 'Claude Code', 'zh-CN': 'Claude Code 教程', 'zh-TW': 'Claude Code 教學' } },
       { key: 'frameworks', icon: '🧰', title: { en: 'Agent Frameworks', 'zh-CN': '智能体框架', 'zh-TW': '智能體框架' } },
       { key: 'assistants', icon: '💬', title: { en: 'AI Assistants', 'zh-CN': '个人助手', 'zh-TW': '個人助手' } },
       { key: 'workflow', icon: '⚡', title: { en: 'Workflow', 'zh-CN': '工作流', 'zh-TW': '工作流' } },
