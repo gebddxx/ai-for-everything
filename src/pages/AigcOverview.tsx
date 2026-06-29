@@ -6,6 +6,10 @@ import PptGenTutorial from './PptGenTutorial'
 import WebGenTutorial from './WebGenTutorial'
 import AppGenTutorial from './AppGenTutorial'
 import SoftwareGenTutorial from './SoftwareGenTutorial'
+import WritingOverview from './WritingOverview'
+import ImageGenOverview from './ImageGenOverview'
+import VideoGenOverview from './VideoGenOverview'
+import AudioGenOverview from './AudioGenOverview'
 
 const sections = [
   { key: 'audio-gen', icon: '🎵', title: { en: 'Audio', 'zh-CN': '音频生成', 'zh-TW': '音頻生成' }, Component: AudioGenTutorial },
@@ -15,6 +19,10 @@ const sections = [
   { key: 'web-gen', icon: '🌐', title: { en: 'Web Page', 'zh-CN': '网页生成', 'zh-TW': '網頁生成' }, Component: WebGenTutorial },
   { key: 'app-gen', icon: '📱', title: { en: 'App', 'zh-CN': '手机App生成', 'zh-TW': '手机App生成' }, Component: AppGenTutorial },
   { key: 'software-gen', icon: '💻', title: { en: 'Software', 'zh-CN': '桌面软件生成', 'zh-TW': '桌面軟體生成' }, Component: SoftwareGenTutorial },
+  { key: 'writing', icon: '✍️', title: { en: 'Writing Tools', 'zh-CN': 'AI写作工具', 'zh-TW': 'AI寫作工具' }, Component: WritingOverview },
+  { key: 'image-gen', icon: '🎨', title: { en: 'Image Tools', 'zh-CN': 'AI绘画工具', 'zh-TW': 'AI繪畫工具' }, Component: ImageGenOverview },
+  { key: 'video-gen-tool', icon: '🎬', title: { en: 'Video Tools', 'zh-CN': 'AI视频工具', 'zh-TW': 'AI影片工具' }, Component: VideoGenOverview },
+  { key: 'audio-gen-tool', icon: '🎵', title: { en: 'Audio Tools', 'zh-CN': 'AI音频工具', 'zh-TW': 'AI音頻工具' }, Component: AudioGenOverview },
 ]
 
 export default function AigcOverview() {
