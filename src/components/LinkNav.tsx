@@ -1,4 +1,5 @@
 import { type Lang } from '../i18n/translations'
+import { tText } from '../i18n/translate'
 
 export interface ToolLink {
   name: string
@@ -10,10 +11,7 @@ export interface ToolLink {
 }
 
 function getDesc(d: ToolLink['desc'], lang: string): string {
-  if (typeof d === 'string') return d
-  if (lang === 'zh-CN') return d.zh || d.en || ''
-  if (lang === 'zh-TW') return d.tw || d.zh || d.en || ''
-  return d.en || d.zh || ''
+  return tText(d, lang)
 }
 
 interface Props {

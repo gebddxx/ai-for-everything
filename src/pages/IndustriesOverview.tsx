@@ -1,4 +1,5 @@
 import { useT } from '../contexts/LanguageContext'
+import { tText, type MultiLang } from '../i18n/translate'
 import Overview from './Overview'
 import HealthcareOverview from './HealthcareOverview'
 import FinanceOverview from './FinanceOverview'
@@ -35,7 +36,10 @@ const sections = [
 
 export default function IndustriesOverview() {
   const { lang } = useT()
-  const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
+  const L = (a: MultiLang, b?: string, c?: string) => {
+    if (typeof a !== 'string') return tText(a, lang)
+    return lang === 'zh-CN' ? (b || a) : lang === 'zh-TW' ? (c || b || a) : a
+  }
 
   return (
     <div>

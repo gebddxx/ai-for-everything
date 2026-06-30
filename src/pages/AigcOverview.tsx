@@ -1,4 +1,5 @@
 import { useT } from '../contexts/LanguageContext'
+import { tText, type MultiLang } from '../i18n/translate'
 import AudioGenTutorial from './AudioGenTutorial'
 import VideoGenTutorial from './VideoGenTutorial'
 import NovelWritingTutorial from './NovelWritingTutorial'
@@ -27,7 +28,10 @@ const sections = [
 
 export default function AigcOverview() {
   const { lang } = useT()
-  const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
+  const L = (a: MultiLang, b?: string, c?: string) => {
+    if (typeof a !== 'string') return tText(a, lang)
+    return lang === 'zh-CN' ? (b || a) : lang === 'zh-TW' ? (c || b || a) : a
+  }
   return (
     <div>
       <div id="section-overview" style={{
