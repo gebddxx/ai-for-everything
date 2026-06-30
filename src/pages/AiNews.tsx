@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useT } from '../contexts/LanguageContext'
+import { tText, type MultiLang } from '../i18n/translate'
 import { newsIssues } from '../data/aiNews'
 import styles from './Page.module.css'
 
@@ -9,7 +10,7 @@ export default function AiNews() {
   const { lang } = useT()
   const [visible, setVisible] = useState(PAGE_SIZE)
 
-  const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
+  const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }
 
   return (
     <div className={styles.page}>

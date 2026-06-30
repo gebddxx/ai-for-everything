@@ -1,10 +1,11 @@
 import { useT } from '../contexts/LanguageContext'
+import { tText, type MultiLang } from '../i18n/translate'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 
 export default function ApiRelayOverview() {
   const { lang } = useT()
-  const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
+  const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }
   return (<div className={styles.page}>
     <div className={styles.head}><h2 className={styles.title}>🔌 {L('API Relay Hub','API中转站','API中轉站')}</h2><p className={styles.subtitle}>{L('API proxies, relays, and aggregators','API中转、代理和聚合平台','API中轉、代理和聚合平台')}</p></div>
     <LinkNav links={links} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#06b6d4" />

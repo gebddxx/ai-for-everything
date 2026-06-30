@@ -1,10 +1,11 @@
 import { useT } from '../contexts/LanguageContext'
+import { tText, type MultiLang } from '../i18n/translate'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 
 export default function SocialMediaOverview() {
   const { lang } = useT()
-  const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
+  const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>📱 {L('Social & Community','社区媒体','社群媒體')}</h2><p className={styles.subtitle}>{L('Q&A communities, forums, content platforms, short & long video sites','问答社区、论坛、内容平台、短视频和长视频网站','問答社群、論壇、內容平台、短影片和長影片網站')}</p></div>

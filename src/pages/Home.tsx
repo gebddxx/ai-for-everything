@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useT } from '../contexts/LanguageContext'
 import { domains } from '../data/domains'
-import type { Lang } from '../i18n/translations'
+import { domainTitle } from '../i18n/translate'
 import styles from './Page.module.css'
 
 function getGreeting(lang: string) {
@@ -152,7 +152,7 @@ export default function Home({ onEnter }: Props) {
             <div className={styles.domainHead}>
               <span className={styles.domainIcon}>{d.icon}</span>
             </div>
-            <h3 className={styles.domainTitle}>{d.title[lang as Lang]}</h3>
+            <h3 className={styles.domainTitle}>{domainTitle(d.title, lang)}</h3>
             <p className={styles.domainDesc}>{d.desc[lang as Lang]}</p>
             <span className={styles.domainCta}>
               {lang === 'zh-CN' ? '进入 →' : lang === 'zh-TW' ? '進入 →' : 'Enter →'}

@@ -1,10 +1,11 @@
 import { useT } from '../contexts/LanguageContext'
+import { tText, type MultiLang } from '../i18n/translate'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 export default function MediaOverview() {
   const { lang } = useT()
-  const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
-  const LA = (en: string[], zh: string[], tw: string[]) => lang === 'zh-CN' ? zh : lang === 'zh-TW' ? tw : en
+  const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }
+  const LA = (en: string[], zh: string[], tw: string[]) => lang === "zh-CN" ? zh : lang === "zh-TW" ? tw : en
   return (<div className={styles.page}>
     <div style={{background:'linear-gradient(135deg,#4a044e 0%,#6b21a8 50%,#86198f 100%)',borderRadius:14,padding:'24px 28px',marginBottom:24,color:'#fff'}}>
       <h2 style={{fontSize:24,fontWeight:800,margin:'0 0 16px'}}>🎬 {L('AI in Media','AI 媒体娱乐','AI 媒體娛樂')}</h2>

@@ -1,10 +1,11 @@
 import { useT } from '../contexts/LanguageContext'
+import { tText, type MultiLang } from '../i18n/translate'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 
 export default function ImageResourcesOverview() {
   const { lang } = useT()
-  const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
+  const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>🖼️ {L('Image Resources','图片专区','圖片專區')}</h2><p className={styles.subtitle}>{L('Free stock photos, color tools, image editors, AI cutout, logo design','免费图库、配色工具、图片编辑、AI抠图、Logo设计','免費圖庫、配色工具、圖片編輯、AI摳圖、Logo設計')}</p></div>

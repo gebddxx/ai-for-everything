@@ -17,15 +17,17 @@ const LanguageContext = createContext<LangCtx>({
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>(() => {
     const saved = localStorage.getItem('ai-logistics-lang')
-    return (saved === 'zh-CN' || saved === 'zh-TW' || saved === 'en') ? saved : 'en'
+    return (saved === 'zh-CN' || saved === 'zh-TW' || saved === 'ja' || saved === 'en') ? saved : 'en'
   })
 
   useEffect(() => {
     localStorage.setItem('ai-logistics-lang', lang)
   }, [lang])
 
+  const effectiveT = t[lang]
+
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t: t[lang] }}>
+    <LanguageContext.Provider value={{ lang, setLang, t: effectiveT }}>
       {children}
     </LanguageContext.Provider>
   )

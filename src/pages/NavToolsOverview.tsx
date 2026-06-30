@@ -42,10 +42,10 @@ export default function NavToolsOverview() {
       }}>
         <div style={{ position: 'absolute', top: -20, right: -10, fontSize: 100, opacity: 0.08 }}>🧭</div>
         <h2 style={{ fontSize: 24, fontWeight: 800, margin: '0 0 8px' }}>
-          {L('Tool Directory', '导航工具集', '導航工具集')}
+          {L({ en: 'Tool Directory', 'zh-CN': '导航工具集', 'zh-TW': '導航工具集', ja: 'ツール集', ko: '도구 모음', es: 'Directorio' })}
         </h2>
         <p style={{ fontSize: 14, opacity: 0.85, margin: '0 0 20px', maxWidth: 600, lineHeight: 1.6 }}>
-          <span style={{ fontWeight:600 }}>⚠️ {L('Not all AI — just a convenient tool collection.','非AI专属，仅为方便整理的普通工具合集。','非AI專屬，僅為方便整理的普通工具合集。')}</span>
+          <span style={{ fontWeight:600 }}>⚠️ {L({ en: 'Not all AI — just a convenient tool collection.', 'zh-CN': '非AI专属，仅为方便整理的普通工具合集。', 'zh-TW': '非AI專屬，僅為方便整理的普通工具合集。', ja: 'AI専用ではありません。便利なツール集です。', ko: 'AI 전용이 아닙니다. 편리한 도구 모음입니다.', es: 'No es solo IA, es una colección conveniente de herramientas.' })}</span>
           <br />
           {L(
             '300+ tools across 8 categories. Scroll continuously or use the sidebar to jump.',

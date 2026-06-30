@@ -1,10 +1,11 @@
 import { useT } from '../contexts/LanguageContext'
+import { tText, type MultiLang } from '../i18n/translate'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 
 export default function DevToolsOverview() {
   const { lang } = useT()
-  const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
+  const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>🔧 {L('Dev Tools','开发工具','開發工具')}</h2><p className={styles.subtitle}>{L('87 online compilers, formatters, converters, and developer utilities','87款在线编译器、格式化、编码转换和开发者实用工具','87款在線編譯器、格式化、編碼轉換和開發者實用工具')}</p></div>

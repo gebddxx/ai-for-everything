@@ -1,9 +1,12 @@
-export type Lang = 'en' | 'zh-CN' | 'zh-TW'
+export type Lang = 'en' | 'zh-CN' | 'zh-TW' | 'ja' | 'ko' | 'es'
 
 export const LANGS: { key: Lang; label: string }[] = [
   { key: 'en', label: 'EN' },
   { key: 'zh-CN', label: '简中' },
   { key: 'zh-TW', label: '繁中' },
+  { key: 'ja', label: '日本語' },
+  { key: 'ko', label: '한국어' },
+  { key: 'es', label: 'Español' },
 ]
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -507,4 +510,171 @@ export const t: Record<Lang, Record<string, T>> = {
       { module: '運營客服', company: '牛卡福', result: '效率提升15倍' },
     ],
   },
+  'ja': {
+    header: { title: 'AI Navigator', badge: 'ツール案内' },
+    sidebar: {
+      overview: '概要',
+      warehouse: 'スマート倉庫',
+      transport: '輸送管理',
+      delivery: 'ラストワンマイル',
+      prediction: '予測・意思決定',
+      operation: '運用・サービス',
+    },
+    overview: {
+      title: '物流 · 全体概要',
+      subtitle: '5つの核心シナリオ',
+      summary: 'AIはスマート倉庫からラストワンマイル配送まで、物流チェーンのあらゆる場面に浸透しています。以下の5つのシナリオが業界を再構築しています。各エリアの主要指標を以下に示します。',
+      pieTitle: 'AI投資効率分布',
+      highlightsTitle: 'ベンチマーク事例一覧',
+      mindmapTitle: 'モジュールマップ — 全体像',
+      mindmapTip: '← サイドバーからモジュールを選択 →',
+    },
+    modules: {
+      warehouse: {
+        title: 'スマート倉庫',
+        subtitle: 'コンピュータビジョン · AMR · 知的アルゴリズム',
+        stats: [
+          { label: '運用コスト削減', value: '20%', sub: '' },
+          { label: '石炭物流容量', value: '500万トン', sub: '従来200万トン' },
+          { label: 'ピッキング方式', value: 'Goods-to-Person', sub: '手動検索から置き換え' },
+        ],
+        cases: [
+          { title: 'Goods-to-Person ピッキング', items: [
+            { company: '九州通', detail: 'ロボットが棚を作業者に運び、従来の「人探し」方式を置き換え。' },
+            { company: 'Amazon', detail: 'AI最適化ロボット経路、運用コスト20%削減。' },
+          ]},
+          { title: 'スマート運用管理', items: [
+            { company: '玉湖冷鏈', detail: 'AIが冷蔵庫運用作業を管理、期限間近商品を警告。' },
+            { company: '中科富創', detail: '物流LLMにより石炭物流パーク完全無人化、容量200万→500万トン。' },
+          ]},
+        ],
+      },
+      transport: {
+        title: 'スマート輸送管理',
+        subtitle: '意思決定AI · ルート最適化 · ビッグデータ',
+        stats: [
+          { label: 'トラック積載率', value: '97%', sub: '最適化前90%' },
+          { label: '燃料費削減', value: '15%', sub: '' },
+          { label: '日削減便数', value: '10+', sub: '香港スーパーチェーン' },
+        ],
+        cases: [
+          { title: '動的ルート計画', items: [
+            { company: '多點', detail: '知能管理システムが香港スーパーの日削減便10回以上を実現。' },
+            { company: 'エクスプレス企業', detail: 'AIがリアルタイム交通データと組み合わせ最適配送ルートを計画。' },
+          ]},
+          { title: 'スマート積載計画', items: [
+            { company: 'アクセンチュア', detail: 'AIがパレット配置を最適化、積載率90%→97%、燃料費15%削減。' },
+          ]},
+        ],
+        chartTitle: '最適化前後比較',
+      },
+      delivery: {
+        title: 'ラストワンマイル配送',
+        subtitle: '自動運転 · ドローン技術 · スマート管理',
+        stats: [
+          { label: 'ドローン配送', value: '数十万件', sub: '深圳エリア' },
+          { label: '配送モード', value: 'AGV+ドローン', sub: '団地/コミュニティ/コールドチェーン' },
+        ],
+        cases: [
+          { title: '無人車配送', items: [
+            { company: '多城市団地', detail: '無人車は団地・コミュニティ配送で成熟、非接触ラストワンマイルを実現。' },
+          ]},
+          { title: 'ドローン配送', items: [
+            { company: '美団', detail: '深圳で数十万件のドローン配送を完了、地上交通制約を突破。' },
+            { company: '玉湖冷鏈', detail: '成都団地でドローンコールドチェーン配送を試験運用。' },
+          ]},
+        ],
+        chartTitle: '配送モード比較',
+      },
+      prediction: {
+        title: '全チェーン予測・意思決定',
+        subtitle: '生成AI · 機械学習 · 予測モデル',
+        stats: [
+          { label: '予測精度向上', value: '+40%', sub: '' },
+          { label: '欠品率低減', value: '35%-45%', sub: '' },
+          { label: 'リスク早期警告', value: '3-5日', sub: 'J&Tエクスプレス' },
+        ],
+        cases: [
+          { title: '需要予測', items: [
+            { company: 'アクセンチュア', detail: 'AIが販売履歴、市場動向、天候を分析、予測精度40%向上、欠品率35-45%低減。' },
+            { company: '小売企業', detail: '事前在庫配置を指導、過剰在庫と欠品リスクを低減。' },
+          ]},
+          { title: 'サプライチェーンリスク管理', items: [
+            { company: 'J&Tエクスプレス', detail: 'AIモデルがクレーム3-5日前にリスク便を特定、事前対応を可能に。' },
+          ]},
+        ],
+        chartTitle: '従来方式 vs AI予測',
+      },
+      operation: {
+        title: '運用・サービス',
+        subtitle: '大規模言語モデル · NLP · RPA',
+        stats: [
+          { label: 'AI日次処理量', value: '3,000件', sub: '手動200件/日' },
+          { label: 'AI精度', value: '99.99%', sub: '手動精度92%' },
+          { label: '効率向上', value: '15倍', sub: 'データ入力' },
+        ],
+        cases: [
+          { title: 'スマートデータ入力', items: [
+            { company: '牛卡福', detail: 'AIが微信、表計算、画像から注文情報を自動認識。日処理3000件、精度99.99%。' },
+          ]},
+          { title: 'デジタル社員・スマートCS', items: [
+            { company: '韻達', detail: '「小達」CSボットが自動応答、24時間365日稼働。' },
+            { company: '物流企業', detail: 'AIデジタル社員が照合、請求、レポート作成を自動化。' },
+          ]},
+        ],
+        chartTitle: '手動 vs AI 効率比較',
+      },
+    },
+    mindmap: {
+      hub: 'AI 物流',
+      cases: '{n}件の事例',
+    },
+    overviewStats: [
+      { label: '倉庫運用コスト', value: '↓20%', sub: 'Amazon AI最適化' },
+      { label: 'トラック積載率', value: '97%', sub: '最適化前90%' },
+      { label: 'ドローン配送', value: '10万+件', sub: '美団深圳' },
+      { label: '予測精度', value: '+40%', sub: 'アクセンチュア' },
+      { label: 'AIデータ入力精度', value: '99.99%', sub: '牛卡福' },
+      { label: 'リスク早期警告', value: '3-5日', sub: 'J&Tエクスプレス' },
+    ],
+    overviewHighlights: [
+      { module: 'スマート倉庫', company: '中科富創', result: '容量：200万→500万トン' },
+      { module: '輸送管理', company: 'アクセンチュア', result: '積載率：90%→97%' },
+      { module: 'ラストワンマイル', company: '美団ドローン', result: '深圳10万+件' },
+      { module: '予測', company: 'J&Tエクスプレス', result: '3-5日前警告' },
+      { module: '運用', company: '牛卡福', result: '効率15倍向上' },
+    ],
+  },
+
+  "ko": {
+    header: { title: "AI Navigator", badge: "도구 안내" },
+    sidebar: { overview: "개요", warehouse: "스마트 창고", transport: "운송 관리", delivery: "라스트마일", prediction: "예측 · 의사결정", operation: "운영 · 서비스" },
+    overview: { title: "물류 · 전체 개요", subtitle: "5가지 핵심 시나리오", summary: "AI는 물류 체인의 모든 부분에 깊이 침투했습니다.", pieTitle: "AI 투자 효율 분포", highlightsTitle: "벤치마크 사례", mindmapTitle: "모듈 맵", mindmapTip: "← 사이드바에서 선택" },
+    modules: {
+      warehouse: { title: "스마트 창고", subtitle: "CV · AMR · 알고리즘", stats: [{ label: "비용 절감", value: "20%", sub: "" }, { label: "용량", value: "500만 톤", sub: "기존 200만" }, { label: "피킹", value: "Goods-to-Person", sub: "" }], cases: [{ title: "피킹", items: [{ company: "九州通", detail: "로봇이 선반 운반." }, { company: "Amazon", detail: "비용 20% 절감." }] }] },
+      transport: { title: "스마트 운송", subtitle: "AI · 경로 · 빅데이터", stats: [{ label: "적재율", value: "97%", sub: "전 90%" }, { label: "연료비", value: "↓15%", sub: "" }, { label: "감축", value: "10+회/일", sub: "홍콩" }], cases: [{ title: "경로 계획", items: [{ company: "多點", detail: "일 10회 감축." }, { company: "택배", detail: "AI 최적 경로." }] }], chartTitle: "전후 비교" },
+      delivery: { title: "라스트마일", subtitle: "자율주행 · 드론", stats: [{ label: "드론 배송", value: "수십만 건", sub: "선전" }, { label: "모드", value: "AGV+드론", sub: "단지" }], cases: [{ title: "무인차", items: [{ company: "다수 도시", detail: "성숙 단계." }] }, { title: "드론", items: [{ company: "美團", detail: "수십만 건." }] }], chartTitle: "모드 비교" },
+      prediction: { title: "예측 · 의사결정", subtitle: "생성AI · ML", stats: [{ label: "예측 정확도", value: "+40%", sub: "" }, { label: "결품률", value: "↓35-45%", sub: "" }, { label: "조기 경고", value: "3-5일", sub: "J&T" }], cases: [{ title: "수요 예측", items: [{ company: "Accenture", detail: "정확도 +40%." }] }, { title: "리스크", items: [{ company: "J&T", detail: "3-5일 전 식별." }] }], chartTitle: "전통 vs AI" },
+      operation: { title: "운영 · 서비스", subtitle: "LLM · NLP · RPA", stats: [{ label: "일일 처리", value: "3,000건", sub: "수동 200" }, { label: "정확도", value: "99.99%", sub: "수동 92%" }, { label: "효율", value: "15배", sub: "" }], cases: [{ title: "데이터 입력", items: [{ company: "牛卡福", detail: "AI 자동 인식." }] }, { title: "디지털 직원", items: [{ company: "韻達", detail: "CS 봇 24/7." }] }], chartTitle: "수동 vs AI" },
+    },
+    mindmap: { hub: "AI 물류", cases: "{n}개 사례" },
+    overviewStats: [{ label: "창고 비용", value: "↓20%", sub: "Amazon" }, { label: "적재율", value: "97%", sub: "전 90%" }, { label: "드론", value: "10만+건", sub: "美團" }, { label: "예측", value: "+40%", sub: "Accenture" }, { label: "정확도", value: "99.99%", sub: "牛卡福" }, { label: "경고", value: "3-5일", sub: "J&T" }],
+    overviewHighlights: [{ module: "창고", company: "中科富創", result: "200만→500만 톤" }, { module: "운송", company: "Accenture", result: "90%→97%" }, { module: "라스트마일", company: "美團", result: "10만+건" }, { module: "예측", company: "J&T", result: "3-5일" }, { module: "운영", company: "牛卡福", result: "15배" }],
+  },
+  "es": {
+    header: { title: "AI Navigator", badge: "Guía de herramientas" },
+    sidebar: { overview: "Visión general", warehouse: "Almacén", transport: "Transporte", delivery: "Última milla", prediction: "Predicción", operation: "Operaciones" },
+    overview: { title: "Logística · Panorama", subtitle: "5 escenarios clave", summary: "IA integrada en toda la cadena logística.", pieTitle: "Inversión IA", highlightsTitle: "Casos", mindmapTitle: "Mapa", mindmapTip: "← Seleccione" },
+    modules: {
+      warehouse: { title: "Almacén inteligente", subtitle: "Visión · AMR · Algoritmos", stats: [{ label: "Reducción costes", value: "20%", sub: "" }, { label: "Capacidad", value: "5M ton", sub: "antes 2M" }, { label: "Picking", value: "G2P", sub: "" }], cases: [{ title: "Picking", items: [{ company: "九州通", detail: "Robots llevan estantes." }, { company: "Amazon", detail: "Costes -20%." }] }] },
+      transport: { title: "Transporte inteligente", subtitle: "IA · Rutas · Big Data", stats: [{ label: "Carga", value: "97%", sub: "antes 90%" }, { label: "Combustible", value: "↓15%", sub: "" }, { label: "Viajes", value: "10+/día", sub: "HK" }], cases: [{ title: "Rutas", items: [{ company: "多點", detail: "10+ viajes menos." }, { company: "Mensajería", detail: "Rutas óptimas." }] }], chartTitle: "Antes vs Después" },
+      delivery: { title: "Última milla", subtitle: "Autónomo · Drones", stats: [{ label: "Entregas dron", value: "100K+", sub: "Shenzhen" }, { label: "Modos", value: "AGV+Dron", sub: "Parques" }], cases: [{ title: "Autónomo", items: [{ company: "Ciudades", detail: "Maduro." }] }, { title: "Dron", items: [{ company: "美團", detail: "100K+." }] }], chartTitle: "Comparativa" },
+      prediction: { title: "Predicción", subtitle: "IA · ML", stats: [{ label: "Precisión", value: "+40%", sub: "" }, { label: "Rotura stock", value: "↓35-45%", sub: "" }, { label: "Alerta", value: "3-5 días", sub: "J&T" }], cases: [{ title: "Demanda", items: [{ company: "Accenture", detail: "Precisión +40%." }] }, { title: "Riesgos", items: [{ company: "J&T", detail: "Alerta 3-5 días." }] }], chartTitle: "Tradicional vs IA" },
+      operation: { title: "Operaciones", subtitle: "LLM · NLP · RPA", stats: [{ label: "Volumen", value: "3,000/día", sub: "Manual 200" }, { label: "Precisión", value: "99.99%", sub: "Manual 92%" }, { label: "Eficiencia", value: "15×", sub: "" }], cases: [{ title: "Ingreso", items: [{ company: "牛卡福", detail: "IA reconoce pedidos." }] }, { title: "Digital", items: [{ company: "韻達", detail: "Bot CS 24/7." }] }], chartTitle: "Manual vs IA" },
+    },
+    mindmap: { hub: "IA Logística", cases: "{n} casos" },
+    overviewStats: [{ label: "Coste almacén", value: "↓20%", sub: "Amazon" }, { label: "Carga", value: "97%", sub: "antes 90%" }, { label: "Dron", value: "100K+", sub: "美團" }, { label: "Precisión", value: "+40%", sub: "Accenture" }, { label: "Precisión IA", value: "99.99%", sub: "牛卡福" }, { label: "Alerta", value: "3-5 días", sub: "J&T" }],
+    overviewHighlights: [{ module: "Almacén", company: "中科富創", result: "2M→5M ton" }, { module: "Transporte", company: "Accenture", result: "90%→97%" }, { module: "Última milla", company: "美團", result: "100K+" }, { module: "Predicción", company: "J&T", result: "3-5 días" }, { module: "Operaciones", company: "牛卡福", result: "15×" }],
+  }
+
 }

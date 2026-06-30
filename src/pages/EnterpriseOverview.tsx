@@ -1,11 +1,12 @@
 import { useT } from '../contexts/LanguageContext'
+import { tText, type MultiLang } from '../i18n/translate'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 
 export default function EnterpriseOverview() {
   const { lang } = useT()
-  const L = (e: string, z: string, t: string) => lang === 'zh-CN' ? z : lang === 'zh-TW' ? t : e
-  const LA = (en: string[], zh: string[], tw: string[]) => lang === 'zh-CN' ? zh : lang === 'zh-TW' ? tw : en
+  const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }
+  const LA = (en: string[], zh: string[], tw: string[]) => lang === "zh-CN" ? zh : lang === "zh-TW" ? tw : en
   const cards = [
     {icon:'📢',t:L('营销自动化','营销自动化','行銷自動化'),
      items:LA(['🎯 个性化推荐 转化 ↑3-5×','🤖 AI批量生成营销内容','📊 线索评分 转化 ↑40%'],['🎯 个性化推荐 转化 ↑3-5×','🤖 AI批量生成营销内容','📊 线索评分 转化 ↑40%'],['🎯 Personalization 3-5x conv','🤖 AI bulk content gen','📊 Lead scoring +40% conv']),

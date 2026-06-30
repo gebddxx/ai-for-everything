@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useT } from '../contexts/LanguageContext'
 import { domains } from '../data/domains'
-import type { Lang } from '../i18n/translations'
+import { domainTitle } from '../i18n/translate'
 import styles from './Sidebar.module.css'
 
 interface Props {
@@ -34,7 +34,7 @@ export default function Sidebar({ domain, activePage, onSelectPage, onSelectDoma
   return (
     <nav className={styles.sidebar}>
       <div className={styles.sectionTitle}>
-        {lang === 'zh-CN' ? '导航' : lang === 'zh-TW' ? '導航' : 'Navigation'}
+        {lang === 'zh-CN' || lang === 'ja' ? '导航' : lang === 'zh-TW' ? '導航' : 'Navigation'}
       </div>
 
       {/* Home button */}
@@ -44,11 +44,11 @@ export default function Sidebar({ domain, activePage, onSelectPage, onSelectDoma
         style={{ marginBottom: 6 }}
       >
         <span className={styles.icon}>🏠</span>
-        <span className={styles.label}>{lang === 'zh-CN' ? '首页' : lang === 'zh-TW' ? '首頁' : 'Home'}</span>
+        <span className={styles.label}>{lang === 'zh-CN' || lang === 'ja' ? '首页' : lang === 'zh-TW' ? '首頁' : 'Home'}</span>
       </button>
 
       {domains.map((d) => {
-        const title = d.title[lang as Lang]
+        const title = domainTitle(d.title, lang)
         const isExpanded = expanded.has(d.key)
         const isActiveDomain = domain === d.key
 
@@ -83,7 +83,7 @@ export default function Sidebar({ domain, activePage, onSelectPage, onSelectDoma
                       }}
                     >
                       <span className={styles.subIcon}>{sub.icon}</span>
-                      <span className={styles.label}>{sub.title[lang as Lang]}</span>
+                      <span className={styles.label}>{domainTitle(sub.title, lang)}</span>
                     </button>
                   )
                 })}

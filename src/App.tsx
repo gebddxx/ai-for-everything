@@ -16,7 +16,7 @@ const AigcOverview = lazy(() => import('./pages/AigcOverview'))
 const AiDevOverview = lazy(() => import('./pages/AiDevOverview'))
 
 import { domains } from './data/domains'
-import type { Lang } from './i18n/translations'
+import { domainTitle } from './i18n/translate'
 import styles from './App.module.css'
 
 const MIN_SIDEBAR = 120
@@ -203,9 +203,9 @@ function BreadcrumbBlock({ domain, activePage, onBack, onSelectPage }: {
   const { lang } = useT()
   if (!domain) return <Breadcrumb path={[]} />
   const d = domains.find(dd => dd.key === domain)
-  const domainLabel = d?.title[lang as Lang] ?? domain
+  const domainLabel = d ? domainTitle(d.title, lang) : domain
   const sub = d?.subModules.find(s => s.key === activePage)
-  const pageLabel = sub?.title[lang as Lang] ?? activePage
+  const pageLabel = sub ? domainTitle(sub.title, lang) : activePage
   return <Breadcrumb path={[{ label: domainLabel, onClick: onBack }, { label: pageLabel, onClick: () => onSelectPage(activePage) }]} />
 }
 
