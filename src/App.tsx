@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from 'react'
+import { useState, useCallback, useEffect, useRef, lazy, Suspense } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import Header from './components/Header'
@@ -6,12 +6,14 @@ import Sidebar from './components/Sidebar'
 import Breadcrumb from './components/Breadcrumb'
 import { useT } from './contexts/LanguageContext'
 import Home from './pages/Home'
-import NavToolsOverview from './pages/NavToolsOverview'
-import IndustriesOverview from './pages/IndustriesOverview'
-import AigcOverview from './pages/AigcOverview'
-import AiDevOverview from './pages/AiDevOverview'
 import AiNews from './pages/AiNews'
 import BackToTop from './components/BackToTop'
+
+// Code-split domain pages — only load what the user navigates to
+const NavToolsOverview = lazy(() => import('./pages/NavToolsOverview'))
+const IndustriesOverview = lazy(() => import('./pages/IndustriesOverview'))
+const AigcOverview = lazy(() => import('./pages/AigcOverview'))
+const AiDevOverview = lazy(() => import('./pages/AiDevOverview'))
 
 import { domains } from './data/domains'
 import type { Lang } from './i18n/translations'
@@ -44,6 +46,10 @@ function AppContent() {
     return saved ? Number(saved) : DEFAULT_SIDEBAR
   })
   const dragging = useRef(false)
+  const sidebarWidthRef = useRef(sidebarWidth)
+
+  // Keep ref in sync
+  useEffect(() => { sidebarWidthRef.current = sidebarWidth }, [sidebarWidth])
 
   const onMouseDown = useCallback((e: React.MouseEvent) => {
     e.preventDefault()
@@ -61,7 +67,7 @@ function AppContent() {
       if (dragging.current) {
         dragging.current = false
         document.body.style.cursor = ''
-        localStorage.setItem('ai-logistics-sidebar-width', String(sidebarWidth))
+        localStorage.setItem('ai-logistics-sidebar-width', String(sidebarWidthRef.current))
       }
     }
     window.addEventListener('mousemove', onMove)
@@ -115,18 +121,21 @@ function AppContent() {
   }, [domain])
 
   // sync state → URL hash
-  const updatingHash = useRef(false)
+  const updatingHash = useRef(0)
   useEffect(() => {
-    updatingHash.current = true
+    updatingHash.current++
+    const id = updatingHash.current
     window.location.hash = toHash(domain, activePage)
-    // reset flag after this microtask
-    setTimeout(() => { updatingHash.current = false }, 0)
+    // reset flag after queued microtasks settle — use a counter to avoid race
+    queueMicrotask(() => {
+      if (updatingHash.current === id) updatingHash.current = 0
+    })
   }, [domain, activePage])
 
   // listen for browser back/forward
   useEffect(() => {
     const onHashChange = () => {
-      if (updatingHash.current) return // we triggered this, skip
+      if (updatingHash.current !== 0) return // we triggered this, skip
       const [d, p] = parseHash()
       setDomain(d)
       setActivePage(p)
@@ -159,12 +168,15 @@ function AppContent() {
 
   const renderPage = () => {
     if (domain === null) return <Home onEnter={handleEnterDomain} />
-    if (domain === 'nav-tools') return <NavToolsOverview />
-    if (domain === 'ai-industries') return <IndustriesOverview />
-    if (domain === 'aigc') return <AigcOverview />
-    if (domain === 'ai-dev') return <AiDevOverview />
-    if (domain === 'ai-news') return <AiNews />
-    return null
+    return (
+      <Suspense fallback={<div style={{ padding: 40, textAlign: 'center', color: 'var(--text-muted)' }}>加载中…</div>}>
+        {domain === 'nav-tools' && <NavToolsOverview />}
+        {domain === 'ai-industries' && <IndustriesOverview />}
+        {domain === 'aigc' && <AigcOverview />}
+        {domain === 'ai-dev' && <AiDevOverview />}
+        {domain === 'ai-news' && <AiNews />}
+      </Suspense>
+    )
   }
 
   const handleBack = () => setDomain(null)
@@ -175,7 +187,7 @@ function AppContent() {
       <div className={styles.body}>
         <Sidebar domain={domain} activePage={activePage} onSelectPage={handleSelectPage} onSelectDomain={handleEnterDomain} onHome={handleBack} />
         <div className={styles.handle} onMouseDown={onMouseDown} />
-        <main className={styles.content}>
+        <main className={styles.content} data-scroll-container>
           <BreadcrumbBlock domain={domain} activePage={activePage} onBack={handleBack} onSelectPage={handleSelectPage} />
           {renderPage()}
         </main>

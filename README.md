@@ -45,6 +45,36 @@
 - 🌍 **三语支持** — EN / 简中 / 繁中 一键切换
 - 📱 **响应式** — 桌面 / 平板 / 手机
 
+## 🏗 架构概览
+
+这是一个 **纯前端静态单页应用（SPA）**。
+
+| 维度 | 说明 |
+|:---|:---|
+| **类型** | 静态站点，无后端服务、无数据库、无 API |
+| **部署产物** | `dist/` 目录 — 纯 HTML + CSS + JS，可部署到任何静态托管（GitHub Pages、Netlify、Vercel 等） |
+| **数据来源** | 所有内容在构建时/运行时以 TypeScript 模块形式嵌入，无服务端依赖 |
+| **平台兼容** | Windows / Linux / macOS 均可开发与部署 |
+| **运行方式** | `npm run dev` 启动本地 Vite 开发服务器，`npm run build` 构建静态文件 |
+
+### 数据流
+
+```
+TypeScript 源文件（.ts / .tsx）
+  ├── src/data/domains.ts       ← 板块结构定义
+  ├── src/data/searchIndex.ts   ← 搜索索引（npm run build-index 生成）
+  ├── src/data/aiNews.ts        ← AI 速报内容
+  ├── src/data/logistics.ts     ← 物流仪表盘数据
+  ├── src/pages/*.tsx           ← 各页面组件内联的工具/教程数据
+  └── src/i18n/translations.ts  ← 多语言翻译
+       ↓
+  React 运行时                  ← 状态驱动路由（无 React Router）
+       ↓
+  纯静态 HTML/CSS/JS            ← 部署到 GitHub Pages
+```
+
+> **不是 SSR、不是 API 后端、不是全栈应用。** 浏览器打开即用，无服务器渲染开销。
+
 ## 🛠 技术栈
 
 | 类别 | 技术 |

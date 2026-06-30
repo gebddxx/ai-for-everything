@@ -41,14 +41,14 @@ const sectionMap = {
   'law': ['ai-industries', '法律科技', '🏭 AI行业应用'],
   'climate': ['ai-industries', '环保气候', '🏭 AI行业应用'],
   'govtech': ['ai-industries', '政务智慧城市', '🏭 AI行业应用'],
-  // aigc
-  'gemini': ['aigc', 'Gemini CLI 教程', '🤖 AIGC教程'],
-  'codex': ['aigc', 'Codex CLI 教程', '🤖 AIGC教程'],
-  'ccswitch': ['aigc', 'CCSwitch 教程', '🤖 AIGC教程'],
-  'frameworks': ['aigc', 'Agent 框架', '🤖 AIGC教程'],
-  'assistants': ['aigc', '个人 AI 助手', '🤖 AIGC教程'],
-  'workflow': ['aigc', '工作流自动化', '🤖 AIGC教程'],
-  'multi-agent': ['aigc', '多 Agent 协作', '🤖 AIGC教程'],
+  // ai-dev
+  'gemini': ['ai-dev', 'Gemini CLI 教程', '🛠️ AI工具 · 大模型'],
+  'codex': ['ai-dev', 'Codex CLI 教程', '🛠️ AI工具 · 大模型'],
+  'ccswitch': ['ai-dev', 'CCSwitch 教程', '🛠️ AI工具 · 大模型'],
+  'frameworks': ['ai-dev', 'Agent 框架', '🛠️ AI工具 · 大模型'],
+  'assistants': ['ai-dev', '个人 AI 助手', '🛠️ AI工具 · 大模型'],
+  'workflow': ['ai-dev', '工作流自动化', '🛠️ AI工具 · 大模型'],
+  'multi-agent': ['ai-dev', '多 Agent 协作', '🛠️ AI工具 · 大模型'],
   'audio-gen': ['aigc', '音频音乐生成教程', '🤖 AIGC教程'],
   'video-gen': ['aigc', '视频生成教程', '🤖 AIGC教程'],
   'novel': ['aigc', '小说写作教程', '🤖 AIGC教程'],
@@ -66,11 +66,11 @@ const pageToSection = {
   'ImageGenOverview.tsx': 'image-gen',
   'VideoGenOverview.tsx': 'video-gen-tool',
   'AudioGenOverview.tsx': 'audio-gen-tool',
-  'CreativeOverview.tsx': 'creative',
+  'CreativeOverview.tsx': 'creative',  // dead mapping (no file)
   'DesignOverview.tsx': 'design',
   'Game3DOverview.tsx': '3d-game',
   'OfficeOverview.tsx': 'office',
-  'AgentOverview.tsx': 'agents',
+  'AgentOverview.tsx': 'agents',           // dead mapping (no file)
   'DevToolsOverview.tsx': 'dev-tools',
   'SocialMediaOverview.tsx': 'social-media',
   'ImageResourcesOverview.tsx': 'image-resources',
@@ -165,7 +165,8 @@ function main() {
     if (addedSections.has(key)) continue
     addedSections.add(key)
     const kw = [name.toLowerCase(), name.replace(/\s+/g, '')]
-    entries.push(`  { name:'${name}', keywords:['${kw.join("','")}'], domain:'${domain}', section:'${key}' },`)
+    const uniqueKw = [...new Set(kw)]
+    entries.push(`  { name:'${name}', keywords:['${uniqueKw.join("','")}'], domain:'${domain}', section:'${key}' },`)
   }
 
   // Section keywords — applied to all tools within each section

@@ -133,7 +133,7 @@ export default function SearchBox({ onNavigate }: Props) {
                   {r.name}
                 </div>
                 <div style={{ fontSize: 11, color: 'var(--text-muted)', marginTop: 2 }}>
-                  {r.domain === null ? '首页' : r.domain === 'ai-news' ? 'AI速报' : r.domain === 'nav-tools' ? '🧭 导航工具集' : r.domain === 'ai-industries' ? '🏭 AI行业应用' : '🤖 AIGC教程'}
+                  {r.domain === null ? '首页' : r.domain === 'ai-news' ? 'AI速报' : r.domain === 'nav-tools' ? '🧭 导航工具集' : r.domain === 'ai-industries' ? '🏭 AI行业应用' : r.domain === 'ai-dev' ? '🛠️ AI工具 · 大模型' : '🤖 AIGC教程'}
                 </div>
               </div>
               <span style={{ fontSize: 11, color: 'var(--text-muted)' }}>↵</span>

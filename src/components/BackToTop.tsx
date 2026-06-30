@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react'
 
+const SCROLL_SEL = '[data-scroll-container]'
+
 export default function BackToTop() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    const main = document.querySelector('main')
-    if (!main) return
-    const onScroll = () => setShow(main.scrollTop > 400)
-    main.addEventListener('scroll', onScroll)
-    return () => main.removeEventListener('scroll', onScroll)
+    const el = document.querySelector(SCROLL_SEL)
+    if (!el) return
+    const onScroll = () => setShow(el.scrollTop > 400)
+    el.addEventListener('scroll', onScroll)
+    return () => el.removeEventListener('scroll', onScroll)
   }, [])
 
   if (!show) return null
@@ -16,8 +18,8 @@ export default function BackToTop() {
   return (
     <button
       onClick={() => {
-        const main = document.querySelector('main')
-        if (main) main.scrollTo({ top: 0, behavior: 'smooth' })
+        const el = document.querySelector(SCROLL_SEL)
+        if (el) el.scrollTo({ top: 0, behavior: 'smooth' })
       }}
       style={{
         position: 'fixed', bottom: 32, right: 32,

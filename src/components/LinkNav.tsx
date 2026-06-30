@@ -23,10 +23,8 @@ interface Props {
 }
 
 function getFavicon(url: string) {
-  try {
-    const host = new URL(url).hostname
-    return `https://favicon.is/${host}`
-  } catch { return '' }
+  // Use text fallback only — no third-party favicon service to avoid leaking browsing data
+  return ''
 }
 
 export default function LinkNav({ links, lang, color }: Props) {
@@ -71,7 +69,7 @@ export default function LinkNav({ links, lang, color }: Props) {
           key={l.name}
           href={l.url}
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           style={{
             display: 'flex', alignItems: 'center', gap: 10,
             padding: '10px 14px',

@@ -17,15 +17,14 @@ export default function Breadcrumb({ path }: Props) {
         🏠 {t.sidebar.overview}
       </span>
       {path.map((p, i) => (
-        <span key={i} className={styles.sep}>›</span>
-      ))}
-      {path.map((p, i) => (
-        <span
-          key={i}
-          className={`${styles.crumb} ${i === path.length - 1 ? styles.active : styles.clickable}`}
-          onClick={p.onClick}
-        >
-          {p.label}
+        <span key={`seg-${i}`}>
+          <span className={styles.sep}>›</span>
+          <span
+            className={`${styles.crumb} ${i === path.length - 1 ? styles.active : styles.clickable}`}
+            onClick={p.onClick}
+          >
+            {p.label}
+          </span>
         </span>
       ))}
     </div>
