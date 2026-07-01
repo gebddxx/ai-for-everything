@@ -1,22 +1,18 @@
 // Structured data extracted from rdm.md
-
 export interface StatItem {
   label: string;
   value: string;
   sub?: string;
   trend?: 'up' | 'down';
 }
-
 export interface CaseCard {
   title: string;
   items: { company: string; detail: string }[];
 }
-
 export interface ChartData {
   name: string;
   [key: string]: string | number;
 }
-
 export interface PageData {
   title: string;
   subtitle: string;
@@ -28,7 +24,6 @@ export interface PageData {
     bars: { key: string; label: string; color: string }[];
   };
 }
-
 export const pages: Record<string, PageData> = {
   warehouse: {
     title: 'Smart Warehousing',
@@ -197,9 +192,7 @@ export const pages: Record<string, PageData> = {
     },
   },
 };
-
 export const pageKeys = Object.keys(pages);
-
 // Overview dashboard summary data
 export const overview = {
   title: 'Overview',

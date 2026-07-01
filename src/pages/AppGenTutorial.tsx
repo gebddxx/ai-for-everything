@@ -2,7 +2,6 @@ import { useT } from '../contexts/LanguageContext'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
-
 export default function AppGenTutorial() {
   const { lang } = useT()
   const l = {
@@ -19,7 +18,6 @@ export default function AppGenTutorial() {
     tips: lang === 'zh-CN' ? '实战建议' : lang === 'zh-TW' ? '實戰建議' : 'Practical Tips',
     links: lang === 'zh-CN' ? '资源链接' : lang === 'zh-TW' ? '資源連結' : 'Resources',
   }
-
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>📱 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
@@ -51,13 +49,11 @@ export default function AppGenTutorial() {
     </div>
   )
 }
-
 const toolLinks: ToolLink[] = [  {name:'FlutterFlow',url:'https://flutterflow.io/',desc:{en:'AI iOS+Android, visual builder',zh:'AI生成iOS+Android原生App'},cat:'App',icon:'🦋'},  {name:'Replit Agent',url:'https://replit.com/agent',desc:{en:'Full-stack app, browser-ready',zh:'全栈App,浏览器即用'},cat:'App',icon:'🔄'},  {name:'Bolt.new',url:'https://bolt.new/',desc:{en:'Web+mobile full-stack AI',zh:'Web+移动端全栈AI'},cat:'App',icon:'⚡'},  {name:'Bubble',url:'https://bubble.io/',desc:{en:'No-code web app builder',zh:'无代码Web App构建'},cat:'App',icon:'🫧'},  {name:'Supabase',url:'https://supabase.com/',desc:{en:'Open-source backend-as-service',zh:'开源后端即服务'},cat:'App',icon:'🟢'},  {name:'Firebase',url:'https://firebase.google.com/',desc:{en:'Google mobile backend',zh:'Google移动后端'},cat:'App',icon:'🔥'},  {name:'扣子Coze',url:'https://www.coze.cn/',desc:{en:'Zero-code AI bot builder',zh:'零代码AI Bot搭建'},cat:'App',icon:'🧩'},  {name:'Dify',url:'https://dify.ai/',desc:{en:'Open-source LLM app platform',zh:'开源LLM应用开发平台'},cat:'App',icon:'🔮'},]
 const CODE = {
   step1: `# FlutterFlow — AI-Powered Mobile App Builder
 # Visit: https://flutterflow.io/
 # Generates real Flutter code (Dart) for iOS + Android
-
 # 1. Sign up → "Create New Project" → "AI App Generator"
 # 2. Describe your app:
 """
@@ -70,21 +66,17 @@ Build a personal finance tracking app:
 - Dark mode support
 Target: iOS and Android, clean minimal design
 """
-
 # 3. FlutterFlow AI generates:
 #    - All screens with navigation flow
 #    - Firebase/Supabase backend integration
 #    - Responsive layouts
 #    - Authentication flow
-
 # 4. Customize visually (drag-and-drop editor)
 # 5. Test immediately: "Run" → preview on device
 # 6. Export: Flutter source code or APK/IPA`,
-
   step2: `# Replit Agent — Full-Stack App from Prompt
 # Visit: https://replit.com/agent
 # Generates complete apps with frontend + backend + database
-
 # 1. Open Replit Agent → describe your app:
 """
 Build a workout tracking app:
@@ -95,7 +87,6 @@ Build a workout tracking app:
 - Social: share workout, follow friends
 Tech: React frontend, Node.js/Express backend, SQLite database
 """
-
 # 2. Replit Agent:
 #    - Plans the architecture
 #    - Creates database schema
@@ -103,14 +94,11 @@ Tech: React frontend, Node.js/Express backend, SQLite database
 #    - Generates React components
 #    - Sets up routing and state management
 #    - Deploys to a live URL
-
 # 3. Every step is visible — you can intervene and guide
 # 4. Result: live app at your-app.replit.app
 # 5. Export full codebase as ZIP → deploy anywhere`,
-
   step3: `# Backend & Database with Supabase
 # Visit: https://supabase.com/ (open source, free tier: 500MB DB, 50K users)
-
 # 1. Create Supabase project → get API keys
 # 2. AI generates database schema:
 """
@@ -121,7 +109,6 @@ CREATE TABLE profiles (
   avatar_url TEXT,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
-
 CREATE TABLE posts (
   id BIGSERIAL PRIMARY KEY,
   user_id UUID REFERENCES profiles(id),
@@ -130,41 +117,33 @@ CREATE TABLE posts (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 """
-
 # 3. Connect from your AI-generated app:
 # Install: npm install @supabase/supabase-js
 # Add env vars: SUPABASE_URL, SUPABASE_ANON_KEY
-
 # 4. Row Level Security (critical!):
 """
 -- Only allow users to read all posts
 CREATE POLICY "Posts are viewable by everyone"
 ON posts FOR SELECT USING (true);
-
 -- Users can only insert their own posts
 CREATE POLICY "Users can insert own posts"
 ON posts FOR INSERT WITH CHECK (auth.uid() = user_id);
-
 -- Users can only delete their own posts
 CREATE POLICY "Users can delete own posts"
 ON posts FOR DELETE USING (auth.uid() = user_id);
 """`,
-
   step4: `# Build & Publish Your App
-
 # iOS App Store:
 # 1. Enroll Apple Developer Program ($99/year)
 # 2. In Xcode: Product → Archive → Distribute App
 # 3. App Store Connect: fill metadata, screenshots, privacy
 # 4. Submit for review (typically 1-2 days)
-
 # Google Play Store:
 # 1. Create developer account ($25 one-time)
 # 2. Build APK/AAB: flutter build appbundle (FlutterFlow)
 #    Or: npx react-native build-android (React Native)
 # 3. Play Console: upload, fill listing, set pricing
 # 4. Submit for review (typically a few hours)
-
 # PWA (Progressive Web App) — fastest route:
 # 1. Build web app with mobile-responsive design
 # 2. Add manifest.json + service worker
@@ -172,5 +151,3 @@ ON posts FOR DELETE USING (auth.uid() = user_id);
 # 4. Users can "Add to Home Screen" — no app store needed
 # 5. Works offline, push notifications, looks like native app`,
 }
-
-

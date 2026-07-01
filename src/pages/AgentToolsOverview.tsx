@@ -1,10 +1,8 @@
 import { useT } from '../contexts/LanguageContext'
 import styles from './Page.module.css'
-
 const thStyle: React.CSSProperties = { padding: '10px 14px', textAlign: 'left', fontSize: 13, fontWeight: 700, borderBottom: '2px solid var(--border)', color: 'var(--text)', background: 'var(--bg-card)' }
 const tdStyle: React.CSSProperties = { padding: '9px 14px', fontSize: 13, borderBottom: '1px solid var(--border)', color: 'var(--text-secondary)' }
 const nameStyle: React.CSSProperties = { ...tdStyle, fontWeight: 600, color: 'var(--primary)', whiteSpace: 'nowrap' }
-
 const tables = [
   { title:{en:'LLMs — International','zh-CN':'🔷 海外大模型','zh-TW':'🔷 海外大模型'}, color:'#3b82f6',
     rows:[
@@ -83,14 +81,11 @@ const tables = [
       ['OpenAI API','OpenAI','GPT-4.1 API · Platform 平台','https://platform.openai.com/'],
     ]},
 ]
-
 export default function AgentToolsOverview() {
   const { lang } = useT()
   const T = (en:string,zh:string,tw:string) => lang==='zh-CN'?zh:lang==='zh-TW'?tw:en
-
   return (<div className={styles.page}>
     <div className={styles.head}><h2 className={styles.title}>🤖 {T('Model Hub & API','大模型 · API大全','大模型 · API大全')}</h2><p className={styles.subtitle}>{T('LLMs · Switchers · Coding · Agents · API Hub','大模型 · 模型切换 · AI编程 · Agent · API资源','大模型 · 模型切換 · AI編程 · Agent · API資源')}</p></div>
-
     {tables.map(t => (
       <div key={t.color} style={{ marginBottom: 28 }}>
         <h3 style={{ fontSize: 17, fontWeight: 700, color: t.color, marginBottom: 10 }}>{T(t.title.en, t.title['zh-CN'], t.title['zh-TW'])}</h3>

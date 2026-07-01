@@ -2,7 +2,6 @@ import { useT } from '../contexts/LanguageContext'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
-
 export default function WebGenTutorial() {
   const { lang } = useT()
   const l = {
@@ -19,7 +18,6 @@ export default function WebGenTutorial() {
     tips: lang === 'zh-CN' ? '提示词技巧' : lang === 'zh-TW' ? '提示詞技巧' : 'Prompt Engineering Tips',
     links: lang === 'zh-CN' ? '资源链接' : lang === 'zh-TW' ? '資源連結' : 'Resources',
   }
-
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>🌐 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
@@ -51,13 +49,11 @@ export default function WebGenTutorial() {
     </div>
   )
 }
-
 const toolLinks: ToolLink[] = [  {name:'v0.dev',url:'https://v0.dev/',desc:{en:'Vercel, text→React UI code, copy-paste',zh:'Vercel出品,文字→React UI代码,复制即用'},cat:'网页',icon:'🟢'},  {name:'Bolt.new',url:'https://bolt.new/',desc:{en:'Full-stack web app, browser-ready',zh:'全栈Web应用,浏览器即运行'},cat:'网页',icon:'⚡'},  {name:'Lovable',url:'https://lovable.dev/',desc:{en:'Complete SaaS app, Supabase integration',zh:'完整SaaS应用,Supabase集成'},cat:'网页',icon:'❤️'},  {name:'Replit Agent',url:'https://replit.com/agent',desc:{en:'Full-stack app, prototype→deploy',zh:'全栈应用,原型→生产部署'},cat:'网页',icon:'🔄'},  {name:'Framer AI',url:'https://www.framer.com/ai/',desc:{en:'AI website builder, design→live site',zh:'AI建站,设计→上线网站'},cat:'网页',icon:'🟣'},  {name:'Webflow',url:'https://webflow.com/',desc:{en:'Visual site builder + AI',zh:'可视化建站+AI'},cat:'网页',icon:'🌊'},  {name:'Cursor',url:'https://cursor.com/',desc:{en:'AI-first code editor, build websites',zh:'AI编程IDE,从零写网站'},cat:'网页',icon:'🖱️'},  {name:'Trae',url:'https://www.trae.ai/',desc:{en:'ByteDance AI IDE, free Claude 3.7',zh:'字节AI编程IDE,免费Claude'},cat:'网页',icon:'💻'},]
 const CODE = {
   step1: `# v0.dev — Text to React Components
 # Visit: https://v0.dev/
 # Created by Vercel, generates React + Tailwind + shadcn/ui
-
 # 1. Sign up → type prompt in the chat:
 """
 Build a modern SaaS landing page with:
@@ -68,18 +64,15 @@ Build a modern SaaS landing page with:
 - Footer with links and social icons
 Style: dark theme, minimal, glass-morphism cards
 """
-
 # 2. v0 generates the full page in ~10 seconds
 # 3. Preview → iterate with natural language:
 #    "Make the hero CTA button pulse on hover"
 #    "Add a testimonial carousel section between features and pricing"
 # 4. Copy code → paste into your Next.js/React project
 # 5. All components use shadcn/ui — fully customizable`,
-
   step2: `# Bolt.new — Full-Stack App Generation
 # Visit: https://bolt.new/
 # Runs complete apps in the browser (StackBlitz infrastructure)
-
 # 1. Enter prompt:
 """
 Build a task management app with:
@@ -92,22 +85,18 @@ Build a task management app with:
 - Dark/light mode toggle
 Tech stack: React, Tailwind CSS, Supabase for auth + database
 """
-
 # 2. Bolt.new generates:
 #    - Full project structure
 #    - React components with Tailwind styling
 #    - Supabase schema and API calls
 #    - Auth flow (signup, login, session)
 #    - npm packages auto-installed
-
 # 3. Test immediately in the browser
 # 4. Download ZIP → run locally with 'npm install && npm run dev'
 # 5. Deploy: connect to Netlify/Vercel and push to GitHub`,
-
   step3: `# Lovable — Complete SaaS in Minutes
 # Visit: https://lovable.dev/
 # Best for: SaaS apps, dashboards, internal tools
-
 # 1. Describe your app:
 """
 Build a customer feedback analytics dashboard:
@@ -119,47 +108,37 @@ Build a customer feedback analytics dashboard:
 - Admin panel: manage users, view flagged feedback
 Style: clean enterprise, charts with Recharts
 """
-
 # 2. Lovable generates:
 #    - Authentication (Supabase Auth)
 #    - Database tables and relationships
 #    - Dashboard with real charts
 #    - Export functionality
 #    - Admin panel
-
 # 3. Iterate with chat: "Add email notifications for
 #    negative feedback" → Lovable adds the feature
 # 4. One-click deploy to Lovable's hosting or export code`,
-
   step4: `# Deploy Your AI-Generated Website to Production
-
 # Method 1: Vercel (easiest, free tier)
 # 1. Push code to GitHub repo
 # 2. Go to vercel.com → "New Project" → import repo
 # 3. Vercel auto-detects framework (Next.js/Vite/etc)
 # 4. Deploy → get your-site.vercel.app
 # 5. Connect custom domain in settings
-
 # Method 2: Netlify (great for static sites)
 # 1. Push to GitHub → netlify.com → "New site from Git"
 # 2. Build command: npm run build
 # 3. Publish directory: dist (Vite) or .next (Next.js)
 # 4. Deploy → your-site.netlify.app
-
 # Method 3: Cloudflare Pages (fast + free)
 # 1. Push to GitHub → Cloudflare Dashboard → Pages
 # 2. Connect repo → set build command
 # 3. Deploy → your-site.pages.dev
 # 4. Unlimited bandwidth on free tier
-
 # Method 4: GitHub Pages (for simple static sites)
 # npm install gh-pages --save-dev
 # In package.json:
 # "scripts": { "deploy": "gh-pages -d dist" }
 # npm run build && npm run deploy
-
 # For Chinese hosting:
 # 腾讯云 CloudBase, 阿里云 OSS + CDN, Vercel (works in China with custom domain)`,
 }
-
-

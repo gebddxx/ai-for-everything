@@ -4,7 +4,6 @@ import StatCard from '../components/StatCard'
 import PieChart from '../components/PieChart'
 import MindMap from '../components/MindMap'
 import styles from './Page.module.css'
-
 const pieData = [
   { name: 'Smart Warehousing', value: 20, color: '#3b82f6' },
   { name: 'Transport Dispatch', value: 22, color: '#10b981' },
@@ -12,11 +11,9 @@ const pieData = [
   { name: 'Prediction & Decision', value: 25, color: '#f59e0b' },
   { name: 'Operations & Service', value: 15, color: '#ef4444' },
 ]
-
 export default function Overview() {
   const { t, lang } = useT()
   const L = (a: MultiLang) => tText(a, lang)
-
   return (
     <div className={styles.page}>
       {/* Hero */}
@@ -27,9 +24,7 @@ export default function Overview() {
             <div key={s.v + s.t} style={{textAlign:'center',background:'rgba(255,255,255,0.13)',borderRadius:10,padding:'14px 18px',minWidth:80}}><div style={{fontSize:28,fontWeight:800}}>{s.v}</div><div style={{fontSize:12,opacity:.8,marginTop:2}}>{s.t}</div></div>))}
         </div>
       </div>
-
       <div className={styles.summary}>{t.overview.summary}</div>
-
       {/* ====== 1. ====== */}
       <section className={styles.chart} style={{marginBottom:24}}>
         <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12,paddingBottom:8,borderBottom:'2px solid var(--border)'}}>{L('📋 1. 智慧物流与AI技术概述')}</h3>
@@ -46,7 +41,6 @@ export default function Overview() {
             </div>))}
         </div>
       </section>
-
       {/* ====== 2. ====== */}
       <section className={styles.chart} style={{marginBottom:24}}>
         <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12,paddingBottom:8,borderBottom:'2px solid var(--border)'}}>{L('🏭 2. 智能化仓储管理方案')}</h3>
@@ -62,7 +56,6 @@ export default function Overview() {
             </div>))}
         </div>
       </section>
-
       {/* ====== 3. ====== */}
       <section className={styles.chart} style={{marginBottom:24}}>
         <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12,paddingBottom:8,borderBottom:'2px solid var(--border)'}}>{L('🚛 3. 智能化运输与配送方案')}</h3>
@@ -78,7 +71,6 @@ export default function Overview() {
             </div>))}
         </div>
       </section>
-
       {/* ====== 4. ====== */}
       <section className={styles.chart} style={{marginBottom:24}}>
         <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12,paddingBottom:8,borderBottom:'2px solid var(--border)'}}>{L('🚁 4. 末端配送与最后一公里')}</h3>
@@ -93,7 +85,6 @@ export default function Overview() {
             </div>))}
         </div>
       </section>
-
       {/* ====== 5. ====== */}
       <section className={styles.chart} style={{marginBottom:24}}>
         <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12,paddingBottom:8,borderBottom:'2px solid var(--border)'}}>{L('📊 5. 数据平台与决策支持')}</h3>
@@ -109,7 +100,6 @@ export default function Overview() {
             </div>))}
         </div>
       </section>
-
       {/* ====== 6. ====== */}
       <section className={styles.chart} style={{marginBottom:24}}>
         <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12,paddingBottom:8,borderBottom:'2px solid var(--border)'}}>{L('🔮 6. 实施路径与未来趋势')}</h3>
@@ -124,26 +114,22 @@ export default function Overview() {
             </div>))}
         </div>
       </section>
-
       {/* Stats + Charts */}
       <div className={styles.stats}>
         {t.overviewStats.map((s: { label: string; value: string; sub: string }) => (
           <StatCard key={s.label} label={s.label} value={s.value} sub={s.sub} />
         ))}
       </div>
-
       <div className={styles.pieSection} style={{ marginBottom: 28 }}>
         <h3 className={styles.chartTitle}>🧠 {t.overview.mindmapTitle}</h3>
         <MindMap />
       </div>
-
       <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginBottom: 28 }}>
         <div className={styles.pieSection} style={{ flex: '1 1 400px' }}>
           <h3 className={styles.chartTitle}>🍩 {t.overview.pieTitle}</h3>
           <PieChart data={pieData} innerRadius={55} />
         </div>
       </div>
-
       <h3 className={styles.chartTitle}>🏆 {t.overview.highlightsTitle}</h3>
       <div className={styles.highlights}>
         {[

@@ -2,7 +2,6 @@ import { useT } from '../contexts/LanguageContext'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
-
 export default function NovelWritingTutorial() {
   const { lang } = useT()
   const l = {
@@ -20,7 +19,6 @@ export default function NovelWritingTutorial() {
     tips: lang === 'zh-CN' ? '进阶技巧' : lang === 'zh-TW' ? '進階技巧' : 'Pro Tips',
     links: lang === 'zh-CN' ? '资源链接' : lang === 'zh-TW' ? '資源連結' : 'Resources',
   }
-
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>📝 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
@@ -53,22 +51,18 @@ export default function NovelWritingTutorial() {
     </div>
   )
 }
-
 const toolLinks: ToolLink[] = [  {name:'Claude',url:'https://claude.ai/',desc:{en:'200K context, deep writing',zh:'200K上下文深度写作'},cat:'写作',icon:'🟠'},  {name:'ChatGPT',url:'https://chat.openai.com/',desc:{en:'Brainstorming+ dialogue gen',zh:'头脑风暴+对话生成'},cat:'写作',icon:'⚫'},  {name:'DeepSeek',url:'https://chat.deepseek.com/',desc:{en:'1M token context, low cost',zh:'百万token,低成本长文'},cat:'写作',icon:'🐋'},  {name:'Kimi',url:'https://kimi.moonshot.cn/',desc:{en:'2M Chinese chars, long text',zh:'200万字中文长文本'},cat:'写作',icon:'🌙'},  {name:'秘塔写作猫',url:'https://xiezuocat.com/',desc:{en:'Chinese AI writing, polish',zh:'中文纠错润色'},cat:'写作',icon:'🐱'},  {name:'彩云小梦',url:'https://caiyunai.com/',desc:{en:'AI novel continuation',zh:'AI续写小说剧本'},cat:'写作',icon:'🌈'},  {name:'Grammarly',url:'https://www.grammarly.com/',desc:{en:'Grammar, tone, clarity',zh:'语法校对+语调优化'},cat:'写作',icon:'✅'},  {name:'DeepL Write',url:'https://www.deepl.com/write',desc:{en:'Multilingual style polish',zh:'多语种润色'},cat:'写作',icon:'🌍'},]
 const CODE = {
   step1: `# Worldbuilding & Character Creation
 # Use this prompt with Claude/ChatGPT:
-
 """
 You are a professional fantasy/sci-fi author. Help me build:
-
 1. World Setting (300 words):
    - Time period / era
    - Geography and key locations
    - Magic/technology system rules
    - Social structure and politics
    - Major conflicts
-
 2. Main Characters (5 characters):
    For each:
    - Name, age, appearance
@@ -77,29 +71,23 @@ You are a professional fantasy/sci-fi author. Help me build:
    - Backstory (2-3 key events that shaped them)
    - Catchphrase or speech pattern
    - Relationships with other characters
-
 3. Tone & Style:
    - Genre: [fantasy/sci-fi/romance/mystery/literary]
    - Target audience: [YA/adult/middle grade]
    - Writing style: [descriptive/dialogue-heavy/minimalist]
    - Comparative titles: [2-3 similar books]
-
 My genre is: [YOUR GENRE]
 My core idea is: [YOUR ONE-LINE PREMISE]
 """`,
-
   step2: `# Outline & Chapter Planning
 # Use this prompt:
-
 """
 Based on the world and characters I've created, develop a
 detailed novel outline:
-
 1. Three-Act Structure:
    - Act 1 (Setup): Inciting incident, call to adventure
    - Act 2 (Confrontation): Rising stakes, midpoint twist
    - Act 3 (Resolution): Climax, resolution
-
 2. Chapter Breakdown (30 chapters):
    For each chapter provide:
    - Chapter number and title
@@ -108,19 +96,15 @@ detailed novel outline:
    - Conflict (what stands in their way)
    - Outcome (how it ends — hook for next chapter)
    - Estimated word count: 2000-3000 words
-
 3. Pacing Map:
    Mark each chapter as:
    🌊 Slow (character development, worldbuilding)
    ⚡ Medium (plot advancement)
    🔥 Fast (action, reveals, cliffhangers)
-
 Make the outline feel like a page-turner.
 """`,
-
   step3: `# Chapter Writing — The Core Loop
 # For EACH chapter, use this workflow:
-
 # 1. Pre-write (5 min):
 #    Feed the chapter outline to Claude:
 #    "Write Chapter [N]: [Title]. POV: [Character].
@@ -144,22 +128,18 @@ Make the outline feel like a page-turner.
 #    - Character appearance/name drift
 #    - Forgotten plot threads
 #    - Continuity errors
-
 # Web Novel Daily Update Workflow:
 # Claude generates 3000 words (15 min) →
 # Human edits for voice/style (30 min) →
 # Grammarly spell check (5 min) →
 # Post to platform`,
-
   step4: `# Editing & Proofreading Pipeline
-
 # Pass 1 — Structural Edit (Claude, full manuscript):
 # "Review this manuscript and identify:
 #  - Chapters that drag (too slow)
 #  - Plot holes or inconsistencies
 #  - Characters who disappear without resolution
 #  - Scenes that could be cut without losing anything"
-
 # Pass 2 — Line Edit (Chapter by chapter):
 # "Edit this chapter for:
 #  - Overused words (flag words used 5+ times)
@@ -167,21 +147,17 @@ Make the outline feel like a page-turner.
 #  - Adverb abuse (replace weak verb+adverb with strong verb)
 #  - Show vs Tell violations (mark with ~~ where telling)
 #  - Sentence variety score (1-10)"
-
 # Pass 3 — Copy Edit:
 # - Grammarly Premium: grammar, tone, clarity, plagiarism
 # - DeepL Write: style and phrasing polish (multilingual)
 # - ProWritingAid: 25+ reports (pacing, dialogue, readability)
-
 # Pass 4 — Beta Reader AI:
 # "Read this chapter as a critical beta reader. Rate:
 #  - Hook strength (1-10)
 #  - Character likability (1-10)
 #  - Pacing (1-10)
 #  - Would you turn the page? (Yes/No + why)"`,
-
   step5: `# Formatting & Publishing
-
 # Ebook Formatting:
 # 1. Write in Markdown → use Pandoc to convert:
 #    pandoc novel.md -o novel.epub --toc
@@ -192,20 +168,15 @@ Make the outline feel like a page-turner.
 #
 # 3. Amazon KDP: export as .docx → upload to KDP
 #    Use Kindle Create for enhanced formatting
-
 # Web Novel Platforms (Chinese):
 # - 起点中文网 (qidian.com) — Tencent, largest
 # - 番茄小说 (fanqienovel.com) — ByteDance, free model
 # - 晋江文学城 (jjwxc.net) — romance focused
 # - 七猫 (qimao.com) — free reading app
-
 # Web Novel Platforms (English):
 # - Royal Road (royalroad.com)
 # - Wattpad (wattpad.com)
 # - Webnovel (webnovel.com)
-
 # AI policy: Most platforms now allow AI-assisted writing
 # but require disclosure. Check each platform's TOS.`,
 }
-
-

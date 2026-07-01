@@ -2,7 +2,6 @@ import { useT } from '../contexts/LanguageContext'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
-
 export default function PptGenTutorial() {
   const { lang } = useT()
   const l = {
@@ -19,7 +18,6 @@ export default function PptGenTutorial() {
     step4: lang === 'zh-CN' ? '第4步：进阶技巧' : lang === 'zh-TW' ? '第4步：進階技巧' : 'Step 4: Advanced Tips',
     links: lang === 'zh-CN' ? '资源链接' : lang === 'zh-TW' ? '資源連結' : 'Resources',
   }
-
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>📊 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
@@ -64,7 +62,6 @@ export default function PptGenTutorial() {
     </div>
   )
 }
-
 const toolLinks: ToolLink[] = [
   {name:'Gamma',url:'https://gamma.app/',desc:{en:'Best AI PPT, one-click design, export PPTX',zh:'最好用的AI PPT,一键设计,在线展示,导出PPTX'},cat:'PPT',icon:'📊'},
   {name:'AiPPT',url:'https://www.aippt.cn/',desc:{en:'Auto-generate PPT outline + template, one-click',zh:'自动生成PPT大纲和模板,一键完成'},cat:'PPT',icon:'📊'},
@@ -79,21 +76,18 @@ const toolLinks: ToolLink[] = [
   {name:'Decktopus',url:'https://www.decktopus.com/',desc:{en:'Sales & pitch decks, AI-powered',zh:'销售/路演PPT专用,AI驱动'},cat:'PPT',icon:'🎯'},
   {name:'Canva',url:'https://www.canva.com/',desc:{en:'Magic Design, AI PPT, rich templates',zh:'魔法设计+AI PPT,模板丰富'},cat:'PPT',icon:'🖼️'},
 ]
-
 const CODE = {
   step1: `# Gamma — Best AI PPT Generator
 # Visit: https://gamma.app/
 # 1. Sign up (Google account) → "Create new" → "Generate"
 # 2. Choose format: Presentation (8-12 slides recommended)
 # 3. Enter prompt (be specific!):
-
 # Prompt template:
 # "Create a [N]-slide presentation about [topic].
 #  Audience: [who will see this].
 #  Include: [key points to cover].
 #  Style: [professional/creative/minimal/bold].
 #  Use: [charts/diagrams/images/icon-heavy]."
-
 # Example:
 # "Create a 10-slide pitch deck for an AI logistics startup.
 #  Audience: venture capital investors.
@@ -101,20 +95,16 @@ const CODE = {
 #  traction metrics, team, competition, business model, ask.
 #  Style: bold and modern, data-heavy with charts.
 #  Color: deep blue and orange accent."
-
 # 4. Gamma generates deck in ~30 seconds
 # 5. Edit: change theme, add/remove slides, tweak content
 # 6. Present directly in browser or export as PPTX/PDF`,
-
   step2: `# Document → PPT Conversion
-
 # Method 1: Gamma (supports import)
 # 1. Gamma → "Create new" → "Paste in text"
 # 2. Paste your outline/document → AI converts to slides
 # 3. Format: each ## heading → new slide
 #    Bullet points → slide body
 #    Tables → auto-formatted
-
 # Method 2: Beautiful.ai + ChatGPT workflow
 # 1. Have ChatGPT generate a structured outline:
 """
@@ -127,32 +117,26 @@ Generate a slide-by-slide outline for a presentation about
 """
 # 2. Copy each slide's content into Beautiful.ai
 # 3. AI auto-formats with smart templates
-
 # Method 3: MS PowerPoint Copilot (Microsoft 365)
 # 1. Open PowerPoint → "Copilot" button
 # 2. "Create a presentation from [document filename.docx]"
 # 3. Or: "Create a presentation about [topic]"
 # 4. Copilot generates slides with Designer suggestions`,
-
   step3: `# AI Beautify Your Existing Ugly PPT
-
 # Method 1: PowerPoint Designer (free, built-in)
 # 1. Open your PPT → go to any slide
 # 2. "Design" tab → "Designer" panel opens on right
 # 3. AI suggests multiple design variations
 # 4. Click to apply → entire deck gets consistent styling
-
 # Method 2: Beautiful.ai Smart Templates
 # 1. Import your PPTX into Beautiful.ai
 # 2. AI analyzes content → suggests template
 # 3. Smart slide rules keep alignment perfect as you edit
-
 # Method 3: Gamma re-design
 # 1. Copy text content from your old PPT
 # 2. Paste into Gamma as "Paste in text"
 # 3. Gamma generates a fresh, modern design
 # 4. Export → your content, AI's design
-
 # WPS AI (for Chinese users):
 # 1. Open WPS Office → "AI" tab
 # 2. "Smart Beautify" → AI applies consistent theme

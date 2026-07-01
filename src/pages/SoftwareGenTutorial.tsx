@@ -2,7 +2,6 @@ import { useT } from '../contexts/LanguageContext'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
-
 export default function SoftwareGenTutorial() {
   const { lang } = useT()
   const l = {
@@ -20,7 +19,6 @@ export default function SoftwareGenTutorial() {
     tips: lang === 'zh-CN' ? '实战建议' : lang === 'zh-TW' ? '實戰建議' : 'Practical Tips',
     links: lang === 'zh-CN' ? '资源链接' : lang === 'zh-TW' ? '資源連結' : 'Resources',
   }
-
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>💻 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
@@ -54,17 +52,14 @@ export default function SoftwareGenTutorial() {
     </div>
   )
 }
-
 const toolLinks: ToolLink[] = [  {name:'Cursor',url:'https://cursor.com/',desc:{en:'AI-first IDE, best code gen',zh:'AI编程IDE,最强代码生成'},cat:'软件',icon:'🖱️'},  {name:'Trae',url:'https://www.trae.ai/',desc:{en:'ByteDance AI IDE, free Claude',zh:'字节AI编程,免费Claude'},cat:'软件',icon:'💻'},  {name:'GitHub Copilot',url:'https://github.com/features/copilot',desc:{en:'VS Code AI autocomplete',zh:'VS Code AI补全'},cat:'软件',icon:'🐙'},  {name:'CodeGeeX',url:'https://codegeex.cn/',desc:{en:'Tsinghua AI coding assistant',zh:'清华AI编程助手'},cat:'软件',icon:'🔧'},  {name:'MarsCode',url:'https://www.marscode.cn/',desc:{en:'ByteDance AI code tool',zh:'豆包AI编程工具'},cat:'软件',icon:'🚀'},  {name:'通义灵码',url:'https://tongyi.aliyun.com/lingma/',desc:{en:'Alibaba AI code assistant',zh:'阿里云AI代码助手'},cat:'软件',icon:'🧩'},  {name:'Electron',url:'https://www.electronjs.org/',desc:{en:'Desktop app framework',zh:'Web→桌面应用框架'},cat:'软件',icon:'⚛️'},  {name:'Tauri',url:'https://tauri.app/',desc:{en:'Lightweight desktop (Rust)',zh:'轻量桌面应用(Rust)'},cat:'软件',icon:'🦀'},{name:'Manus',url:'https://manus.im/',desc:{en:'AI agent, auto-generate desktop apps from prompts',zh:'AI智能体,提示词自动生成桌面软件'},cat:'软件',icon:'🤖'},]
 const CODE = {
   step1: `# AI Coding Environment Setup
-
 # Option A: Cursor (Recommended for beginners)
 # 1. Download: https://cursor.com/
 # 2. Install → sign in → open your project folder
 # 3. Press Ctrl+L (Chat) or Ctrl+K (Inline edit)
 # 4. Start coding in natural language!
-
 # Option B: Claude Code (Terminal power users)
 # Install:
 npm install -g @anthropic-ai/claude-code
@@ -73,20 +68,16 @@ export ANTHROPIC_API_KEY="sk-ant-..."
 # Use:
 claude "Build a file organizer CLI tool that sorts files by type"
 # Claude Code reads your entire codebase and can create/edit files directly
-
 # Option C: VS Code + GitHub Copilot
 # 1. Install VS Code → Extensions → "GitHub Copilot"
 # 2. Sign in with GitHub → activation
 # 3. Start typing comments → Copilot suggests code
 # 4. Ctrl+I for inline chat: "Create a read_excel function with pandas"
-
 # Option D: Windsurf (Multi-file AI edits)
 # Download: https://codeium.com/windsurf
 # Best for: large refactors across many files`,
-
   step2: `# Generate Desktop App with AI + Electron
 # Use Cursor or Claude Code to build a desktop app:
-
 # Prompt:
 """
 Build a markdown note-taking desktop app:
@@ -98,7 +89,6 @@ Build a markdown note-taking desktop app:
 - Auto-save to local filesystem
 - Search across all notes
 - Export as PDF
-
 Set up the project from scratch:
 1. Initialize Electron + React project
 2. Configure webpack/vite for Electron
@@ -106,7 +96,6 @@ Set up the project from scratch:
 4. Add keyboard shortcuts (Ctrl+S save, Ctrl+F search)
 5. Package for Windows (.exe) and macOS (.dmg)
 """
-
 # AI will generate:
 # - package.json with all dependencies
 # - main.js (Electron main process)
@@ -114,9 +103,7 @@ Set up the project from scratch:
 # - CSS styling
 # - Build configuration
 # - Packaging scripts`,
-
   step3: `# Generate CLI Tools with AI
-
 # Example 1: File Organizer CLI
 # Prompt (in Cursor/Claude Code):
 """
@@ -130,7 +117,6 @@ Create a Python CLI tool 'file-organizer' that:
 - Add --help with usage examples
 - Package with pyproject.toml + pip install
 """
-
 # Example 2: Bulk Image Resizer CLI
 # Prompt:
 """
@@ -143,9 +129,7 @@ Build a Node.js CLI 'img-resize' using sharp library:
 - Concurrent processing with worker threads
 - CLI: img-resize ./photos --width 1200 --quality 80
 """`,
-
   step4: `# Generate Browser Extensions with AI
-
 # Prompt (for Chrome Extension):
 """
 Build a "Smart Tab Manager" Chrome extension:
@@ -157,26 +141,21 @@ Build a "Smart Tab Manager" Chrome extension:
 - manifest.json (Manifest V3)
 - Use chrome.tabs API and chrome.storage for sessions
 """
-
 # AI generates:
 # - manifest.json (Manifest V3 compliant)
 # - popup.html + popup.js (tab list UI)
 # - background.js (service worker for keyboard shortcuts)
 # - styles.css (dark mode popup)
 # - icons (16, 48, 128 sizes)
-
 # Load in Chrome:
 # 1. chrome://extensions/ → "Developer mode" ON
 # 2. "Load unpacked" → select extension folder
 # 3. Test → iterate with AI → reload
-
 # Publish to Chrome Web Store ($5 one-time registration):
 # 1. Zip the extension folder
 # 2. Chrome Developer Dashboard → "New Item"
 # 3. Upload zip, fill listing, submit for review`,
-
   step5: `# Package as EXE/DMG/Deb for Distribution
-
 # ========================================
 # Python → EXE (Windows)
 # ========================================
@@ -184,10 +163,8 @@ pip install pyinstaller
 # Single file, no console window:
 pyinstaller --onefile --windowed --icon=app.ico myapp.py
 # Output: dist/myapp.exe (~30-50 MB)
-
 # With all assets included:
 pyinstaller --onefile --windowed --add-data "assets;assets" myapp.py
-
 # ========================================
 # Electron → Windows + macOS + Linux
 # ========================================
@@ -200,7 +177,6 @@ npm install electron-builder --save-dev
 #   "linux": { "target": "AppImage" }
 # }
 npm run build  # generates installers in dist/
-
 # ========================================
 # Tauri → Lightweight Desktop (Recommended!)
 # ========================================
@@ -210,10 +186,7 @@ npm create tauri-app@latest
 # Select: React + TypeScript
 # Build: npm run tauri build
 # Output: .msi (Windows), .dmg (macOS), .deb/.AppImage (Linux)
-
 # For code signing (avoid Windows SmartScreen warning):
 # - Windows: buy code signing certificate (~$200/yr)
 # - macOS: Apple Developer certificate + notarization ($99/yr)`,
 }
-
-

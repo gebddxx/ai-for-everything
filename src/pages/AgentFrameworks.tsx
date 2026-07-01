@@ -11,18 +11,13 @@ return(<div className={styles.page}><div className={styles.head}><h2 className={
 ]} /></C>
 <C t={L('💡 Quick Start','💡 快速上手','💡 快速上手')}><Code>{`# CrewAI 示例 (最简单的多Agent框架):
 pip install crewai
-
 from crewai import Agent, Task, Crew
-
 researcher = Agent(role="研究员", goal="搜索并分析最新AI趋势",
   backstory="资深科技研究员", allow_delegation=False)
-
 writer = Agent(role="写作者", goal="把研究结果写成易读的报告",
   backstory="科技专栏作家", allow_delegation=False)
-
 task1 = Task(description="研究2026年AI Agent的最新进展", agent=researcher)
 task2 = Task(description="写一份500字的总结报告", agent=writer)
-
 crew = Crew(agents=[researcher, writer], tasks=[task1, task2])
 result = crew.kickoff()  # 两个Agent自动协作完成任务`}</Code></C>
 </div></div>)}

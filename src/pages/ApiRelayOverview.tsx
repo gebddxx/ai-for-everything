@@ -2,7 +2,6 @@ import { useT } from '../contexts/LanguageContext'
 import { tText, type MultiLang } from '../i18n/translate'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
-
 export default function ApiRelayOverview() {
   const { lang } = useT()
   const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }
@@ -11,7 +10,6 @@ export default function ApiRelayOverview() {
     <LinkNav links={links} lang={lang as 'en'|'zh-CN'|'zh-TW'} color="#06b6d4" />
   </div>)
 }
-
 const links: ToolLink[] = [
   {name:'OpenRouter',url:'https://openrouter.ai/',desc:{en:'300+ models · unified API · price compare',zh:'300+模型 · 统一API · 比价切换'},cat:'聚合',icon:'🚦'},
   {name:'API2D',url:'https://api2d.com/',desc:{en:'OpenAI-compatible relay · GPT/Claude/DeepSeek',zh:'OpenAI兼容中转 · GPT/Claude/DeepSeek'},cat:'中转',icon:'🔌'},

@@ -12,14 +12,12 @@ return(<div className={styles.page}><div className={styles.head}><h2 className={
 → AI总结当日Slack/飞书消息
 → 提取各项目进度 + 关键决策
 → 生成Markdown日报 → 发送到指定频道
-
 # 2. 智能客户支持分流
 触发: 收到新客服邮件
 → AI分析邮件内容和紧急程度
 → 低优先级: 自动回复FAQ链接
 → 中优先级: 分配给对应客服 + 生成回复草稿
 → 高优先级: 立即通知负责人 + 标记urgent
-
 # 3. 内容发布工作流
 触发: 上传新文章到Google Docs
 → AI提取标题、摘要、关键词

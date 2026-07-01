@@ -2,7 +2,6 @@ import { useT } from '../contexts/LanguageContext'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
-
 export default function AudioGenTutorial() {
   const { lang } = useT()
   const l = {
@@ -19,8 +18,6 @@ export default function AudioGenTutorial() {
     tips: lang === 'zh-CN' ? '进阶技巧' : lang === 'zh-TW' ? '進階技巧' : 'Pro Tips',
     links: lang === 'zh-CN' ? '资源链接' : lang === 'zh-TW' ? '資源連結' : 'Resources',
   }
-
-
   return (
     <div className={styles.page}>
       <div className={styles.head}>
@@ -64,7 +61,6 @@ export default function AudioGenTutorial() {
     </div>
   )
 }
-
 const toolLinks: ToolLink[] = [  {name:'Suno',url:'https://suno.com/',desc:{en:'Full songs from text, multiple genres',zh:'文字→完整歌曲,多风格支持'},cat:'音频',icon:'☀️'},  {name:'Udio',url:'https://www.udio.com/',desc:{en:'High-quality AI music generation',zh:'高质量AI音乐,音质出众'},cat:'音频',icon:'🎵'},  {name:'ElevenLabs',url:'https://elevenlabs.io/',desc:{en:'Best TTS, voice cloning, 29 languages',zh:'最自然的AI语音,声音克隆,29种语言'},cat:'音频',icon:'🔊'},  {name:'海绵音乐',url:'https://haimian.music.163.com/',desc:{en:'Netease AI music, easy creation',zh:'网易AI音乐,门槛低,随手创作'},cat:'音频',icon:'🧽'},  {name:'AIVA',url:'https://www.aiva.ai/',desc:{en:'Classical/ambient composition',zh:'古典/氛围音乐创作'},cat:'音频',icon:'🎼'},  {name:'Murf.ai',url:'https://murf.ai/',desc:{en:'Professional AI voiceovers',zh:'专业AI配音'},cat:'音频',icon:'🎤'},  {name:'TTSMaker',url:'https://ttsmaker.com/',desc:{en:'Text-to-speech, 50+ languages',zh:'文本转语音,50+语种'},cat:'音频',icon:'🗣️'},  {name:'讯飞智作',url:'https://peiyin.xunfei.cn/',desc:{en:'iFlytek AI dubbing, voice cloning',zh:'科大讯飞AI配音,声音克隆'},cat:'音频',icon:'🎙️'},]
 const CODE = {
   step1: `# Suno — Text to Full Songs
@@ -74,32 +70,26 @@ const CODE = {
 # 3. Style prompt example:
 #    "Upbeat pop with synth, 120 BPM, female vocals, catchy chorus,
 #     similar to Taylor Swift, about summer love"
-
 # Prompt formula:
 # [Genre] + [BPM/Tempo] + [Instruments] + [Mood] + [Similar Artist]
 # + [Theme]
-
 # Example prompts:
 # "Lo-fi hip hop, 85 BPM, piano + vinyl crackle, rainy night study vibes"
 # "Epic orchestral, 140 BPM, strings + brass + choir, heroic battle theme"
 # "Acoustic folk, 90 BPM, guitar + harmonica, road trip nostalgia"
-
 # Udio — Higher quality alternative
 # Visit: https://www.udio.com/
 # Udio excels at: vocals clarity, instrument separation, remixing`,
-
   step2: `# ElevenLabs — Best TTS & Voice Cloning
 # Visit: https://elevenlabs.io/
 # 1. Sign up (free: 10,000 characters/month)
 # 2. Go to "Speech Synthesis"
 # 3. Choose a voice from the library (1000+ voices)
 # 4. Enter text → adjust stability/clarity sliders → generate
-
 # Voice settings:
 # - Stability: 30-50% (lower = more expressive but less consistent)
 # - Clarity+Similarity: 70-80% (higher = more natural)
 # - Style Exaggeration: 0-20%
-
 # Use via API (Python):
 import requests
 API_KEY = "your-elevenlabs-api-key"
@@ -111,49 +101,37 @@ data = {
 }
 response = requests.post(url, json=data, headers=headers)
 with open("output.mp3", "wb") as f: f.write(response.content)`,
-
   step3: `# Voice Cloning with ElevenLabs
 # Requires: 5+ minutes of clear, noise-free audio of target voice
-
 # Step 1: Record/upload clean audio sample
 # - No background noise, music, or other voices
 # - Natural speaking pace and tone
 # - Minimum 5 minutes (longer = better quality)
-
 # Step 2: Go to ElevenLabs → "Voices" → "Add Voice"
 # → "Instant Voice Cloning"
 # Step 3: Upload audio + name the voice
 # Step 4: Test with sample text, adjust settings
-
 # Tips:
 # - Record in a quiet room with a good mic
 # - Read diverse content for sample (news, dialog, monologue)
 # - For Chinese: include tonal variety (questions, exclamations)
 # - Clone takes ~2 minutes to process`,
-
   step4: `# AI Podcast Production Workflow
-
 # Step 1: Script with ChatGPT/Claude
 # Prompt: "Write a 10-minute podcast script about [topic].
 # Include intro, 3 main segments, transitions, and outro.
 # Tone: conversational and engaging."
-
 # Step 2: Generate voices with ElevenLabs
 # - Host voice: choose a warm, authoritative voice
 # - Guest voice: choose a contrasting voice
 # - Assign script parts to different voices
-
 # Step 3: Add intro/outro music
 # - Generate with Suno: "Podcast intro music, upbeat electronic,
 #   30 seconds, modern and energetic"
-
 # Step 4: Assembly & clean-up
 # - Use Descript (descript.com) to arrange tracks
 # - AI removes filler words ("um", "uh", "like")
 # - Adobe Podcast for final noise reduction
-
 # Step 5: Export as MP3, upload to your platform
 # Platform recommendations: 小宇宙 (xiaoyuzhoufm.com), Apple Podcasts`,
 }
-
-

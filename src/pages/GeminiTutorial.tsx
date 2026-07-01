@@ -1,7 +1,6 @@
 import { useT } from '../contexts/LanguageContext'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
-
 export default function GeminiTutorial() {
   const { lang } = useT()
   const l = {
@@ -20,7 +19,6 @@ export default function GeminiTutorial() {
     debug: lang === 'zh-CN' ? '第8步：常见问题排查' : lang === 'zh-TW' ? '第8步：常見問題排查' : 'Step 8: Troubleshooting',
     links: lang === 'zh-CN' ? '链接与资源' : lang === 'zh-TW' ? '連結與資源' : 'Links & Resources',
   }
-
   return (
     <div className={styles.page}>
       <div className={styles.head}>
@@ -50,126 +48,99 @@ export default function GeminiTutorial() {
     </div>
   )
 }
-
 // Code blocks — stay in English (universal terminal commands)
 const CODE = {
   req: `# Operating System
 - macOS 12+ (Apple Silicon or Intel)
 - Linux (Ubuntu 20.04+, Debian 11+, or any glibc 2.31+ distro)
 - Windows 10+ (via WSL2 recommended, or native PowerShell)
-
 # Runtime
 - Node.js 18.0.0 or higher (LTS 20.x recommended)
 - npm 9.0.0 or higher
-
 # Check your versions:
 node -v          # Should print v18.x.x or v20.x.x
 npm -v           # Should print 9.x.x or 10.x.x
-
 # Install/upgrade via nvm if needed:
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 nvm install 20
 nvm use 20
-
 # Google API Key (required):
 # Get one free at: https://aistudio.google.com/apikey
 # Free tier: 100 requests/day`,
-
   install: `# ==========================================
 # Method A: Global npm install (recommended)
 # ==========================================
 npm install -g @google/gemini-cli
 gemini --version    # verify
-
 # ==========================================
 # Method B: npx (no install needed)
 # ==========================================
 npx @google/gemini-cli
-
 # ==========================================
 # Method C: Build from source
 # ==========================================
 git clone https://github.com/google-gemini/gemini-cli.git
 cd gemini-cli
 npm install && npm run build && npm link
-
 # ==========================================
 # Upgrade to latest:
 # ==========================================
 npm update -g @google/gemini-cli`,
-
   auth: `# Step 1: Get your API key
 # Visit: https://aistudio.google.com/apikey
 # Click "Create API Key" → copy the key (starts with "AIza...")
-
 # Step 2: Set as environment variable
 export GEMINI_API_KEY="AIzaSyD-xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
 # Step 3: Make permanent (bash/zsh)
 echo 'export GEMINI_API_KEY="AIzaSyD-xxxxxxxxxxxxxxxxxxxxxxxxxxxx"' >> ~/.bashrc
 source ~/.bashrc
-
 # For zsh:
 echo 'export GEMINI_API_KEY="AIzaSyD-xxxxxxxxxxxxxxxxxxxxxxxxxxxx"' >> ~/.zshrc
-
 # For fish shell:
 set -Ux GEMINI_API_KEY "AIzaSyD-xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
 # For Windows PowerShell:
 [Environment]::SetEnvironmentVariable("GEMINI_API_KEY", "AIzaSyD-...", "User")
-
 # Step 4: Verify
 gemini "Hello, what model are you running on?"
 # Should respond → authentication works!`,
-
   commands: `# ==========================================
 # Interactive REPL mode
 # ==========================================
 gemini                    # Opens chat session. Ctrl+C to exit.
-
 # ==========================================
 # One-shot questions
 # ==========================================
 gemini "Explain the architecture of this project"
 gemini "Find all async functions without error handling"
-
 # ==========================================
 # File-specific operations
 # ==========================================
 gemini "Refactor src/auth.ts to use async/await"
 gemini "Add TypeScript types to src/api/users.ts"
-
 # ==========================================
 # Multi-file operations
 # ==========================================
 gemini "Rename all 'userId' to 'accountId' across the project"
 gemini "Extract duplicate validation into src/utils/validators.ts"
-
 # ==========================================
 # Model selection
 # ==========================================
 gemini --model gemini-2.5-pro "Design a database schema"
 gemini --model gemini-2.5-flash "Quick: convert JSON to TS interface"
-
 # Available models:
 # - gemini-2.5-pro     → best for complex reasoning & code generation
 # - gemini-2.5-flash   → fastest, good for quick edits
-
 # ==========================================
 # Context options
 # ==========================================
 gemini --max-context 1000000 "Analyze this monorepo structure"
 gemini --include "src/**/*.ts" "Find all unused imports"
 gemini --exclude "node_modules,dist,.git" "Audit security"`,
-
   files: `# Gemini CLI automatically scans your working directory
-
 # Create new files:
 gemini "Create src/middleware/rateLimiter.ts with an Express rate limiter"
-
 # Edit existing files:
 gemini "In src/app.ts, add helmet middleware and CORS configuration"
-
 # Generate project scaffold:
 gemini "Scaffold a new Express + TypeScript REST API:
   - src/routes/     (user, post, auth)
@@ -180,23 +151,18 @@ gemini "Scaffold a new Express + TypeScript REST API:
   - tests/           (unit, integration)
   - docker-compose.yml
   - .env.example"
-
 # Documentation generation:
 gemini "Write JSDoc comments for every exported function in src/utils/"
 gemini "Generate API documentation from the Express route files"
-
 # Code review:
 gemini "Review all files changed in the last commit for:
   - Security vulnerabilities
   - Performance issues
   - Missing error handling
   - Type safety problems"`,
-
   mcp: `# MCP extends Gemini CLI with external tools
 # Config file: ~/.gemini/mcp.json
-
 mkdir -p ~/.gemini
-
 cat > ~/.gemini/mcp.json << 'EOF'
 {
   "mcpServers": {
@@ -225,26 +191,22 @@ cat > ~/.gemini/mcp.json << 'EOF'
   }
 }
 EOF
-
 # Restart Gemini CLI — it auto-discovers ~/.gemini/mcp.json
 # Verify MCP servers:
 gemini "List all available MCP tools"
 # Now you can use them:
 gemini "Search the web for latest React 19 docs and summarize"
 gemini "Create a GitHub issue titled 'Add rate limiting'"`,
-
   vscode: `# ==========================================
 # Method A: VS Code Marketplace
 # ==========================================
 # 1. Open VS Code → Extensions (Ctrl+Shift+X)
 # 2. Search: "Gemini Code Assist" (by Google)
 # 3. Install → Reload
-
 # ==========================================
 # Method B: CLI install
 # ==========================================
 code --install-extension google.geminicodeassist
-
 # ==========================================
 # Key features after installation:
 # ==========================================
@@ -258,7 +220,6 @@ code --install-extension google.geminicodeassist
 #    - "Gemini: Generate Tests"
 #    - "Gemini: Refactor"
 #    - "Gemini: Find Bugs"`,
-
   workflows: `# ==========================================
 # Workflow 1: New codebase onboarding
 # ==========================================
@@ -271,7 +232,6 @@ gemini "Give me a comprehensive overview:
   4. Database schema
   5. API endpoints
   6. Testing strategy"
-
 # ==========================================
 # Workflow 2: Implement a feature
 # ==========================================
@@ -281,7 +241,6 @@ gemini "Add password reset flow:
   3. Add POST /api/auth/reset-password
   4. Create email template
   5. Write tests for both endpoints"
-
 # ==========================================
 # Workflow 3: Debug production issue
 # ==========================================
@@ -291,7 +250,6 @@ gemini "Users report 500 errors on checkout. Error:
   1. Find the source of this bug
   2. Trace back to find where price could be undefined
   3. Propose a fix with defensive checks"
-
 # ==========================================
 # Workflow 4: Migration (CJS → ESM)
 # ==========================================
@@ -301,29 +259,22 @@ gemini "Migrate from CommonJS to ESM:
   3. Update package.json with 'type: module'
   4. Fix __dirname and __filename usage
   5. Verify all imports resolve correctly"`,
-
   debug: `# Issue: "GEMINI_API_KEY not set"
 echo $GEMINI_API_KEY          # verify it's set
 source ~/.bashrc               # reload config
-
 # Issue: "Permission denied"
 ls -la src/                    # check file permissions
 chmod -R u+w src/              # fix write permissions
-
 # Issue: "Node.js version too old"
 nvm install 20
 nvm use 20
-
 # Issue: "Cannot find module" after update
 npm cache clean --force
 npm uninstall -g @google/gemini-cli
 npm install -g @google/gemini-cli
-
 # Issue: Slow responses
 gemini --model gemini-2.5-flash "quick question"
-
 # Issue: Gemini doesn't see my files
 pwd                            # verify you're in project root
 ls                             # verify files are visible`,
 }
-

@@ -2,7 +2,6 @@ import { useT } from '../contexts/LanguageContext'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
 import { pStyle, ulStyle, Card, Code } from '../components/TutorialCard'
-
 export default function VideoGenTutorial() {
   const { lang } = useT()
   const l = {
@@ -19,7 +18,6 @@ export default function VideoGenTutorial() {
     tips: lang === 'zh-CN' ? '进阶技巧' : lang === 'zh-TW' ? '進階技巧' : 'Pro Tips',
     links: lang === 'zh-CN' ? '资源链接' : lang === 'zh-TW' ? '資源連結' : 'Resources',
   }
-
   return (
     <div className={styles.page}>
       <div className={styles.head}><h2 className={styles.title}>🎬 {l.pageTitle}</h2><p className={styles.subtitle}>{l.pageSub}</p></div>
@@ -52,7 +50,6 @@ export default function VideoGenTutorial() {
     </div>
   )
 }
-
 const toolLinks: ToolLink[] = [  {name:'Runway Gen-3',url:'https://runwayml.com/',desc:{en:'Best text-to-video, cinematic quality',zh:'文生视频最强,电影级画质'},cat:'视频',icon:'🎬'},  {name:'可灵AI',url:'https://klingai.com/',desc:{en:'Kuaishou, top AI image+video',zh:'快手出品,画质极高'},cat:'视频',icon:'🎬'},  {name:'Vidu',url:'https://www.vidu.com/',desc:{en:'Top Chinese video model',zh:'国产视频大模型,中文友好'},cat:'视频',icon:'🎞️'},  {name:'PixVerse',url:'https://pixverse.ai/',desc:{en:'Fast video gen, viral effects',zh:'快速出视频,创意特效'},cat:'视频',icon:'✨'},  {name:'HeyGen',url:'https://www.heygen.com/',desc:{en:'AI avatar video, multi-language',zh:'AI数字人播报,多语种配音'},cat:'视频',icon:'🎙️'},  {name:'Pika',url:'https://pika.art/',desc:{en:'Quick social clips, fun effects',zh:'快速社媒短视频'},cat:'视频',icon:'⚡'},  {name:'剪映/CapCut',url:'https://www.capcut.com/',desc:{en:'AI editing, auto captions',zh:'AI剪辑+字幕'},cat:'视频',icon:'✂️'},  {name:'智影',url:'https://zenvideo.qq.com/',desc:{en:'Tencent digital human studio',zh:'腾讯数字人播报'},cat:'视频',icon:'🎬'},]
 const CODE = {
   step1: `# Runway Gen-3 — Best Text-to-Video
@@ -62,21 +59,17 @@ const CODE = {
 #    "Aerial drone shot of a misty mountain valley at sunrise,
 #     golden light breaking through clouds, 4K cinematic, smooth
 #     camera movement, photorealistic"
-
 # Prompt structure:
 # [Camera Shot] + [Subject/Scene] + [Lighting] + [Quality] + [Style]
-
 # Shot types: Aerial drone, Close-up, Wide angle, Tracking, POV
 # Example prompts:
 # "Close-up of a barista pouring latte art, steam rising,
 #  soft morning light, shallow depth of field, 4K"
 # "Tracking shot of a delivery robot navigating a busy
 #  city sidewalk, golden hour, gritty urban realism"
-
 # Sora (OpenAI) — available to ChatGPT Plus/Pro users
 # Sora excels at: complex physics, reflections, consistent objects
 # Max: 60 seconds, 1080p`,
-
   step2: `# HeyGen — AI Avatar Video Creation
 # Visit: https://www.heygen.com/
 # 1. Sign up → "Create Video" → Choose avatar
@@ -85,21 +78,17 @@ const CODE = {
 # 3. Choose voice → AI generates lip-sync
 # 4. Add background, music, transitions
 # 5. Export as MP4
-
 # Use cases:
 # - Product demos / tutorials without filming yourself
 # - Multi-language marketing videos (one script → 29 languages)
 # - Corporate training videos at scale
 # - YouTube channel without showing your face
-
 # Pro workflow:
 # 1. Claude/GPT writes the script
 # 2. HeyGen avatar reads it in 3 languages
 # 3. CapCut adds B-roll, captions, music
 # = 1 video → 3 language versions in < 1 hour`,
-
   step3: `# AI Video Editing Workflow
-
 # Descript — Edit video by editing text
 # Visit: https://www.descript.com/
 # 1. Import video → AI auto-transcribes
@@ -107,35 +96,27 @@ const CODE = {
 #    (Remove "um", "uh" in one click with "Filler Word Removal")
 # 3. AI voice clone: type new words → AI generates your voice
 # 4. Studio Sound: one-click audio enhancement
-
 # 剪映 / CapCut — Mobile-first AI editing
 # 1. Import footage → "AI Smart Edit" auto-selects highlights
 # 2. "Auto Captions" generates subtitles (Chinese + English)
 # 3. "AI Effects" applies transitions & filters
 # 4. Export directly to TikTok/Douyin/YouTube Shorts
-
 # Long video → Short clips with Opus Clip
 # Visit: https://www.opus.pro/
 # 1. Upload 30-120 min video
 # 2. AI identifies viral moments → generates 10+ short clips
 # 3. Each clip gets captions, B-roll suggestions, face tracking`,
-
   step4: `# AI Visual Effects & Compositing
-
 # Runway — AI-powered VFX tools:
 # 1. "Green Screen" — remove background without green screen
 # 2. "Inpainting" — remove unwanted objects from video
 # 3. "Motion Brush" — paint where you want movement
 # 4. "Image to Video" — bring still images to life
-
 # Workflow: Create a product commercial
 # 1. Midjourney → generate product beauty shots
 # 2. Runway Image-to-Video → animate the shots
 # 3. HeyGen → AI spokesperson introduces product
 # 4. Suno → generate background music (30s jingle)
 # 5. CapCut → stitch together, add captions, export
-
 # All done without a camera crew. Time: ~2 hours.`,
 }
-
-

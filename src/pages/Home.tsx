@@ -3,7 +3,6 @@ import { useT } from '../contexts/LanguageContext'
 import { domains } from '../data/domains'
 import { domainTitle } from '../i18n/translate'
 import styles from './Page.module.css'
-
 function getGreeting(lang: string) {
   const h = new Date().getHours()
   if (lang === 'zh-CN') {
@@ -32,7 +31,6 @@ function getGreeting(lang: string) {
   if (h < 22) return 'Good Evening'
   return 'Good Evening'
 }
-
 const tips = {
   'zh-CN': [
     '🆕 已收录300+精选工具，覆盖16大行业',
@@ -59,19 +57,15 @@ const tips = {
     '🌟 New tools added regularly — check back often',
   ],
 }
-
 interface Props { onEnter: (domainKey: string) => void }
-
 export default function Home({ onEnter }: Props) {
   const { lang } = useT()
   const [tipIdx, setTipIdx] = useState(0)
   const t = tips[lang] || tips.en
-
   useEffect(() => {
     const timer = setInterval(() => setTipIdx(i => (i + 1) % t.length), 3500)
     return () => clearInterval(timer)
   }, [t.length])
-
   const greeting = getGreeting(lang)
   const stats = [
     { v: '300+', l: lang === 'zh-CN' ? '精选工具' : lang === 'zh-TW' ? '精選工具' : 'Curated Tools' },
@@ -79,19 +73,10 @@ export default function Home({ onEnter }: Props) {
     { v: '14', l: lang === 'zh-CN' ? '实操教程' : lang === 'zh-TW' ? '實操教學' : 'Tutorials' },
     { v: '1,379+', l: lang === 'zh-CN' ? 'AI速报期数' : lang === 'zh-TW' ? 'AI速報期數' : 'News Issues' },
   ]
-
   return (
     <div className={styles.page}>
       {/* Hero Section */}
-      <div style={{
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 30%, #3730a3 70%, #4c1d95 100%)',
-        borderRadius: 16,
-        padding: '40px 36px 32px',
-        marginBottom: 28,
-        color: '#fff',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
+      <div style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 30%, #3730a3 70%, #4c1d95 100%)', borderRadius: 16, padding: '40px 36px 32px', marginBottom: 28, color: '#fff', position: 'relative', overflow: 'hidden', }}>
         <div style={{ position: 'absolute', top: -40, right: -20, fontSize: 180, opacity: 0.08 }}>🌐</div>
         <h1 style={{ fontSize: 32, fontWeight: 800, margin: '0 0 6px', letterSpacing: -1 }}>
           {greeting}，{lang === 'zh-CN' ? '欢迎来到' : lang === 'zh-TW' ? '歡迎來到' : 'Welcome to'} AI Navigator
@@ -103,7 +88,6 @@ export default function Home({ onEnter }: Props) {
             ? '一站式的AI工具導航、行業應用洞察和AIGC實操教學。不是零散的連結集合，而是一張完整的AI世界地圖。'
             : 'Your one-stop hub for AI tool discovery, industry insights, and hands-on AIGC tutorials. Not a link dump — a complete map of the AI world.'}
         </p>
-
         {/* Stats Row */}
         <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
           {stats.map(s => (
@@ -114,29 +98,13 @@ export default function Home({ onEnter }: Props) {
           ))}
         </div>
       </div>
-
       {/* Tip Ticker */}
-      <div style={{
-        background: 'linear-gradient(90deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1))',
-        borderRadius: 10,
-        padding: '10px 18px',
-        marginBottom: 28,
-        display: 'flex',
-        alignItems: 'center',
-        gap: 10,
-        border: '1px solid var(--border)',
-      }}>
+      <div style={{ background: 'linear-gradient(90deg, rgba(102,126,234,0.1), rgba(118,75,162,0.1))', borderRadius: 10, padding: '10px 18px', marginBottom: 28, display: 'flex', alignItems: 'center', gap: 10, border: '1px solid var(--border)', }}>
         <span style={{ fontSize: 14, flexShrink: 0 }}>💬</span>
-        <span style={{
-          fontSize: 14,
-          color: 'var(--text)',
-          transition: 'opacity .3s',
-          flex: 1,
-        }}>
+        <span style={{ fontSize: 14, color: 'var(--text)', transition: 'opacity .3s', flex: 1, }}>
           {t[tipIdx]}
         </span>
       </div>
-
       {/* Section Cards */}
       <h2 style={{ fontSize: 20, fontWeight: 700, color: 'var(--text)', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
         📂 {lang === 'zh-CN' ? '快速导航' : lang === 'zh-TW' ? '快速導航' : 'Quick Navigation'}
@@ -160,7 +128,6 @@ export default function Home({ onEnter }: Props) {
           </div>
         ))}
       </div>
-
       {/* Bottom hint */}
       <div style={{ textAlign: 'center', padding: '24px 0 8px', color: 'var(--text-muted)', fontSize: 13, lineHeight: 1.8 }}>
         {lang === 'zh-CN'
@@ -168,18 +135,7 @@ export default function Home({ onEnter }: Props) {
           : lang === 'zh-TW'
           ? '點擊上方任意卡片進入對應板塊 · 側邊欄可展開子目錄 · 點擊左上角 📦 隨時回到這裡'
           : 'Click any card above to explore · Sidebar expands sub-categories · Click 📦 logo to return here'}
-        <div onClick={() => onEnter('ai-news')} style={{
-          background: 'linear-gradient(135deg, #0f172a, #1e3a5f)',
-          borderRadius: 12,
-          padding: '16px 24px',
-          marginTop: 20,
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          color: '#fff',
-          transition: 'transform .15s',
-        }}
+        <div onClick={() => onEnter('ai-news')} style={{ background: 'linear-gradient(135deg, #0f172a, #1e3a5f)', borderRadius: 12, padding: '16px 24px', marginTop: 20, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', color: '#fff', transition: 'transform .15s', }}
         onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1.01)' }}
         onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'scale(1)' }}
         >

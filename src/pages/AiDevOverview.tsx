@@ -10,7 +10,6 @@ import AgentWorkflow from './AgentWorkflow'
 import AgentMultiAgent from './AgentMultiAgent'
 import AgentToolsOverview from './AgentToolsOverview'
 import ApiRelayOverview from './ApiRelayOverview'
-
 const sections = [
   { key: 'gemini', icon: '🔷', title: { en: 'Gemini CLI', 'zh-CN': 'Gemini 教程', 'zh-TW': 'Gemini 教學', ja: 'Gemini チュートリアル', ko: 'Gemini 튜토리얼', es: 'Gemini' }, Component: GeminiTutorial },
   { key: 'codex', icon: '🟢', title: { en: 'Codex CLI', 'zh-CN': 'Codex 教程', 'zh-TW': 'Codex 教學', ja: 'Codex チュートリアル', ko: 'Codex 튜토리얼', es: 'Codex' }, Component: CodexTutorial },
@@ -23,7 +22,6 @@ const sections = [
   { key: 'agent-tools', icon: '🤖', title: { en: 'Models & API', 'zh-CN': '大模型 & API', 'zh-TW': '大模型 & API', ja: '大モデル & API', ko: '대모델 & API', es: 'Modelos' }, Component: AgentToolsOverview },
   { key: 'api-relay', icon: '🔌', title: { en: 'API Relay', 'zh-CN': 'API中转', 'zh-TW': 'API中轉', ja: 'API中継', ko: 'API 중계', es: 'API Relay' }, Component: ApiRelayOverview },
 ]
-
 export default function AiDevOverview() {
   const { lang } = useT()
   const L = (a: MultiLang, b?: string, c?: string) => {
@@ -32,10 +30,7 @@ export default function AiDevOverview() {
   }
   return (
     <div>
-      <div id="section-overview" style={{
-        background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%)',
-        borderRadius: 14, padding: '28px 32px', marginBottom: 32, color: '#fff', position: 'relative', overflow: 'hidden',
-      }}>
+      <div id="section-overview" style={{ background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%)', borderRadius: 14, padding: '28px 32px', marginBottom: 32, color: '#fff', position: 'relative', overflow: 'hidden', }}>
         <div style={{ position: 'absolute', top: -20, right: -10, fontSize: 100, opacity: 0.08 }}>🛠️</div>
         <h2 style={{ fontSize: 24, fontWeight: 800, margin: '0 0 8px' }}>{L({ en: 'AI Tools & Models', 'zh-CN': 'AI工具 · 大模型', 'zh-TW': 'AI工具 · 大模型', ja: 'AIツール · 大モデル', ko: 'AI 도구 · 대모델', es: 'Herramientas IA · Modelos' })}</h2>
         <p style={{ fontSize: 14, opacity: 0.85, margin: '0 0 20px', maxWidth: 600, lineHeight: 1.6 }}>

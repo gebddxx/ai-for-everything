@@ -8,22 +8,16 @@ return(<div className={styles.page}><div className={styles.head}><h2 className={
 ['Hierarchical',L('Manager agent delegates to worker agents, reviews results','管理者Agent分配任务→执行Agent干活→管理者审核','管理者Agent分配任務→執行Agent幹活→管理者審核'),L('Complex projects with quality control','需要质量控制的复杂项目','需要品質控制的複雜項目')],
 ]} /></C>
 <C t={L('💡 Example: Research Team','💡 示例：研究团队','💡 示例：研究團隊')}><Code>{`# 5个Agent协作完成深度调研报告:
-
 Manager Agent (调度者):
   "把用户的问题分解成子任务,分配给团队,整合结果"
-
 Research Agent (研究员):
   "搜索最新论文、新闻、数据,提取关键信息"
-
 Analyst Agent (分析师):
   "对研究结果进行批判性分析,找出pattern和矛盾点"
-
 Writer Agent (写作者):
   "把分析结果写成结构化报告,引用Research的来源"
-
 Fact-Checker Agent (核查员):
   "逐一验证Writer报告中的事实陈述,标注可信度"
-
 # 流程: User Question
 # → Manager 分解任务
 # → [Research + Analyst 并行工作]

@@ -2,7 +2,6 @@ import { useT } from '../contexts/LanguageContext'
 import { tText, type MultiLang } from '../i18n/translate'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
-
 const links: ToolLink[] = [
   { name:'ChatGPT',url:'https://chat.openai.com/',desc:{en:'GPT-4.1, DALL·E, plugins, GPTs, Code Interpreter',zh:'OpenAI旗舰模型,支持插件生态和多模态'},cat:'大模型',icon:'⚫'},
   { name:'Claude',url:'https://claude.ai/',desc:{en:'Anthropic, 200K context, Artifacts, Projects',zh:'Anthropic出品,200K超长上下文,深度思考首选'},cat:'大模型',icon:'🟠'},
@@ -51,7 +50,6 @@ const links: ToolLink[] = [
   { name:'商汤如影',url:'https://www.sensetime.com/',desc:{en:'SenseTime, 3D digital human, 98% expression accuracy',zh:'商汤出品,3D数字人,表情自然度98%,企业级'},cat:'数字人',icon:'🧬'},
   { name:'PromptPilot',url:'https://promptpilot.volcengine.com/',desc:{en:'ByteDance, prompt optimizer, multi-model benchmark',zh:'字节跳动提示词优化平台,自动生成+评测+迭代'},cat:'AI编程',icon:'✈️'},
 ]
-
 export default function ChatOverview({ scrollTo }: { scrollTo?: string }) {
   const { lang } = useT()
   const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }

@@ -2,12 +2,10 @@ import { useT } from '../contexts/LanguageContext'
 import { tText, type MultiLang } from '../i18n/translate'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
-
 export default function HealthcareOverview() {
   const { lang } = useT()
   const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }
   const LA = (en: string[], zh: string[], tw: string[]) => lang === "zh-CN" ? zh : lang === "zh-TW" ? tw : en
-
   return (
     <div className={styles.page}>
       {/* ====== 1. 核心数据 ====== */}
@@ -20,7 +18,6 @@ export default function HealthcareOverview() {
             </div>))}
         </div>
       </div>
-
       {/* ====== 2. AI 如何改变医疗 ====== */}
       <div style={{marginBottom:24}}>
         <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',marginBottom:12}}>🔬 {L('AI × Healthcare','AI × 医疗','AI × 醫療')}</h3>
@@ -39,7 +36,6 @@ export default function HealthcareOverview() {
             </div>))}
         </div>
       </div>
-
       {/* ====== 3. 工具导航 ====== */}
       <h3 style={{fontSize:16,fontWeight:700,color:'var(--text)',margin:'28px 0 12px',paddingBottom:8,borderBottom:'2px solid var(--border)'}}>
         🔗 {L('Tools','工具导航','工具導航')}
@@ -48,7 +44,6 @@ export default function HealthcareOverview() {
     </div>
   )
 }
-
 const links: ToolLink[] = [
   {name:'Aidoc',url:'https://www.aidoc.com/',desc:{en:'AI radiology: stroke/PE/C-spine detection',zh:'AI影像:脑卒中/肺栓塞/颈椎骨折实时识别'},cat:'影像',icon:'🧠'},
   {name:'推想医疗',url:'https://www.infervision.com/',desc:{en:'Chinese AI radiology #1, lung nodule + stroke',zh:'国产AI影像龙头,肺结节/脑卒中/骨折'},cat:'影像',icon:'🫁'},

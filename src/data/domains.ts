@@ -3,7 +3,6 @@ export interface SubModule {
   icon: string
   title: { en: string; 'zh-CN': string; 'zh-TW': string; ja?: string; ko?: string; es?: string }
 }
-
 export interface Domain {
   key: string
   title: { en: string; 'zh-CN': string; 'zh-TW': string; ja?: string; ko?: string; es?: string }
@@ -13,7 +12,6 @@ export interface Domain {
   status: 'done' | 'wip' | 'planned'
   subModules: SubModule[]
 }
-
 export const domains: Domain[] = [
   {
     key: 'nav-tools',

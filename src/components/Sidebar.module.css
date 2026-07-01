@@ -1,173 +1,22 @@
-.sidebar {
-  width: var(--sidebar-width, 180px);
-  min-width: 180px;
-  background: var(--bg-sidebar);
-  border-right: 1px solid var(--border);
-  padding: 8px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  transition: background 0.3s;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.sectionTitle {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--text-muted);
-  padding: 8px 16px 6px;
-}
-
-/* tree group */
-.treeGroup {
-  display: flex;
-  flex-direction: column;
-}
-
-/* domain header — level 1 */
-.item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 14px 11px 8px;
-  border: none;
-  background: var(--bg-card);
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  transition: all 0.12s;
-  text-align: left;
-  border-left: 3px solid transparent;
-  width: 100%;
-  margin: 1px 0;
-}
-
-.item:hover {
-  background: var(--hover-bg);
-}
-
-.activeDomain {
-  background: var(--active-bg);
-  color: var(--primary);
-}
-
-.arrow {
-  font-size: 14px;
-  width: 18px;
-  color: var(--text-secondary);
-  flex-shrink: 0;
-  text-align: center;
-  font-weight: 700;
-}
-
-.icon {
-  font-size: 18px;
-  width: 26px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.label {
-  white-space: nowrap;
-  flex: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 14px;
-}
-
-.tag {
-  font-size: 9px;
-  padding: 1px 5px;
-  border-radius: 6px;
-  background: var(--hover-bg);
-  color: var(--text-muted);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-/* sub-module list — level 2 */
-.subList {
-  display: flex;
-  flex-direction: column;
-  padding-left: 28px;
-  border-left: 2px solid var(--border);
-  margin-left: 20px;
-}
-
-.subItem {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 10px 7px 12px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-size: 13px;
-  color: var(--text-secondary);
-  transition: all 0.12s;
-  text-align: left;
-  border-left: 2px solid transparent;
-  width: 100%;
-  border-radius: 0 6px 6px 0;
-}
-
-.subItem:hover {
-  background: var(--hover-bg);
-  color: var(--text);
-}
-
-.subIcon {
-  font-size: 13px;
-  width: 20px;
-  text-align: center;
-  flex-shrink: 0;
-  opacity: 0.7;
-}
-
-/* active states */
-.active {
-  background: var(--active-bg);
-  color: var(--primary);
-  font-weight: 600;
-  border-left-color: var(--active-border);
-}
-
-/* responsive */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    min-width: 0;
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 0;
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    gap: 0;
-  }
-  .treeGroup {
-    flex-direction: row;
-  }
-  .item {
-    flex-shrink: 0;
-    border-left: none;
-    border-bottom: 3px solid transparent;
-    padding: 8px 10px;
-    font-size: 12px;
-    white-space: nowrap;
-  }
-  .active, .subItem.active {
-    border-left-color: transparent;
-    border-bottom-color: var(--active-border);
-  }
-  .subList {
-    display: none;
-  }
-  .arrow {
-    display: none;
-  }
+.sidebar { width: var(--sidebar-width, 180px); min-width: 180px; background: var(--bg-sidebar); border-right: 1px solid var(--border); padding: 8px 0; display: flex; flex-direction: column; gap: 0; transition: background 0.3s; overflow-y: auto; overflow-x: hidden }
+.sectionTitle { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); padding: 8px 16px 6px }
+.treeGroup { display: flex; flex-direction: column }
+.item { display: flex; align-items: center; gap: 8px; padding: 11px 14px 11px 8px; border: none; background: var(--bg-card); cursor: pointer; font-size: 14px; font-weight: 600; color: var(--text); transition: all 0.12s; text-align: left; border-left: 3px solid transparent; width: 100%; margin: 1px 0 }
+.item:hover { background: var(--hover-bg) }
+.activeDomain { background: var(--active-bg); color: var(--primary) }
+.arrow { font-size: 14px; width: 18px; color: var(--text-secondary); flex-shrink: 0; text-align: center; font-weight: 700 }
+.icon { font-size: 18px; width: 26px; text-align: center; flex-shrink: 0 }
+.label { white-space: nowrap; flex: 1; overflow: hidden; text-overflow: ellipsis; font-size: 14px }
+.tag { font-size: 9px; padding: 1px 5px; border-radius: 6px; background: var(--hover-bg); color: var(--text-muted); white-space: nowrap; flex-shrink: 0 }
+.subList { display: flex; flex-direction: column; padding-left: 28px; border-left: 2px solid var(--border); margin-left: 20px }
+.subItem { display: flex; align-items: center; gap: 6px; padding: 7px 10px 7px 12px; border: none; background: transparent; cursor: pointer; font-size: 13px; color: var(--text-secondary); transition: all 0.12s; text-align: left; border-left: 2px solid transparent; width: 100%; border-radius: 0 6px 6px 0 }
+.subItem:hover { background: var(--hover-bg); color: var(--text) }
+.subIcon { font-size: 13px; width: 20px; text-align: center; flex-shrink: 0; opacity: 0.7 }
+.active { background: var(--active-bg); color: var(--primary); font-weight: 600; border-left-color: var(--active-border) }
+@media (max-width: 768px) { .sidebar { width: 100%; min-width: 0; flex-direction: row; overflow-x: auto; overflow-y: hidden; padding: 0; border-right: none; border-bottom: 1px solid var(--border); gap: 0 }
+  .treeGroup { flex-direction: row }
+  .item { flex-shrink: 0; border-left: none; border-bottom: 3px solid transparent; padding: 8px 10px; font-size: 12px; white-space: nowrap }
+  .active, .subItem.active { border-left-color: transparent; border-bottom-color: var(--active-border) }
+  .subList { display: none }
+  .arrow { display: none }
 }

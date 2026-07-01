@@ -1,118 +1,18 @@
-.header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 32px;
-  background: linear-gradient(135deg, var(--bg-header-start), var(--bg-header-end));
-  color: #fff;
-  flex-shrink: 0;
-}
-
-.logo {
-  font-size: 28px;
-}
-
-.title {
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-
-.badge {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-  margin-left: 12px;
-  padding: 2px 10px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-}
-
-.backBtn {
-  background: rgba(255,255,255,0.15);
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-right: 4px;
-  transition: background 0.15s;
-}
-
-.backBtn:hover {
-  background: rgba(255,255,255,0.25);
-}
-
-.spacer {
-  flex: 1;
-}
-
-.themeBtn {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #fff;
-  font-size: 18px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-.themeBtn:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.langWrap {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-right: 8px;
-}
-
-.langIcon {
-  font-size: 16px;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.langSelect {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.25);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 20px 4px 6px;
-  border-radius: 4px;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,0.7)'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 6px center;
-}
-
-.langSelect:hover {
-  background-color: rgba(255,255,255,0.25);
-}
-
-.langSelect option {
-  background: #1e3a8a;
-  color: #fff;
-}
-
-@media (max-width: 768px) {
-  .header {
-    padding: 10px 16px;
-  }
-  .title {
-    font-size: 16px;
-  }
-  .badge {
-    display: none;
-  }
+.header { display: flex; align-items: center; gap: 12px; padding: 14px 32px; background: linear-gradient(135deg, var(--bg-header-start), var(--bg-header-end)); color: #fff; flex-shrink: 0 }
+.logo { font-size: 28px }
+.title { font-size: 20px; font-weight: 700; letter-spacing: -0.5px }
+.badge { font-size: 12px; color: rgba(255, 255, 255, 0.7); margin-left: 12px; padding: 2px 10px; background: rgba(255, 255, 255, 0.15); border-radius: 12px }
+.backBtn { background: rgba(255,255,255,0.15); border: none; color: #fff; font-size: 18px; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; margin-right: 4px; transition: background 0.15s }
+.backBtn:hover { background: rgba(255,255,255,0.25) }
+.spacer { flex: 1 }
+.themeBtn { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.25); color: #fff; font-size: 18px; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s }
+.themeBtn:hover { background: rgba(255, 255, 255, 0.25) }
+.langWrap { display: flex; align-items: center; gap: 4px; margin-right: 8px }
+.langIcon { font-size: 16px; line-height: 1; pointer-events: none }
+.langSelect { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 12px; font-weight: 600; padding: 4px 20px 4px 6px; border-radius: 4px; cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url("data: image/svg+xml,%3Csvg xmlns='http: //www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='rgba(255,255,255,0.7)'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 6px center }
+.langSelect:hover { background-color: rgba(255,255,255,0.25) }
+.langSelect option { background: #1e3a8a; color: #fff }
+@media (max-width: 768px) { .header { padding: 10px 16px }
+  .title { font-size: 16px }
+  .badge { display: none }
 }

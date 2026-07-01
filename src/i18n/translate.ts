@@ -26,13 +26,11 @@ const S2T: Record<string, string> = {
   '组':'組','织':'織','架':'架','构':'構','软':'軟','硬':'硬','兼':'兼','扩':'擴','展':'展','插':'插',
   '块':'塊','口':'口','协':'協','转':'轉','换':'換','编':'編','译':'譯','调':'調'
 }
-
 /** Domain/submodule title: fallback to English when lang not found */
 type TitleMap = { en: string; 'zh-CN': string; 'zh-TW': string; ja?: string; ko?: string; es?: string }
 export function domainTitle(t: TitleMap, lang: string): string {
   return (t as any)[lang] || t.en
 }
-
 export function toTraditional(text: string): string {
   let r = ''
   for (const ch of text) {
@@ -40,9 +38,7 @@ export function toTraditional(text: string): string {
   }
   return r
 }
-
 export type MultiLang = string | { en?: string; zh?: string; tw?: string; ja?: string; ko?: string; es?: string }
-
 /**
  * Multi-language text helper
  * - String: zh-CN shows original, zh-TW auto-converts to Traditional

@@ -2,7 +2,6 @@ import { useT } from '../contexts/LanguageContext'
 import { tText, type MultiLang } from '../i18n/translate'
 import LinkNav, { type ToolLink } from '../components/LinkNav'
 import styles from './Page.module.css'
-
 export default function DevToolsOverview() {
   const { lang } = useT()
   const L = (a: MultiLang, b?: string, c?: string) => { if (typeof a !== "string") return tText(a, lang); if (b !== undefined) return lang === "zh-CN" ? (b || a) : lang === "zh-TW" ? (c || b || a) : a; return tText(a, lang) }
@@ -13,7 +12,6 @@ export default function DevToolsOverview() {
     </div>
   )
 }
-
 const links: ToolLink[] = [
   // === Online Coding (jyshare) ===
   {name:'C 在线工具',url:'https://www.jyshare.com/compile/11/',desc:{en:'Online C compiler, run C code in browser',zh:'在线C语言编译器,浏览器运行C代码'},cat:'在线编程',icon:'🇨',source:'jyshare'},
