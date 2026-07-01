@@ -11,6 +11,7 @@ import WritingOverview from './WritingOverview'
 import ImageGenOverview from './ImageGenOverview'
 import VideoGenOverview from './VideoGenOverview'
 import AudioGenOverview from './AudioGenOverview'
+
 const sections = [
   { key: 'audio-gen', icon: '🎵', title: { en: 'Audio', 'zh-CN': '音频生成', 'zh-TW': '音頻生成', ja: '音声生成', ko: '오디오 생성', es: 'Audio' }, Component: AudioGenTutorial },
   { key: 'video-gen', icon: '🎬', title: { en: 'Video', 'zh-CN': '视频生成', 'zh-TW': '影片生成', ja: '動画生成', ko: '비디오 생성', es: 'Video' }, Component: VideoGenTutorial },
@@ -24,7 +25,8 @@ const sections = [
   { key: 'video-gen-tool', icon: '🎬', title: { en: 'Video Tools', 'zh-CN': 'AI视频工具', 'zh-TW': 'AI影片工具', ja: 'AI動画ツール', ko: 'AI 비디오 도구', es: 'Video IA' }, Component: VideoGenOverview },
   { key: 'audio-gen-tool', icon: '🎵', title: { en: 'Audio Tools', 'zh-CN': 'AI音频工具', 'zh-TW': 'AI音頻工具', ja: 'AI音声ツール', ko: 'AI 오디오 도구', es: 'Audio IA' }, Component: AudioGenOverview },
 ]
-export default function AigcOverview({ activePage }: { activePage?: string }) {
+
+export default function AigcOverview() {
   const { lang } = useT()
   const L = (a: MultiLang, b?: string, c?: string) => {
     if (typeof a !== 'string') return tText(a, lang)
@@ -32,7 +34,10 @@ export default function AigcOverview({ activePage }: { activePage?: string }) {
   }
   return (
     <div>
-      <div id="section-overview" style={{ background: 'linear-gradient(135deg, #4c1d95 0%, #6d28d9 50%, #7c3aed 100%)', borderRadius: 14, padding: '28px 32px', marginBottom: 32, color: '#fff', position: 'relative', overflow: 'hidden', }}>
+      <div id="section-overview" style={{
+        background: 'linear-gradient(135deg, #4c1d95 0%, #6d28d9 50%, #7c3aed 100%)',
+        borderRadius: 14, padding: '28px 32px', marginBottom: 32, color: '#fff', position: 'relative', overflow: 'hidden',
+      }}>
         <div style={{ position: 'absolute', top: -20, right: -10, fontSize: 100, opacity: 0.08 }}>🤖</div>
         <h2 style={{ fontSize: 24, fontWeight: 800, margin: '0 0 8px' }}>{L({ en: 'AIGC · Content Generation', 'zh-CN': 'AIGC · AI生成', 'zh-TW': 'AIGC · AI生成', ja: 'AIGC · AI生成', ko: 'AIGC · AI 생성', es: 'AIGC · Generación IA' })}</h2>
         <p style={{ fontSize: 14, opacity: 0.85, margin: '0 0 20px', maxWidth: 600, lineHeight: 1.6 }}>
@@ -42,15 +47,12 @@ export default function AigcOverview({ activePage }: { activePage?: string }) {
           {sections.map(s => (<span key={s.key} onClick={() => { const el = document.getElementById(`section-${s.key}`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }) }} style={{ background: 'rgba(255,255,255,0.15)', color: '#fff', padding: '4px 12px', borderRadius: 16, fontSize: 13, cursor: 'pointer', fontWeight: 500 }}>{s.icon} {domainTitle(s.title, lang)}</span>))}
         </div>
       </div>
-        <div key={key} id={`section-${key}`} style={{ scrollMarginTop: 80 }}>
-          {i > 0 && <div style={{ height: 2, background: 'linear-gradient(90deg, var(--primary), transparent)', margin: '32px 0 40px', borderRadius: 1 }} />}
-          <Component />
-{(activePage === "overview" || !activePage) ?       sections.map(({ key, Component }, i) => (
+      {sections.map(({ key, Component }, i) => (
         <div key={key} id={`section-${key}`} style={{ scrollMarginTop: 80 }}>
           {i > 0 && <div style={{ height: 2, background: 'linear-gradient(90deg, var(--primary), transparent)', margin: '32px 0 40px', borderRadius: 1 }} />}
           <Component />
         </div>
-      ))} : sections.filter(s => s.key === activePage).map(({ key, Component }) => <div key={key} id={`section-${key}`} style={{ scrollMarginTop: 80 }}><Component /></div>)}
+      ))}
     </div>
   )
 }

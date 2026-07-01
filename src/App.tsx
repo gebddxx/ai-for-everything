@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from 'react'
+import { useState, useCallback, useEffect, useRef, lazy, Suspense } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import Header from './components/Header'
@@ -7,15 +7,13 @@ import Breadcrumb from './components/Breadcrumb'
 import { useT } from './contexts/LanguageContext'
 import Home from './pages/Home'
 import AiNews from './pages/AiNews'
-import NotFound from './pages/NotFound'
 import BackToTop from './components/BackToTop'
-import Footer from './components/Footer'
-import ErrorBoundary from './components/ErrorBoundary'
 
-import NavToolsOverview from './pages/NavToolsOverview'
-import IndustriesOverview from './pages/IndustriesOverview'
-import AigcOverview from './pages/AigcOverview'
-import AiDevOverview from './pages/AiDevOverview'
+// Code-split domain pages — only load what the user navigates to
+const NavToolsOverview = lazy(() => import('./pages/NavToolsOverview'))
+const IndustriesOverview = lazy(() => import('./pages/IndustriesOverview'))
+const AigcOverview = lazy(() => import('./pages/AigcOverview'))
+const AiDevOverview = lazy(() => import('./pages/AiDevOverview'))
 
 import { domains } from './data/domains'
 import { domainTitle } from './i18n/translate'
@@ -40,7 +38,6 @@ function toHash(domain: string | null, page: string) {
 }
 
 function AppContent() {
-  const { lang } = useT()
   const [initialDomain, initialPage] = parseHash()
   const [domain, setDomain] = useState<string | null>(initialDomain)
   const [activePage, setActivePage] = useState(initialPage)
@@ -152,7 +149,7 @@ function AppContent() {
     if (domain && activePage !== 'overview') {
       const timer = setTimeout(() => {
         const el = document.getElementById(`section-${activePage}`)
-        if (el) el.scrollIntoView({ behavior: "instant", block: 'start' })
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
       }, 500)
       return () => clearTimeout(timer)
     }
@@ -166,43 +163,35 @@ function AppContent() {
   const handleSelectPage = (key: string) => {
     setActivePage(key)
     const el = document.getElementById(`section-${key}`)
-    if (el) el.scrollIntoView({ behavior: "instant", block: 'start' })
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  const renderPage = () => {
+    if (domain === null) return <Home onEnter={handleEnterDomain} />
+    return (
+      <Suspense fallback={<div style={{ padding: 40, textAlign: 'center', color: 'var(--text-muted)' }}>加载中…</div>}>
+        {domain === 'nav-tools' && <NavToolsOverview />}
+        {domain === 'ai-industries' && <IndustriesOverview />}
+        {domain === 'aigc' && <AigcOverview />}
+        {domain === 'ai-dev' && <AiDevOverview />}
+        {domain === 'ai-news' && <AiNews />}
+      </Suspense>
+    )
   }
 
   const handleBack = () => setDomain(null)
 
-  // Dynamic page title
-  useEffect(() => {
-    if (domain === null) { document.title = 'AI Navigator'; return }
-    const d = domains.find(dd => dd.key === domain)
-    const title = d ? domainTitle(d.title, lang) : domain
-    document.title = title + ' · AI Navigator'
-  }, [domain, lang])
-
-  const renderPage = () => {
-    if (domain === null) return <Home onEnter={handleEnterDomain} />
-    if (domain === 'ai-news') return <AiNews />
-    if (domain === 'nav-tools') return <NavToolsOverview activePage={activePage} />
-    if (domain === 'ai-industries') return <IndustriesOverview activePage={activePage} />
-    if (domain === 'aigc') return <AigcOverview activePage={activePage} />
-    if (domain === 'ai-dev') return <AiDevOverview activePage={activePage} />
-    return <NotFound />
-  }
-
   return (
     <div className={styles.app}>
-      <Header onBack={domain ? handleBack : undefined} onNavigate={(d, s) => { if (!d) { handleBack(); return } handleEnterDomain(d); if (s) { setActivePage(s); setTimeout(() => { const el = document.getElementById(`section-${s}`); if (el) el.scrollIntoView({ behavior: "instant", block: 'start' }) }, 400) } }} />
+      <Header onBack={domain ? handleBack : undefined} onNavigate={(d, s) => { if (!d) { handleBack(); return } handleEnterDomain(d); if (s) { setActivePage(s); setTimeout(() => { const el = document.getElementById(`section-${s}`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }) }, 400) } }} />
       <div className={styles.body}>
         <Sidebar domain={domain} activePage={activePage} onSelectPage={handleSelectPage} onSelectDomain={handleEnterDomain} onHome={handleBack} />
         <div className={styles.handle} onMouseDown={onMouseDown} />
-        <ErrorBoundary>
-          <main className={styles.content} data-scroll-container>
-            <BreadcrumbBlock domain={domain} activePage={activePage} onBack={handleBack} onSelectPage={handleSelectPage} />
-            {renderPage()}
-          </main>
-        </ErrorBoundary>
+        <main className={styles.content} data-scroll-container>
+          <BreadcrumbBlock domain={domain} activePage={activePage} onBack={handleBack} onSelectPage={handleSelectPage} />
+          {renderPage()}
+        </main>
       </div>
-      <Footer />
       <BackToTop />
     </div>
   )

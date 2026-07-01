@@ -15,6 +15,7 @@ import SecurityOverview from './SecurityOverview'
 import LawOverview from './LawOverview'
 import ClimateOverview from './ClimateOverview'
 import GovTechOverview from './GovTechOverview'
+
 const sections = [
   { key: 'logistics', icon: '📦', title: { en: 'Logistics', 'zh-CN': '智慧物流', 'zh-TW': '智慧物流', ja: 'スマート物流', ko: '스마트 물류', es: 'Logística' }, Component: Overview },
   { key: 'healthcare', icon: '🏥', title: { en: 'Healthcare', 'zh-CN': '医疗健康', 'zh-TW': '醫療健康', ja: '医療健康', ko: '의료 건강', es: 'Salud' }, Component: HealthcareOverview },
@@ -32,16 +33,26 @@ const sections = [
   { key: 'climate', icon: '🌍', title: { en: 'Climate', 'zh-CN': '环保气候', 'zh-TW': '環保氣候', ja: '環境・気候', ko: '환경 · 기후', es: 'Clima' }, Component: ClimateOverview },
   { key: 'govtech', icon: '🏛️', title: { en: 'GovTech', 'zh-CN': '政务智慧城市', 'zh-TW': '政務智慧城市', ja: '行政・スマートシティ', ko: '행정 · 스마트시티', es: 'Gobierno' }, Component: GovTechOverview },
 ]
-export default function IndustriesOverview({ activePage }: { activePage?: string }) {
+
+export default function IndustriesOverview() {
   const { lang } = useT()
   const L = (a: MultiLang, b?: string, c?: string) => {
     if (typeof a !== 'string') return tText(a, lang)
     return lang === 'zh-CN' ? (b || a) : lang === 'zh-TW' ? (c || b || a) : a
   }
+
   return (
     <div>
       {/* Overview Intro */}
-      <div id="section-overview" style={{ background: 'linear-gradient(135deg, #064e3b 0%, #047857 50%, #065f46 100%)', borderRadius: 14, padding: '28px 32px', marginBottom: 32, color: '#fff', position: 'relative', overflow: 'hidden', }}>
+      <div id="section-overview" style={{
+        background: 'linear-gradient(135deg, #064e3b 0%, #047857 50%, #065f46 100%)',
+        borderRadius: 14,
+        padding: '28px 32px',
+        marginBottom: 32,
+        color: '#fff',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
         <div style={{ position: 'absolute', top: -20, right: -10, fontSize: 100, opacity: 0.08 }}>🏭</div>
         <h2 style={{ fontSize: 24, fontWeight: 800, margin: '0 0 8px' }}>
           {L({ en: 'AI in Industries', 'zh-CN': 'AI行业应用', 'zh-TW': 'AI行業應用', ja: 'AI業界応用', ko: 'AI 산업 응용', es: 'IA en industrias' })}
@@ -51,21 +62,21 @@ export default function IndustriesOverview({ activePage }: { activePage?: string
         </p>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {sections.map(s => (
-            <span key={s.key} onClick={() => { const el = document.getElementById(`section-${s.key}`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }) }} style={{ cursor: 'pointer', background: 'rgba(255,255,255,0.15)', color: '#fff', padding: '4px 12px', borderRadius: 16, fontSize: 13, textDecoration: 'none', fontWeight: 500, }}>
+            <span key={s.key} onClick={() => { const el = document.getElementById(`section-${s.key}`); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }) }} style={{ cursor: 'pointer',
+              background: 'rgba(255,255,255,0.15)', color: '#fff', padding: '4px 12px', borderRadius: 16, fontSize: 13, textDecoration: 'none', fontWeight: 500,
+            }}>
               {s.icon} {domainTitle(s.title, lang)}
             </span>
           ))}
         </div>
       </div>
-        <div key={key} id={`section-${key}`} style={{ scrollMarginTop: 80 }}>
-          {i > 0 && <div style={{ height: 2, background: 'linear-gradient(90deg, var(--primary), transparent)', margin: '32px 0 40px', borderRadius: 1 }} />}
-          <Component />
-{(activePage === "overview" || !activePage) ?       sections.map(({ key, Component }, i) => (
+
+      {sections.map(({ key, Component }, i) => (
         <div key={key} id={`section-${key}`} style={{ scrollMarginTop: 80 }}>
           {i > 0 && <div style={{ height: 2, background: 'linear-gradient(90deg, var(--primary), transparent)', margin: '32px 0 40px', borderRadius: 1 }} />}
           <Component />
         </div>
-      ))} : sections.filter(s => s.key === activePage).map(({ key, Component }) => <div key={key} id={`section-${key}`} style={{ scrollMarginTop: 80 }}><Component /></div>)}
+      ))}
     </div>
   )
 }
